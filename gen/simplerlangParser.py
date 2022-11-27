@@ -7,78 +7,58 @@ import sys
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3#")
-        buf.write("\u00bf\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\35")
+        buf.write("\u009a\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
-        buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\3\2\6\2")
-        buf.write("&\n\2\r\2\16\2\'\3\3\3\3\3\3\3\3\3\3\5\3/\n\3\3\3\3\3")
-        buf.write("\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\7\6?")
-        buf.write("\n\6\f\6\16\6B\13\6\3\6\3\6\3\6\3\6\3\6\7\6I\n\6\f\6\16")
-        buf.write("\6L\13\6\3\6\3\6\5\6P\n\6\3\7\3\7\5\7T\n\7\3\7\3\7\3\7")
-        buf.write("\7\7Y\n\7\f\7\16\7\\\13\7\3\7\3\7\3\7\5\7a\n\7\3\7\3\7")
-        buf.write("\3\7\7\7f\n\7\f\7\16\7i\13\7\3\7\3\7\5\7m\n\7\3\b\3\b")
-        buf.write("\3\b\3\b\3\b\5\bt\n\b\3\t\3\t\3\t\3\t\3\t\3\t\3\t\5\t")
-        buf.write("}\n\t\3\n\3\n\7\n\u0081\n\n\f\n\16\n\u0084\13\n\3\n\3")
-        buf.write("\n\3\13\3\13\3\f\3\f\3\f\3\r\3\r\5\r\u008f\n\r\3\16\3")
-        buf.write("\16\3\17\3\17\3\20\3\20\3\21\3\21\3\21\3\21\7\21\u009b")
-        buf.write("\n\21\f\21\16\21\u009e\13\21\3\21\3\21\3\21\3\21\3\21")
-        buf.write("\5\21\u00a5\n\21\3\22\3\22\3\22\3\22\3\22\3\22\7\22\u00ad")
-        buf.write("\n\22\f\22\16\22\u00b0\13\22\3\22\3\22\3\22\3\22\3\22")
-        buf.write("\3\22\3\22\3\22\3\22\3\22\3\22\5\22\u00bd\n\22\3\22\2")
-        buf.write("\2\23\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"\2\5\3")
-        buf.write("\2\16\25\3\2\33\36\3\2\37\"\2\u00c2\2%\3\2\2\2\4.\3\2")
-        buf.write("\2\2\6\62\3\2\2\2\b\66\3\2\2\2\nO\3\2\2\2\fl\3\2\2\2\16")
-        buf.write("n\3\2\2\2\20u\3\2\2\2\22~\3\2\2\2\24\u0087\3\2\2\2\26")
-        buf.write("\u0089\3\2\2\2\30\u008e\3\2\2\2\32\u0090\3\2\2\2\34\u0092")
-        buf.write("\3\2\2\2\36\u0094\3\2\2\2 \u00a4\3\2\2\2\"\u00bc\3\2\2")
-        buf.write("\2$&\5\4\3\2%$\3\2\2\2&\'\3\2\2\2\'%\3\2\2\2\'(\3\2\2")
-        buf.write("\2(\3\3\2\2\2)/\5\6\4\2*/\5\b\5\2+/\5\16\b\2,/\5\20\t")
-        buf.write("\2-/\5\"\22\2.)\3\2\2\2.*\3\2\2\2.+\3\2\2\2.,\3\2\2\2")
-        buf.write(".-\3\2\2\2/\60\3\2\2\2\60\61\7\3\2\2\61\5\3\2\2\2\62\63")
-        buf.write("\7\37\2\2\63\64\7\4\2\2\64\65\5\n\6\2\65\7\3\2\2\2\66")
-        buf.write("\67\7\5\2\2\678\5\n\6\289\7\6\2\29\t\3\2\2\2:@\5\f\7\2")
-        buf.write(";<\5\30\r\2<=\5\f\7\2=?\3\2\2\2>;\3\2\2\2?B\3\2\2\2@>")
-        buf.write("\3\2\2\2@A\3\2\2\2AP\3\2\2\2B@\3\2\2\2CD\7\7\2\2DJ\5\f")
-        buf.write("\7\2EF\5\30\r\2FG\5\f\7\2GI\3\2\2\2HE\3\2\2\2IL\3\2\2")
-        buf.write("\2JH\3\2\2\2JK\3\2\2\2KM\3\2\2\2LJ\3\2\2\2MN\7\6\2\2N")
-        buf.write("P\3\2\2\2O:\3\2\2\2OC\3\2\2\2P\13\3\2\2\2QT\5\36\20\2")
-        buf.write("RT\5\24\13\2SQ\3\2\2\2SR\3\2\2\2TZ\3\2\2\2UV\5\30\r\2")
-        buf.write("VW\5\f\7\2WY\3\2\2\2XU\3\2\2\2Y\\\3\2\2\2ZX\3\2\2\2Z[")
-        buf.write("\3\2\2\2[m\3\2\2\2\\Z\3\2\2\2]`\7\7\2\2^a\5\36\20\2_a")
-        buf.write("\5\24\13\2`^\3\2\2\2`_\3\2\2\2ag\3\2\2\2bc\5\30\r\2cd")
-        buf.write("\5\f\7\2df\3\2\2\2eb\3\2\2\2fi\3\2\2\2ge\3\2\2\2gh\3\2")
-        buf.write("\2\2hj\3\2\2\2ig\3\2\2\2jk\7\6\2\2km\3\2\2\2lS\3\2\2\2")
-        buf.write("l]\3\2\2\2m\r\3\2\2\2no\7\b\2\2op\5\n\6\2ps\7\t\2\2qt")
-        buf.write("\5\22\n\2rt\5\4\3\2sq\3\2\2\2sr\3\2\2\2t\17\3\2\2\2uv")
-        buf.write("\7\n\2\2vw\7\37\2\2wx\7\13\2\2xy\5 \21\2y|\7\t\2\2z}\5")
-        buf.write("\22\n\2{}\5\4\3\2|z\3\2\2\2|{\3\2\2\2}\21\3\2\2\2~\u0082")
-        buf.write("\7\f\2\2\177\u0081\5\4\3\2\u0080\177\3\2\2\2\u0081\u0084")
-        buf.write("\3\2\2\2\u0082\u0080\3\2\2\2\u0082\u0083\3\2\2\2\u0083")
-        buf.write("\u0085\3\2\2\2\u0084\u0082\3\2\2\2\u0085\u0086\7\r\2\2")
-        buf.write("\u0086\23\3\2\2\2\u0087\u0088\5\26\f\2\u0088\25\3\2\2")
-        buf.write("\2\u0089\u008a\7\32\2\2\u008a\u008b\5\f\7\2\u008b\27\3")
-        buf.write("\2\2\2\u008c\u008f\5\32\16\2\u008d\u008f\5\34\17\2\u008e")
-        buf.write("\u008c\3\2\2\2\u008e\u008d\3\2\2\2\u008f\31\3\2\2\2\u0090")
-        buf.write("\u0091\t\2\2\2\u0091\33\3\2\2\2\u0092\u0093\t\3\2\2\u0093")
-        buf.write("\35\3\2\2\2\u0094\u0095\t\4\2\2\u0095\37\3\2\2\2\u0096")
-        buf.write("\u009c\7\26\2\2\u0097\u0098\5\36\20\2\u0098\u0099\7\27")
-        buf.write("\2\2\u0099\u009b\3\2\2\2\u009a\u0097\3\2\2\2\u009b\u009e")
-        buf.write("\3\2\2\2\u009c\u009a\3\2\2\2\u009c\u009d\3\2\2\2\u009d")
-        buf.write("\u009f\3\2\2\2\u009e\u009c\3\2\2\2\u009f\u00a0\5\36\20")
-        buf.write("\2\u00a0\u00a1\7\30\2\2\u00a1\u00a5\3\2\2\2\u00a2\u00a3")
-        buf.write("\7\26\2\2\u00a3\u00a5\7\30\2\2\u00a4\u0096\3\2\2\2\u00a4")
-        buf.write("\u00a2\3\2\2\2\u00a5!\3\2\2\2\u00a6\u00a7\7\31\2\2\u00a7")
-        buf.write("\u00a8\7\37\2\2\u00a8\u00ae\7\7\2\2\u00a9\u00aa\5\36\20")
-        buf.write("\2\u00aa\u00ab\7\27\2\2\u00ab\u00ad\3\2\2\2\u00ac\u00a9")
-        buf.write("\3\2\2\2\u00ad\u00b0\3\2\2\2\u00ae\u00ac\3\2\2\2\u00ae")
-        buf.write("\u00af\3\2\2\2\u00af\u00b1\3\2\2\2\u00b0\u00ae\3\2\2\2")
-        buf.write("\u00b1\u00b2\5\36\20\2\u00b2\u00b3\7\6\2\2\u00b3\u00b4")
-        buf.write("\7\t\2\2\u00b4\u00b5\5\22\n\2\u00b5\u00bd\3\2\2\2\u00b6")
-        buf.write("\u00b7\7\31\2\2\u00b7\u00b8\7\37\2\2\u00b8\u00b9\7\7\2")
-        buf.write("\2\u00b9\u00ba\7\6\2\2\u00ba\u00bb\7\t\2\2\u00bb\u00bd")
-        buf.write("\5\22\n\2\u00bc\u00a6\3\2\2\2\u00bc\u00b6\3\2\2\2\u00bd")
-        buf.write("#\3\2\2\2\24\'.@JOSZ`gls|\u0082\u008e\u009c\u00a4\u00ae")
-        buf.write("\u00bc")
+        buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\3\2\6\2$\n\2\r\2\16")
+        buf.write("\2%\3\3\3\3\3\3\3\3\3\3\5\3-\n\3\3\3\3\3\3\4\3\4\3\4\3")
+        buf.write("\4\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\5\6=\n\6\3\6\3\6\3")
+        buf.write("\6\3\6\3\6\5\6D\n\6\3\6\3\6\5\6H\n\6\3\7\3\7\3\7\3\7\3")
+        buf.write("\7\5\7O\n\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\5\bX\n\b\3\t\3")
+        buf.write("\t\7\t\\\n\t\f\t\16\t_\13\t\3\t\3\t\3\n\3\n\3\13\3\13")
+        buf.write("\3\13\3\f\3\f\5\fj\n\f\3\r\3\r\3\16\3\16\3\17\3\17\3\20")
+        buf.write("\3\20\3\20\3\20\7\20v\n\20\f\20\16\20y\13\20\3\20\3\20")
+        buf.write("\3\20\3\20\3\20\5\20\u0080\n\20\3\21\3\21\3\21\3\21\3")
+        buf.write("\21\3\21\7\21\u0088\n\21\f\21\16\21\u008b\13\21\3\21\3")
+        buf.write("\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\5\21")
+        buf.write("\u0098\n\21\3\21\2\2\22\2\4\6\b\n\f\16\20\22\24\26\30")
+        buf.write("\32\34\36 \2\5\3\2\22\23\3\2\25\30\3\2\31\34\2\u0099\2")
+        buf.write("#\3\2\2\2\4,\3\2\2\2\6\60\3\2\2\2\b\64\3\2\2\2\nG\3\2")
+        buf.write("\2\2\fI\3\2\2\2\16P\3\2\2\2\20Y\3\2\2\2\22b\3\2\2\2\24")
+        buf.write("d\3\2\2\2\26i\3\2\2\2\30k\3\2\2\2\32m\3\2\2\2\34o\3\2")
+        buf.write("\2\2\36\177\3\2\2\2 \u0097\3\2\2\2\"$\5\4\3\2#\"\3\2\2")
+        buf.write("\2$%\3\2\2\2%#\3\2\2\2%&\3\2\2\2&\3\3\2\2\2\'-\5\6\4\2")
+        buf.write("(-\5\b\5\2)-\5\f\7\2*-\5\16\b\2+-\5 \21\2,\'\3\2\2\2,")
+        buf.write("(\3\2\2\2,)\3\2\2\2,*\3\2\2\2,+\3\2\2\2-.\3\2\2\2./\7")
+        buf.write("\3\2\2/\5\3\2\2\2\60\61\7\31\2\2\61\62\7\4\2\2\62\63\5")
+        buf.write("\n\6\2\63\7\3\2\2\2\64\65\7\5\2\2\65\66\5\n\6\2\66\67")
+        buf.write("\7\6\2\2\67\t\3\2\2\28<\5\34\17\29:\5\26\f\2:;\5\n\6\2")
+        buf.write(";=\3\2\2\2<9\3\2\2\2<=\3\2\2\2=H\3\2\2\2>?\7\7\2\2?C\5")
+        buf.write("\34\17\2@A\5\26\f\2AB\5\n\6\2BD\3\2\2\2C@\3\2\2\2CD\3")
+        buf.write("\2\2\2DE\3\2\2\2EF\7\6\2\2FH\3\2\2\2G8\3\2\2\2G>\3\2\2")
+        buf.write("\2H\13\3\2\2\2IJ\7\b\2\2JK\5\n\6\2KN\7\t\2\2LO\5\20\t")
+        buf.write("\2MO\5\4\3\2NL\3\2\2\2NM\3\2\2\2O\r\3\2\2\2PQ\7\n\2\2")
+        buf.write("QR\7\31\2\2RS\7\13\2\2ST\5\36\20\2TW\7\t\2\2UX\5\20\t")
+        buf.write("\2VX\5\4\3\2WU\3\2\2\2WV\3\2\2\2X\17\3\2\2\2Y]\7\f\2\2")
+        buf.write("Z\\\5\4\3\2[Z\3\2\2\2\\_\3\2\2\2][\3\2\2\2]^\3\2\2\2^")
+        buf.write("`\3\2\2\2_]\3\2\2\2`a\7\r\2\2a\21\3\2\2\2bc\5\24\13\2")
+        buf.write("c\23\3\2\2\2de\7\24\2\2ef\5\n\6\2f\25\3\2\2\2gj\5\30\r")
+        buf.write("\2hj\5\32\16\2ig\3\2\2\2ih\3\2\2\2j\27\3\2\2\2kl\t\2\2")
+        buf.write("\2l\31\3\2\2\2mn\t\3\2\2n\33\3\2\2\2op\t\4\2\2p\35\3\2")
+        buf.write("\2\2qw\7\16\2\2rs\5\34\17\2st\7\17\2\2tv\3\2\2\2ur\3\2")
+        buf.write("\2\2vy\3\2\2\2wu\3\2\2\2wx\3\2\2\2xz\3\2\2\2yw\3\2\2\2")
+        buf.write("z{\5\34\17\2{|\7\20\2\2|\u0080\3\2\2\2}~\7\16\2\2~\u0080")
+        buf.write("\7\20\2\2\177q\3\2\2\2\177}\3\2\2\2\u0080\37\3\2\2\2\u0081")
+        buf.write("\u0082\7\21\2\2\u0082\u0083\7\31\2\2\u0083\u0089\7\7\2")
+        buf.write("\2\u0084\u0085\5\34\17\2\u0085\u0086\7\17\2\2\u0086\u0088")
+        buf.write("\3\2\2\2\u0087\u0084\3\2\2\2\u0088\u008b\3\2\2\2\u0089")
+        buf.write("\u0087\3\2\2\2\u0089\u008a\3\2\2\2\u008a\u008c\3\2\2\2")
+        buf.write("\u008b\u0089\3\2\2\2\u008c\u008d\5\34\17\2\u008d\u008e")
+        buf.write("\7\6\2\2\u008e\u008f\7\t\2\2\u008f\u0090\5\20\t\2\u0090")
+        buf.write("\u0098\3\2\2\2\u0091\u0092\7\21\2\2\u0092\u0093\7\31\2")
+        buf.write("\2\u0093\u0094\7\7\2\2\u0094\u0095\7\6\2\2\u0095\u0096")
+        buf.write("\7\t\2\2\u0096\u0098\5\20\t\2\u0097\u0081\3\2\2\2\u0097")
+        buf.write("\u0091\3\2\2\2\u0098!\3\2\2\2\17%,<CGNW]iw\177\u0089\u0097")
         return buf.getvalue()
 
 
@@ -93,42 +73,39 @@ class simplerlangParser ( Parser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ "<INVALID>", "';'", "'='", "'print('", "')'", "'('", 
-                     "'if'", "':'", "'for'", "'in'", "'{'", "'}'", "'and'", 
-                     "'or'", "'>'", "'<'", "'>='", "'<='", "'=='", "'!='", 
-                     "'['", "','", "']'", "'def'", "'!'", "'+'", "'-'", 
-                     "'/'", "'*'" ]
+                     "'if'", "':'", "'for'", "'in'", "'{'", "'}'", "'['", 
+                     "','", "']'", "'def'", "'and'", "'or'", "'!'", "'+'", 
+                     "'-'", "'/'", "'*'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "NEG_OPR", "ADD_OPR", "SUB_OPR", "DIV_OPR", "MUL_OPR", 
-                      "NAME", "INT", "FLOAT", "STRING", "WS" ]
+                      "AND_OPR", "OR_OPR", "NEG_OPR", "ADD_OPR", "SUB_OPR", 
+                      "DIV_OPR", "MUL_OPR", "NAME", "INT", "FLOAT", "STRING", 
+                      "WS" ]
 
     RULE_program = 0
     RULE_statement = 1
     RULE_let = 2
     RULE_show = 3
-    RULE_large_expr = 4
-    RULE_small_expr = 5
-    RULE_if_block = 6
-    RULE_for_block = 7
-    RULE_code_block = 8
-    RULE_un_opr = 9
-    RULE_neg_opr = 10
-    RULE_bin_opr = 11
-    RULE_logic_opr = 12
-    RULE_arthm_opr = 13
-    RULE_var = 14
-    RULE_array = 15
-    RULE_fun_def = 16
+    RULE_small_expr = 4
+    RULE_if_block = 5
+    RULE_for_block = 6
+    RULE_code_block = 7
+    RULE_un_opr = 8
+    RULE_neg_opr = 9
+    RULE_bin_opr = 10
+    RULE_logic_opr = 11
+    RULE_arthm_opr = 12
+    RULE_var = 13
+    RULE_array = 14
+    RULE_fun_def = 15
 
-    ruleNames =  [ "program", "statement", "let", "show", "large_expr", 
-                   "small_expr", "if_block", "for_block", "code_block", 
-                   "un_opr", "neg_opr", "bin_opr", "logic_opr", "arthm_opr", 
-                   "var", "array", "fun_def" ]
+    ruleNames =  [ "program", "statement", "let", "show", "small_expr", 
+                   "if_block", "for_block", "code_block", "un_opr", "neg_opr", 
+                   "bin_opr", "logic_opr", "arthm_opr", "var", "array", 
+                   "fun_def" ]
 
     EOF = Token.EOF
     T__0=1
@@ -146,24 +123,18 @@ class simplerlangParser ( Parser ):
     T__12=13
     T__13=14
     T__14=15
-    T__15=16
-    T__16=17
-    T__17=18
-    T__18=19
-    T__19=20
-    T__20=21
-    T__21=22
-    T__22=23
-    NEG_OPR=24
-    ADD_OPR=25
-    SUB_OPR=26
-    DIV_OPR=27
-    MUL_OPR=28
-    NAME=29
-    INT=30
-    FLOAT=31
-    STRING=32
-    WS=33
+    AND_OPR=16
+    OR_OPR=17
+    NEG_OPR=18
+    ADD_OPR=19
+    SUB_OPR=20
+    DIV_OPR=21
+    MUL_OPR=22
+    NAME=23
+    INT=24
+    FLOAT=25
+    STRING=26
+    WS=27
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -207,16 +178,16 @@ class simplerlangParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 35 
+            self.state = 33 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 34
+                self.state = 32
                 self.statement()
-                self.state = 37 
+                self.state = 35 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__2) | (1 << simplerlangParser.T__5) | (1 << simplerlangParser.T__7) | (1 << simplerlangParser.T__22) | (1 << simplerlangParser.NAME))) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__2) | (1 << simplerlangParser.T__5) | (1 << simplerlangParser.T__7) | (1 << simplerlangParser.T__14) | (1 << simplerlangParser.NAME))) != 0)):
                     break
 
         except RecognitionException as re:
@@ -273,33 +244,33 @@ class simplerlangParser ( Parser ):
         self.enterRule(localctx, 2, self.RULE_statement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 44
+            self.state = 42
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [simplerlangParser.NAME]:
-                self.state = 39
+                self.state = 37
                 self.let()
                 pass
             elif token in [simplerlangParser.T__2]:
-                self.state = 40
+                self.state = 38
                 self.show()
                 pass
             elif token in [simplerlangParser.T__5]:
-                self.state = 41
+                self.state = 39
                 self.if_block()
                 pass
             elif token in [simplerlangParser.T__7]:
-                self.state = 42
+                self.state = 40
                 self.for_block()
                 pass
-            elif token in [simplerlangParser.T__22]:
-                self.state = 43
+            elif token in [simplerlangParser.T__14]:
+                self.state = 41
                 self.fun_def()
                 pass
             else:
                 raise NoViableAltException(self)
 
-            self.state = 46
+            self.state = 44
             self.match(simplerlangParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -318,8 +289,8 @@ class simplerlangParser ( Parser ):
         def NAME(self):
             return self.getToken(simplerlangParser.NAME, 0)
 
-        def large_expr(self):
-            return self.getTypedRuleContext(simplerlangParser.Large_exprContext,0)
+        def small_expr(self):
+            return self.getTypedRuleContext(simplerlangParser.Small_exprContext,0)
 
 
         def getRuleIndex(self):
@@ -342,12 +313,12 @@ class simplerlangParser ( Parser ):
         self.enterRule(localctx, 4, self.RULE_let)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 48
+            self.state = 46
             self.match(simplerlangParser.NAME)
-            self.state = 49
+            self.state = 47
             self.match(simplerlangParser.T__1)
-            self.state = 50
-            self.large_expr()
+            self.state = 48
+            self.small_expr()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -362,8 +333,8 @@ class simplerlangParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def large_expr(self):
-            return self.getTypedRuleContext(simplerlangParser.Large_exprContext,0)
+        def small_expr(self):
+            return self.getTypedRuleContext(simplerlangParser.Small_exprContext,0)
 
 
         def getRuleIndex(self):
@@ -386,104 +357,12 @@ class simplerlangParser ( Parser ):
         self.enterRule(localctx, 6, self.RULE_show)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 52
+            self.state = 50
             self.match(simplerlangParser.T__2)
-            self.state = 53
-            self.large_expr()
-            self.state = 54
+            self.state = 51
+            self.small_expr()
+            self.state = 52
             self.match(simplerlangParser.T__3)
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-    class Large_exprContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def small_expr(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(simplerlangParser.Small_exprContext)
-            else:
-                return self.getTypedRuleContext(simplerlangParser.Small_exprContext,i)
-
-
-        def bin_opr(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(simplerlangParser.Bin_oprContext)
-            else:
-                return self.getTypedRuleContext(simplerlangParser.Bin_oprContext,i)
-
-
-        def getRuleIndex(self):
-            return simplerlangParser.RULE_large_expr
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLarge_expr" ):
-                listener.enterLarge_expr(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLarge_expr" ):
-                listener.exitLarge_expr(self)
-
-
-
-
-    def large_expr(self):
-
-        localctx = simplerlangParser.Large_exprContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 8, self.RULE_large_expr)
-        self._la = 0 # Token type
-        try:
-            self.state = 77
-            self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,4,self._ctx)
-            if la_ == 1:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 56
-                self.small_expr()
-                self.state = 62
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__11) | (1 << simplerlangParser.T__12) | (1 << simplerlangParser.T__13) | (1 << simplerlangParser.T__14) | (1 << simplerlangParser.T__15) | (1 << simplerlangParser.T__16) | (1 << simplerlangParser.T__17) | (1 << simplerlangParser.T__18) | (1 << simplerlangParser.ADD_OPR) | (1 << simplerlangParser.SUB_OPR) | (1 << simplerlangParser.DIV_OPR) | (1 << simplerlangParser.MUL_OPR))) != 0):
-                    self.state = 57
-                    self.bin_opr()
-                    self.state = 58
-                    self.small_expr()
-                    self.state = 64
-                    self._errHandler.sync(self)
-                    _la = self._input.LA(1)
-
-                pass
-
-            elif la_ == 2:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 65
-                self.match(simplerlangParser.T__4)
-                self.state = 66
-                self.small_expr()
-                self.state = 72
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__11) | (1 << simplerlangParser.T__12) | (1 << simplerlangParser.T__13) | (1 << simplerlangParser.T__14) | (1 << simplerlangParser.T__15) | (1 << simplerlangParser.T__16) | (1 << simplerlangParser.T__17) | (1 << simplerlangParser.T__18) | (1 << simplerlangParser.ADD_OPR) | (1 << simplerlangParser.SUB_OPR) | (1 << simplerlangParser.DIV_OPR) | (1 << simplerlangParser.MUL_OPR))) != 0):
-                    self.state = 67
-                    self.bin_opr()
-                    self.state = 68
-                    self.small_expr()
-                    self.state = 74
-                    self._errHandler.sync(self)
-                    _la = self._input.LA(1)
-
-                self.state = 75
-                self.match(simplerlangParser.T__3)
-                pass
-
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -502,22 +381,12 @@ class simplerlangParser ( Parser ):
             return self.getTypedRuleContext(simplerlangParser.VarContext,0)
 
 
-        def un_opr(self):
-            return self.getTypedRuleContext(simplerlangParser.Un_oprContext,0)
+        def bin_opr(self):
+            return self.getTypedRuleContext(simplerlangParser.Bin_oprContext,0)
 
 
-        def bin_opr(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(simplerlangParser.Bin_oprContext)
-            else:
-                return self.getTypedRuleContext(simplerlangParser.Bin_oprContext,i)
-
-
-        def small_expr(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(simplerlangParser.Small_exprContext)
-            else:
-                return self.getTypedRuleContext(simplerlangParser.Small_exprContext,i)
+        def small_expr(self):
+            return self.getTypedRuleContext(simplerlangParser.Small_exprContext,0)
 
 
         def getRuleIndex(self):
@@ -537,73 +406,44 @@ class simplerlangParser ( Parser ):
     def small_expr(self):
 
         localctx = simplerlangParser.Small_exprContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 10, self.RULE_small_expr)
+        self.enterRule(localctx, 8, self.RULE_small_expr)
         self._la = 0 # Token type
         try:
-            self.state = 106
+            self.state = 69
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [simplerlangParser.NEG_OPR, simplerlangParser.NAME, simplerlangParser.INT, simplerlangParser.FLOAT, simplerlangParser.STRING]:
+            if token in [simplerlangParser.NAME, simplerlangParser.INT, simplerlangParser.FLOAT, simplerlangParser.STRING]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 81
+                self.state = 54
+                self.var()
+                self.state = 58
                 self._errHandler.sync(self)
-                token = self._input.LA(1)
-                if token in [simplerlangParser.NAME, simplerlangParser.INT, simplerlangParser.FLOAT, simplerlangParser.STRING]:
-                    self.state = 79
-                    self.var()
-                    pass
-                elif token in [simplerlangParser.NEG_OPR]:
-                    self.state = 80
-                    self.un_opr()
-                    pass
-                else:
-                    raise NoViableAltException(self)
+                _la = self._input.LA(1)
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.AND_OPR) | (1 << simplerlangParser.OR_OPR) | (1 << simplerlangParser.ADD_OPR) | (1 << simplerlangParser.SUB_OPR) | (1 << simplerlangParser.DIV_OPR) | (1 << simplerlangParser.MUL_OPR))) != 0):
+                    self.state = 55
+                    self.bin_opr()
+                    self.state = 56
+                    self.small_expr()
 
-                self.state = 88
-                self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,6,self._ctx)
-                while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                    if _alt==1:
-                        self.state = 83
-                        self.bin_opr()
-                        self.state = 84
-                        self.small_expr() 
-                    self.state = 90
-                    self._errHandler.sync(self)
-                    _alt = self._interp.adaptivePredict(self._input,6,self._ctx)
 
                 pass
             elif token in [simplerlangParser.T__4]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 91
+                self.state = 60
                 self.match(simplerlangParser.T__4)
-                self.state = 94
-                self._errHandler.sync(self)
-                token = self._input.LA(1)
-                if token in [simplerlangParser.NAME, simplerlangParser.INT, simplerlangParser.FLOAT, simplerlangParser.STRING]:
-                    self.state = 92
-                    self.var()
-                    pass
-                elif token in [simplerlangParser.NEG_OPR]:
-                    self.state = 93
-                    self.un_opr()
-                    pass
-                else:
-                    raise NoViableAltException(self)
-
-                self.state = 101
+                self.state = 61
+                self.var()
+                self.state = 65
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__11) | (1 << simplerlangParser.T__12) | (1 << simplerlangParser.T__13) | (1 << simplerlangParser.T__14) | (1 << simplerlangParser.T__15) | (1 << simplerlangParser.T__16) | (1 << simplerlangParser.T__17) | (1 << simplerlangParser.T__18) | (1 << simplerlangParser.ADD_OPR) | (1 << simplerlangParser.SUB_OPR) | (1 << simplerlangParser.DIV_OPR) | (1 << simplerlangParser.MUL_OPR))) != 0):
-                    self.state = 96
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.AND_OPR) | (1 << simplerlangParser.OR_OPR) | (1 << simplerlangParser.ADD_OPR) | (1 << simplerlangParser.SUB_OPR) | (1 << simplerlangParser.DIV_OPR) | (1 << simplerlangParser.MUL_OPR))) != 0):
+                    self.state = 62
                     self.bin_opr()
-                    self.state = 97
+                    self.state = 63
                     self.small_expr()
-                    self.state = 103
-                    self._errHandler.sync(self)
-                    _la = self._input.LA(1)
 
-                self.state = 104
+
+                self.state = 67
                 self.match(simplerlangParser.T__3)
                 pass
             else:
@@ -623,8 +463,8 @@ class simplerlangParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def large_expr(self):
-            return self.getTypedRuleContext(simplerlangParser.Large_exprContext,0)
+        def small_expr(self):
+            return self.getTypedRuleContext(simplerlangParser.Small_exprContext,0)
 
 
         def code_block(self):
@@ -652,24 +492,24 @@ class simplerlangParser ( Parser ):
     def if_block(self):
 
         localctx = simplerlangParser.If_blockContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 12, self.RULE_if_block)
+        self.enterRule(localctx, 10, self.RULE_if_block)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 108
+            self.state = 71
             self.match(simplerlangParser.T__5)
-            self.state = 109
-            self.large_expr()
-            self.state = 110
+            self.state = 72
+            self.small_expr()
+            self.state = 73
             self.match(simplerlangParser.T__6)
-            self.state = 113
+            self.state = 76
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [simplerlangParser.T__9]:
-                self.state = 111
+                self.state = 74
                 self.code_block()
                 pass
-            elif token in [simplerlangParser.T__2, simplerlangParser.T__5, simplerlangParser.T__7, simplerlangParser.T__22, simplerlangParser.NAME]:
-                self.state = 112
+            elif token in [simplerlangParser.T__2, simplerlangParser.T__5, simplerlangParser.T__7, simplerlangParser.T__14, simplerlangParser.NAME]:
+                self.state = 75
                 self.statement()
                 pass
             else:
@@ -721,28 +561,28 @@ class simplerlangParser ( Parser ):
     def for_block(self):
 
         localctx = simplerlangParser.For_blockContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 14, self.RULE_for_block)
+        self.enterRule(localctx, 12, self.RULE_for_block)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 115
+            self.state = 78
             self.match(simplerlangParser.T__7)
-            self.state = 116
+            self.state = 79
             self.match(simplerlangParser.NAME)
-            self.state = 117
+            self.state = 80
             self.match(simplerlangParser.T__8)
-            self.state = 118
+            self.state = 81
             self.array()
-            self.state = 119
+            self.state = 82
             self.match(simplerlangParser.T__6)
-            self.state = 122
+            self.state = 85
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [simplerlangParser.T__9]:
-                self.state = 120
+                self.state = 83
                 self.code_block()
                 pass
-            elif token in [simplerlangParser.T__2, simplerlangParser.T__5, simplerlangParser.T__7, simplerlangParser.T__22, simplerlangParser.NAME]:
-                self.state = 121
+            elif token in [simplerlangParser.T__2, simplerlangParser.T__5, simplerlangParser.T__7, simplerlangParser.T__14, simplerlangParser.NAME]:
+                self.state = 84
                 self.statement()
                 pass
             else:
@@ -786,23 +626,23 @@ class simplerlangParser ( Parser ):
     def code_block(self):
 
         localctx = simplerlangParser.Code_blockContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 16, self.RULE_code_block)
+        self.enterRule(localctx, 14, self.RULE_code_block)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 124
+            self.state = 87
             self.match(simplerlangParser.T__9)
-            self.state = 128
+            self.state = 91
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__2) | (1 << simplerlangParser.T__5) | (1 << simplerlangParser.T__7) | (1 << simplerlangParser.T__22) | (1 << simplerlangParser.NAME))) != 0):
-                self.state = 125
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__2) | (1 << simplerlangParser.T__5) | (1 << simplerlangParser.T__7) | (1 << simplerlangParser.T__14) | (1 << simplerlangParser.NAME))) != 0):
+                self.state = 88
                 self.statement()
-                self.state = 130
+                self.state = 93
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 131
+            self.state = 94
             self.match(simplerlangParser.T__10)
         except RecognitionException as re:
             localctx.exception = re
@@ -839,10 +679,10 @@ class simplerlangParser ( Parser ):
     def un_opr(self):
 
         localctx = simplerlangParser.Un_oprContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 18, self.RULE_un_opr)
+        self.enterRule(localctx, 16, self.RULE_un_opr)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 133
+            self.state = 96
             self.neg_opr()
         except RecognitionException as re:
             localctx.exception = re
@@ -882,12 +722,12 @@ class simplerlangParser ( Parser ):
     def neg_opr(self):
 
         localctx = simplerlangParser.Neg_oprContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 20, self.RULE_neg_opr)
+        self.enterRule(localctx, 18, self.RULE_neg_opr)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 135
+            self.state = 98
             self.match(simplerlangParser.NEG_OPR)
-            self.state = 136
+            self.state = 99
             self.small_expr()
         except RecognitionException as re:
             localctx.exception = re
@@ -928,19 +768,19 @@ class simplerlangParser ( Parser ):
     def bin_opr(self):
 
         localctx = simplerlangParser.Bin_oprContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 22, self.RULE_bin_opr)
+        self.enterRule(localctx, 20, self.RULE_bin_opr)
         try:
-            self.state = 140
+            self.state = 103
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [simplerlangParser.T__11, simplerlangParser.T__12, simplerlangParser.T__13, simplerlangParser.T__14, simplerlangParser.T__15, simplerlangParser.T__16, simplerlangParser.T__17, simplerlangParser.T__18]:
+            if token in [simplerlangParser.AND_OPR, simplerlangParser.OR_OPR]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 138
+                self.state = 101
                 self.logic_opr()
                 pass
             elif token in [simplerlangParser.ADD_OPR, simplerlangParser.SUB_OPR, simplerlangParser.DIV_OPR, simplerlangParser.MUL_OPR]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 139
+                self.state = 102
                 self.arthm_opr()
                 pass
             else:
@@ -960,6 +800,11 @@ class simplerlangParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def AND_OPR(self):
+            return self.getToken(simplerlangParser.AND_OPR, 0)
+
+        def OR_OPR(self):
+            return self.getToken(simplerlangParser.OR_OPR, 0)
 
         def getRuleIndex(self):
             return simplerlangParser.RULE_logic_opr
@@ -978,13 +823,13 @@ class simplerlangParser ( Parser ):
     def logic_opr(self):
 
         localctx = simplerlangParser.Logic_oprContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 24, self.RULE_logic_opr)
+        self.enterRule(localctx, 22, self.RULE_logic_opr)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 142
+            self.state = 105
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__11) | (1 << simplerlangParser.T__12) | (1 << simplerlangParser.T__13) | (1 << simplerlangParser.T__14) | (1 << simplerlangParser.T__15) | (1 << simplerlangParser.T__16) | (1 << simplerlangParser.T__17) | (1 << simplerlangParser.T__18))) != 0)):
+            if not(_la==simplerlangParser.AND_OPR or _la==simplerlangParser.OR_OPR):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -1032,11 +877,11 @@ class simplerlangParser ( Parser ):
     def arthm_opr(self):
 
         localctx = simplerlangParser.Arthm_oprContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 26, self.RULE_arthm_opr)
+        self.enterRule(localctx, 24, self.RULE_arthm_opr)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 144
+            self.state = 107
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.ADD_OPR) | (1 << simplerlangParser.SUB_OPR) | (1 << simplerlangParser.DIV_OPR) | (1 << simplerlangParser.MUL_OPR))) != 0)):
                 self._errHandler.recoverInline(self)
@@ -1086,11 +931,11 @@ class simplerlangParser ( Parser ):
     def var(self):
 
         localctx = simplerlangParser.VarContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 28, self.RULE_var)
+        self.enterRule(localctx, 26, self.RULE_var)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 146
+            self.state = 109
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.NAME) | (1 << simplerlangParser.INT) | (1 << simplerlangParser.FLOAT) | (1 << simplerlangParser.STRING))) != 0)):
                 self._errHandler.recoverInline(self)
@@ -1135,40 +980,40 @@ class simplerlangParser ( Parser ):
     def array(self):
 
         localctx = simplerlangParser.ArrayContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 30, self.RULE_array)
+        self.enterRule(localctx, 28, self.RULE_array)
         try:
-            self.state = 162
+            self.state = 125
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,15,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,10,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 148
-                self.match(simplerlangParser.T__19)
-                self.state = 154
+                self.state = 111
+                self.match(simplerlangParser.T__11)
+                self.state = 117
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,14,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,9,self._ctx)
                 while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                     if _alt==1:
-                        self.state = 149
+                        self.state = 112
                         self.var()
-                        self.state = 150
-                        self.match(simplerlangParser.T__20) 
-                    self.state = 156
+                        self.state = 113
+                        self.match(simplerlangParser.T__12) 
+                    self.state = 119
                     self._errHandler.sync(self)
-                    _alt = self._interp.adaptivePredict(self._input,14,self._ctx)
+                    _alt = self._interp.adaptivePredict(self._input,9,self._ctx)
 
-                self.state = 157
+                self.state = 120
                 self.var()
-                self.state = 158
-                self.match(simplerlangParser.T__21)
+                self.state = 121
+                self.match(simplerlangParser.T__13)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 160
-                self.match(simplerlangParser.T__19)
-                self.state = 161
-                self.match(simplerlangParser.T__21)
+                self.state = 123
+                self.match(simplerlangParser.T__11)
+                self.state = 124
+                self.match(simplerlangParser.T__13)
                 pass
 
 
@@ -1217,55 +1062,55 @@ class simplerlangParser ( Parser ):
     def fun_def(self):
 
         localctx = simplerlangParser.Fun_defContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 32, self.RULE_fun_def)
+        self.enterRule(localctx, 30, self.RULE_fun_def)
         try:
-            self.state = 186
+            self.state = 149
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,17,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,12,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 164
-                self.match(simplerlangParser.T__22)
-                self.state = 165
+                self.state = 127
+                self.match(simplerlangParser.T__14)
+                self.state = 128
                 self.match(simplerlangParser.NAME)
-                self.state = 166
+                self.state = 129
                 self.match(simplerlangParser.T__4)
-                self.state = 172
+                self.state = 135
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,16,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,11,self._ctx)
                 while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                     if _alt==1:
-                        self.state = 167
+                        self.state = 130
                         self.var()
-                        self.state = 168
-                        self.match(simplerlangParser.T__20) 
-                    self.state = 174
+                        self.state = 131
+                        self.match(simplerlangParser.T__12) 
+                    self.state = 137
                     self._errHandler.sync(self)
-                    _alt = self._interp.adaptivePredict(self._input,16,self._ctx)
+                    _alt = self._interp.adaptivePredict(self._input,11,self._ctx)
 
-                self.state = 175
+                self.state = 138
                 self.var()
-                self.state = 176
+                self.state = 139
                 self.match(simplerlangParser.T__3)
-                self.state = 177
+                self.state = 140
                 self.match(simplerlangParser.T__6)
-                self.state = 178
+                self.state = 141
                 self.code_block()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 180
-                self.match(simplerlangParser.T__22)
-                self.state = 181
+                self.state = 143
+                self.match(simplerlangParser.T__14)
+                self.state = 144
                 self.match(simplerlangParser.NAME)
-                self.state = 182
+                self.state = 145
                 self.match(simplerlangParser.T__4)
-                self.state = 183
+                self.state = 146
                 self.match(simplerlangParser.T__3)
-                self.state = 184
+                self.state = 147
                 self.match(simplerlangParser.T__6)
-                self.state = 185
+                self.state = 148
                 self.code_block()
                 pass
 

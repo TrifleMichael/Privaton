@@ -44,15 +44,6 @@ class simplerlangListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by simplerlangParser#large_expr.
-    def enterLarge_expr(self, ctx:simplerlangParser.Large_exprContext):
-        pass
-
-    # Exit a parse tree produced by simplerlangParser#large_expr.
-    def exitLarge_expr(self, ctx:simplerlangParser.Large_exprContext):
-        pass
-
-
     # Enter a parse tree produced by simplerlangParser#small_expr.
     def enterSmall_expr(self, ctx:simplerlangParser.Small_exprContext):
         pass
