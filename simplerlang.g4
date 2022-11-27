@@ -19,7 +19,7 @@ code_block : '{' statement* '}';
 un_opr : neg_opr ;
 neg_opr : NEG_OPR small_expr; // indirect leftside recursion
 bin_opr : logic_opr | arthm_opr;
-logic_opr : AND_OPR | OR_OPR ; //'>' | '<' | '>=' | '<=' | '==' | '!=';
+logic_opr : AND_OPR | OR_OPR | '>' | '<' | '>=' | '<=' | '==' | '!=';
 arthm_opr : ADD_OPR | SUB_OPR | DIV_OPR | MUL_OPR ;
 var : NAME | INT | FLOAT | STRING | LOGIC | array;
 array : '[' (small_expr',')* small_expr ']' | '['']';

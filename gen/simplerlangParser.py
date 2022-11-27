@@ -7,7 +7,7 @@ import sys
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\35")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3#")
         buf.write("\u009e\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\3\2\6\2")
@@ -22,43 +22,43 @@ def serializedATN():
         buf.write("\21\3\22\3\22\3\22\3\22\3\22\3\22\7\22\u008c\n\22\f\22")
         buf.write("\16\22\u008f\13\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22")
         buf.write("\3\22\3\22\3\22\3\22\5\22\u009c\n\22\3\22\2\2\23\2\4\6")
-        buf.write("\b\n\f\16\20\22\24\26\30\32\34\36 \"\2\4\3\2\21\22\3\2")
-        buf.write("\25\30\2\u009f\2%\3\2\2\2\4.\3\2\2\2\6\62\3\2\2\2\b\66")
-        buf.write("\3\2\2\2\nI\3\2\2\2\fK\3\2\2\2\16P\3\2\2\2\20U\3\2\2\2")
-        buf.write("\22W\3\2\2\2\24`\3\2\2\2\26b\3\2\2\2\30g\3\2\2\2\32i\3")
-        buf.write("\2\2\2\34k\3\2\2\2\36s\3\2\2\2 \u0083\3\2\2\2\"\u009b")
-        buf.write("\3\2\2\2$&\5\4\3\2%$\3\2\2\2&\'\3\2\2\2\'%\3\2\2\2\'(")
-        buf.write("\3\2\2\2(\3\3\2\2\2)/\5\6\4\2*/\5\b\5\2+/\5\f\7\2,/\5")
-        buf.write("\16\b\2-/\5\"\22\2.)\3\2\2\2.*\3\2\2\2.+\3\2\2\2.,\3\2")
-        buf.write("\2\2.-\3\2\2\2/\60\3\2\2\2\60\61\7\3\2\2\61\5\3\2\2\2")
-        buf.write("\62\63\7\31\2\2\63\64\7\4\2\2\64\65\5\n\6\2\65\7\3\2\2")
-        buf.write("\2\66\67\7\5\2\2\678\5\n\6\289\7\6\2\29\t\3\2\2\2:>\5")
-        buf.write("\36\20\2;<\5\30\r\2<=\5\n\6\2=?\3\2\2\2>;\3\2\2\2>?\3")
-        buf.write("\2\2\2?J\3\2\2\2@A\7\7\2\2AE\5\36\20\2BC\5\30\r\2CD\5")
-        buf.write("\n\6\2DF\3\2\2\2EB\3\2\2\2EF\3\2\2\2FG\3\2\2\2GH\7\6\2")
-        buf.write("\2HJ\3\2\2\2I:\3\2\2\2I@\3\2\2\2J\13\3\2\2\2KL\7\b\2\2")
-        buf.write("LM\5\20\t\2MN\7\t\2\2NO\5\22\n\2O\r\3\2\2\2PQ\7\n\2\2")
-        buf.write("QR\5\20\t\2RS\7\t\2\2ST\5\22\n\2T\17\3\2\2\2UV\5\n\6\2")
-        buf.write("V\21\3\2\2\2W[\7\13\2\2XZ\5\4\3\2YX\3\2\2\2Z]\3\2\2\2")
-        buf.write("[Y\3\2\2\2[\\\3\2\2\2\\^\3\2\2\2][\3\2\2\2^_\7\f\2\2_")
-        buf.write("\23\3\2\2\2`a\5\26\f\2a\25\3\2\2\2bc\7\24\2\2cd\5\n\6")
-        buf.write("\2d\27\3\2\2\2eh\5\32\16\2fh\5\34\17\2ge\3\2\2\2gf\3\2")
-        buf.write("\2\2h\31\3\2\2\2ij\t\2\2\2j\33\3\2\2\2kl\t\3\2\2l\35\3")
-        buf.write("\2\2\2mt\7\31\2\2nt\7\32\2\2ot\7\33\2\2pt\7\34\2\2qt\7")
-        buf.write("\23\2\2rt\5 \21\2sm\3\2\2\2sn\3\2\2\2so\3\2\2\2sp\3\2")
-        buf.write("\2\2sq\3\2\2\2sr\3\2\2\2t\37\3\2\2\2u{\7\r\2\2vw\5\n\6")
-        buf.write("\2wx\7\16\2\2xz\3\2\2\2yv\3\2\2\2z}\3\2\2\2{y\3\2\2\2")
-        buf.write("{|\3\2\2\2|~\3\2\2\2}{\3\2\2\2~\177\5\n\6\2\177\u0080")
-        buf.write("\7\17\2\2\u0080\u0084\3\2\2\2\u0081\u0082\7\r\2\2\u0082")
-        buf.write("\u0084\7\17\2\2\u0083u\3\2\2\2\u0083\u0081\3\2\2\2\u0084")
-        buf.write("!\3\2\2\2\u0085\u0086\7\20\2\2\u0086\u0087\7\31\2\2\u0087")
-        buf.write("\u008d\7\7\2\2\u0088\u0089\5\36\20\2\u0089\u008a\7\16")
+        buf.write("\b\n\f\16\20\22\24\26\30\32\34\36 \"\2\4\4\2\r\22\27\30")
+        buf.write("\3\2\33\36\2\u009f\2%\3\2\2\2\4.\3\2\2\2\6\62\3\2\2\2")
+        buf.write("\b\66\3\2\2\2\nI\3\2\2\2\fK\3\2\2\2\16P\3\2\2\2\20U\3")
+        buf.write("\2\2\2\22W\3\2\2\2\24`\3\2\2\2\26b\3\2\2\2\30g\3\2\2\2")
+        buf.write("\32i\3\2\2\2\34k\3\2\2\2\36s\3\2\2\2 \u0083\3\2\2\2\"")
+        buf.write("\u009b\3\2\2\2$&\5\4\3\2%$\3\2\2\2&\'\3\2\2\2\'%\3\2\2")
+        buf.write("\2\'(\3\2\2\2(\3\3\2\2\2)/\5\6\4\2*/\5\b\5\2+/\5\f\7\2")
+        buf.write(",/\5\16\b\2-/\5\"\22\2.)\3\2\2\2.*\3\2\2\2.+\3\2\2\2.")
+        buf.write(",\3\2\2\2.-\3\2\2\2/\60\3\2\2\2\60\61\7\3\2\2\61\5\3\2")
+        buf.write("\2\2\62\63\7\37\2\2\63\64\7\4\2\2\64\65\5\n\6\2\65\7\3")
+        buf.write("\2\2\2\66\67\7\5\2\2\678\5\n\6\289\7\6\2\29\t\3\2\2\2")
+        buf.write(":>\5\36\20\2;<\5\30\r\2<=\5\n\6\2=?\3\2\2\2>;\3\2\2\2")
+        buf.write(">?\3\2\2\2?J\3\2\2\2@A\7\7\2\2AE\5\36\20\2BC\5\30\r\2")
+        buf.write("CD\5\n\6\2DF\3\2\2\2EB\3\2\2\2EF\3\2\2\2FG\3\2\2\2GH\7")
+        buf.write("\6\2\2HJ\3\2\2\2I:\3\2\2\2I@\3\2\2\2J\13\3\2\2\2KL\7\b")
+        buf.write("\2\2LM\5\20\t\2MN\7\t\2\2NO\5\22\n\2O\r\3\2\2\2PQ\7\n")
+        buf.write("\2\2QR\5\20\t\2RS\7\t\2\2ST\5\22\n\2T\17\3\2\2\2UV\5\n")
+        buf.write("\6\2V\21\3\2\2\2W[\7\13\2\2XZ\5\4\3\2YX\3\2\2\2Z]\3\2")
+        buf.write("\2\2[Y\3\2\2\2[\\\3\2\2\2\\^\3\2\2\2][\3\2\2\2^_\7\f\2")
+        buf.write("\2_\23\3\2\2\2`a\5\26\f\2a\25\3\2\2\2bc\7\32\2\2cd\5\n")
+        buf.write("\6\2d\27\3\2\2\2eh\5\32\16\2fh\5\34\17\2ge\3\2\2\2gf\3")
+        buf.write("\2\2\2h\31\3\2\2\2ij\t\2\2\2j\33\3\2\2\2kl\t\3\2\2l\35")
+        buf.write("\3\2\2\2mt\7\37\2\2nt\7 \2\2ot\7!\2\2pt\7\"\2\2qt\7\31")
+        buf.write("\2\2rt\5 \21\2sm\3\2\2\2sn\3\2\2\2so\3\2\2\2sp\3\2\2\2")
+        buf.write("sq\3\2\2\2sr\3\2\2\2t\37\3\2\2\2u{\7\23\2\2vw\5\n\6\2")
+        buf.write("wx\7\24\2\2xz\3\2\2\2yv\3\2\2\2z}\3\2\2\2{y\3\2\2\2{|")
+        buf.write("\3\2\2\2|~\3\2\2\2}{\3\2\2\2~\177\5\n\6\2\177\u0080\7")
+        buf.write("\25\2\2\u0080\u0084\3\2\2\2\u0081\u0082\7\23\2\2\u0082")
+        buf.write("\u0084\7\25\2\2\u0083u\3\2\2\2\u0083\u0081\3\2\2\2\u0084")
+        buf.write("!\3\2\2\2\u0085\u0086\7\26\2\2\u0086\u0087\7\37\2\2\u0087")
+        buf.write("\u008d\7\7\2\2\u0088\u0089\5\36\20\2\u0089\u008a\7\24")
         buf.write("\2\2\u008a\u008c\3\2\2\2\u008b\u0088\3\2\2\2\u008c\u008f")
         buf.write("\3\2\2\2\u008d\u008b\3\2\2\2\u008d\u008e\3\2\2\2\u008e")
         buf.write("\u0090\3\2\2\2\u008f\u008d\3\2\2\2\u0090\u0091\5\36\20")
         buf.write("\2\u0091\u0092\7\6\2\2\u0092\u0093\7\t\2\2\u0093\u0094")
-        buf.write("\5\22\n\2\u0094\u009c\3\2\2\2\u0095\u0096\7\20\2\2\u0096")
-        buf.write("\u0097\7\31\2\2\u0097\u0098\7\7\2\2\u0098\u0099\7\6\2")
+        buf.write("\5\22\n\2\u0094\u009c\3\2\2\2\u0095\u0096\7\26\2\2\u0096")
+        buf.write("\u0097\7\37\2\2\u0097\u0098\7\7\2\2\u0098\u0099\7\6\2")
         buf.write("\2\u0099\u009a\7\t\2\2\u009a\u009c\5\22\n\2\u009b\u0085")
         buf.write("\3\2\2\2\u009b\u0095\3\2\2\2\u009c#\3\2\2\2\16\'.>EI[")
         buf.write("gs{\u0083\u008d\u009b")
@@ -76,17 +76,19 @@ class simplerlangParser ( Parser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ "<INVALID>", "';'", "'='", "'print('", "')'", "'('", 
-                     "'if'", "':'", "'while'", "'{'", "'}'", "'['", "','", 
-                     "']'", "'def'", "'and'", "'or'", "<INVALID>", "'!'", 
-                     "'+'", "'-'", "'/'", "'*'" ]
+                     "'if'", "':'", "'while'", "'{'", "'}'", "'>'", "'<'", 
+                     "'>='", "'<='", "'=='", "'!='", "'['", "','", "']'", 
+                     "'def'", "'and'", "'or'", "<INVALID>", "'!'", "'+'", 
+                     "'-'", "'/'", "'*'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "AND_OPR", 
-                      "OR_OPR", "LOGIC", "NEG_OPR", "ADD_OPR", "SUB_OPR", 
-                      "DIV_OPR", "MUL_OPR", "NAME", "INT", "FLOAT", "STRING", 
-                      "WS" ]
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "AND_OPR", "OR_OPR", "LOGIC", "NEG_OPR", 
+                      "ADD_OPR", "SUB_OPR", "DIV_OPR", "MUL_OPR", "NAME", 
+                      "INT", "FLOAT", "STRING", "WS" ]
 
     RULE_program = 0
     RULE_statement = 1
@@ -126,19 +128,25 @@ class simplerlangParser ( Parser ):
     T__11=12
     T__12=13
     T__13=14
-    AND_OPR=15
-    OR_OPR=16
-    LOGIC=17
-    NEG_OPR=18
-    ADD_OPR=19
-    SUB_OPR=20
-    DIV_OPR=21
-    MUL_OPR=22
-    NAME=23
-    INT=24
-    FLOAT=25
-    STRING=26
-    WS=27
+    T__14=15
+    T__15=16
+    T__16=17
+    T__17=18
+    T__18=19
+    T__19=20
+    AND_OPR=21
+    OR_OPR=22
+    LOGIC=23
+    NEG_OPR=24
+    ADD_OPR=25
+    SUB_OPR=26
+    DIV_OPR=27
+    MUL_OPR=28
+    NAME=29
+    INT=30
+    FLOAT=31
+    STRING=32
+    WS=33
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -191,7 +199,7 @@ class simplerlangParser ( Parser ):
                 self.state = 37 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__2) | (1 << simplerlangParser.T__5) | (1 << simplerlangParser.T__7) | (1 << simplerlangParser.T__13) | (1 << simplerlangParser.NAME))) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__2) | (1 << simplerlangParser.T__5) | (1 << simplerlangParser.T__7) | (1 << simplerlangParser.T__19) | (1 << simplerlangParser.NAME))) != 0)):
                     break
 
         except RecognitionException as re:
@@ -267,7 +275,7 @@ class simplerlangParser ( Parser ):
                 self.state = 42
                 self.while_block()
                 pass
-            elif token in [simplerlangParser.T__13]:
+            elif token in [simplerlangParser.T__19]:
                 self.state = 43
                 self.fun_def()
                 pass
@@ -416,14 +424,14 @@ class simplerlangParser ( Parser ):
             self.state = 71
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [simplerlangParser.T__10, simplerlangParser.LOGIC, simplerlangParser.NAME, simplerlangParser.INT, simplerlangParser.FLOAT, simplerlangParser.STRING]:
+            if token in [simplerlangParser.T__16, simplerlangParser.LOGIC, simplerlangParser.NAME, simplerlangParser.INT, simplerlangParser.FLOAT, simplerlangParser.STRING]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 56
                 self.var()
                 self.state = 60
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.AND_OPR) | (1 << simplerlangParser.OR_OPR) | (1 << simplerlangParser.ADD_OPR) | (1 << simplerlangParser.SUB_OPR) | (1 << simplerlangParser.DIV_OPR) | (1 << simplerlangParser.MUL_OPR))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__10) | (1 << simplerlangParser.T__11) | (1 << simplerlangParser.T__12) | (1 << simplerlangParser.T__13) | (1 << simplerlangParser.T__14) | (1 << simplerlangParser.T__15) | (1 << simplerlangParser.AND_OPR) | (1 << simplerlangParser.OR_OPR) | (1 << simplerlangParser.ADD_OPR) | (1 << simplerlangParser.SUB_OPR) | (1 << simplerlangParser.DIV_OPR) | (1 << simplerlangParser.MUL_OPR))) != 0):
                     self.state = 57
                     self.bin_opr()
                     self.state = 58
@@ -440,7 +448,7 @@ class simplerlangParser ( Parser ):
                 self.state = 67
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.AND_OPR) | (1 << simplerlangParser.OR_OPR) | (1 << simplerlangParser.ADD_OPR) | (1 << simplerlangParser.SUB_OPR) | (1 << simplerlangParser.DIV_OPR) | (1 << simplerlangParser.MUL_OPR))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__10) | (1 << simplerlangParser.T__11) | (1 << simplerlangParser.T__12) | (1 << simplerlangParser.T__13) | (1 << simplerlangParser.T__14) | (1 << simplerlangParser.T__15) | (1 << simplerlangParser.AND_OPR) | (1 << simplerlangParser.OR_OPR) | (1 << simplerlangParser.ADD_OPR) | (1 << simplerlangParser.SUB_OPR) | (1 << simplerlangParser.DIV_OPR) | (1 << simplerlangParser.MUL_OPR))) != 0):
                     self.state = 64
                     self.bin_opr()
                     self.state = 65
@@ -640,7 +648,7 @@ class simplerlangParser ( Parser ):
             self.state = 89
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__2) | (1 << simplerlangParser.T__5) | (1 << simplerlangParser.T__7) | (1 << simplerlangParser.T__13) | (1 << simplerlangParser.NAME))) != 0):
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__2) | (1 << simplerlangParser.T__5) | (1 << simplerlangParser.T__7) | (1 << simplerlangParser.T__19) | (1 << simplerlangParser.NAME))) != 0):
                 self.state = 86
                 self.statement()
                 self.state = 91
@@ -778,7 +786,7 @@ class simplerlangParser ( Parser ):
             self.state = 101
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [simplerlangParser.AND_OPR, simplerlangParser.OR_OPR]:
+            if token in [simplerlangParser.T__10, simplerlangParser.T__11, simplerlangParser.T__12, simplerlangParser.T__13, simplerlangParser.T__14, simplerlangParser.T__15, simplerlangParser.AND_OPR, simplerlangParser.OR_OPR]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 99
                 self.logic_opr()
@@ -834,7 +842,7 @@ class simplerlangParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 103
             _la = self._input.LA(1)
-            if not(_la==simplerlangParser.AND_OPR or _la==simplerlangParser.OR_OPR):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__10) | (1 << simplerlangParser.T__11) | (1 << simplerlangParser.T__12) | (1 << simplerlangParser.T__13) | (1 << simplerlangParser.T__14) | (1 << simplerlangParser.T__15) | (1 << simplerlangParser.AND_OPR) | (1 << simplerlangParser.OR_OPR))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -973,7 +981,7 @@ class simplerlangParser ( Parser ):
                 self.state = 111
                 self.match(simplerlangParser.LOGIC)
                 pass
-            elif token in [simplerlangParser.T__10]:
+            elif token in [simplerlangParser.T__16]:
                 self.enterOuterAlt(localctx, 6)
                 self.state = 112
                 self.array()
@@ -1027,7 +1035,7 @@ class simplerlangParser ( Parser ):
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 115
-                self.match(simplerlangParser.T__10)
+                self.match(simplerlangParser.T__16)
                 self.state = 121
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,8,self._ctx)
@@ -1036,7 +1044,7 @@ class simplerlangParser ( Parser ):
                         self.state = 116
                         self.small_expr()
                         self.state = 117
-                        self.match(simplerlangParser.T__11) 
+                        self.match(simplerlangParser.T__17) 
                     self.state = 123
                     self._errHandler.sync(self)
                     _alt = self._interp.adaptivePredict(self._input,8,self._ctx)
@@ -1044,15 +1052,15 @@ class simplerlangParser ( Parser ):
                 self.state = 124
                 self.small_expr()
                 self.state = 125
-                self.match(simplerlangParser.T__12)
+                self.match(simplerlangParser.T__18)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 127
-                self.match(simplerlangParser.T__10)
+                self.match(simplerlangParser.T__16)
                 self.state = 128
-                self.match(simplerlangParser.T__12)
+                self.match(simplerlangParser.T__18)
                 pass
 
 
@@ -1109,7 +1117,7 @@ class simplerlangParser ( Parser ):
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 131
-                self.match(simplerlangParser.T__13)
+                self.match(simplerlangParser.T__19)
                 self.state = 132
                 self.match(simplerlangParser.NAME)
                 self.state = 133
@@ -1122,7 +1130,7 @@ class simplerlangParser ( Parser ):
                         self.state = 134
                         self.var()
                         self.state = 135
-                        self.match(simplerlangParser.T__11) 
+                        self.match(simplerlangParser.T__17) 
                     self.state = 141
                     self._errHandler.sync(self)
                     _alt = self._interp.adaptivePredict(self._input,10,self._ctx)
@@ -1140,7 +1148,7 @@ class simplerlangParser ( Parser ):
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 147
-                self.match(simplerlangParser.T__13)
+                self.match(simplerlangParser.T__19)
                 self.state = 148
                 self.match(simplerlangParser.NAME)
                 self.state = 149

@@ -5,10 +5,12 @@ from simplerlangParser import simplerlangParser
 
 class SimplerlangListenerExtended(simplerlangListener):
     variableNamesMap = {}
+    # variableNamesMap["True"] = True # So far works good without it
+    # variableNamesMap["False"] = False
     If_block2EvaluationMap = {}
     blockIgnoreMap = {}
     tmp = 0  # Holds value of the last small statement
-    ignoreBlockDepth = 0
+    ignoreBlockDepth = 0  # How many blocks up, including the one analyzed, will be ignored (used by nested ifs)
 
     def exitLet(self, ctx: simplerlangParser.LetContext):
         if self.ignoreBlockDepth == 0:
@@ -18,14 +20,15 @@ class SimplerlangListenerExtended(simplerlangListener):
     def exitSmall_expr(self, ctx: simplerlangParser.Small_exprContext):
         if self.ignoreBlockDepth == 0:
             # SINGLE VALUE
-            if ctx.getChildCount() == 1:
-                if isinstance(ctx.children[0], simplerlangParser.VarContext):
+            if ctx.bin_opr() is None:
+
+                if isinstance(ctx.var(), simplerlangParser.VarContext):
                     # Single NAME
-                    if ctx.children[0].NAME() is not None:
+                    if ctx.var().NAME() is not None:
                         self.tmp = self.variableNamesMap[ctx.children[0].NAME().__str__()]
 
                     # Single Array
-                    elif ctx.children[0].array() is not None:
+                    elif ctx.var().array() is not None:
                         self.tmp = eval(ctx.children[0].getText())
 
                     # Single constant
@@ -33,18 +36,18 @@ class SimplerlangListenerExtended(simplerlangListener):
                         self.tmp = ctx.children[0].getText()
 
             # Binop
-            if ctx.getChildCount() == 3: # TODO: Check if ctx contains children: var, bin_op, expr (all contexts) instead of counting them. Current implementation gets messed up if condition has parenthesis.
-                if isinstance(ctx.children[0], simplerlangParser.VarContext):
+            if ctx.bin_opr() is not None:
+                if isinstance(ctx.var(), simplerlangParser.VarContext):
                     # NAME and binop
-                    if ctx.children[0].NAME() is not None:
-                        secondTmp = self.variableNamesMap[ctx.children[0].NAME().__str__()]
+                    if ctx.var().NAME() is not None:
+                        secondTmp = self.variableNamesMap[ctx.var().NAME().__str__()]
                         self.tmp = eval(str(secondTmp) + " " + ctx.bin_opr().getText() + " " + str(self.tmp))
 
                     # TODO: Add array addition
 
                     # Constant and binop
                     else:
-                        self.tmp = eval(ctx.children[0].getText() + " " + ctx.bin_opr().getText() + " " + str(self.tmp))
+                        self.tmp = eval(ctx.var().getText() + " " + ctx.bin_opr().getText() + " " + str(self.tmp))
         else:
             # print("Block ignored")
             pass
