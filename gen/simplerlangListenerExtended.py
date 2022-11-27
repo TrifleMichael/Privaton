@@ -9,12 +9,20 @@ class SimplerlangListenerExtended(simplerlangListener):
     # variableNamesMap["False"] = False
     If_block2EvaluationMap = {}
     blockIgnoreMap = {}
-    tmp = 0  # Holds value of the last small statement
+    tmp = 0  # Holds value of the last small expression
+    tmpL = 0 # Holds value of the last large expression
     ignoreBlockDepth = 0  # How many blocks up, including the one analyzed, will be ignored (used by nested ifs)
 
     def exitLet(self, ctx: simplerlangParser.LetContext):
         if self.ignoreBlockDepth == 0:
             self.variableNamesMap[ctx.NAME().__str__()] = self.tmp
+
+    def exitLarge_expr(self, ctx:simplerlangParser.Large_exprContext):
+        if self.ignoreBlockDepth == 0:
+            if ctx.large_expr() is not None:
+                self.tmpL = eval(str(self.tmp) + " " + ctx.bin_opr().getText() + " " + str(self.tmpL))
+            else:
+                self.tmpL = self.tmp
 
     # Result of small_expr will be saved to tmp
     def exitSmall_expr(self, ctx: simplerlangParser.Small_exprContext):
@@ -55,14 +63,14 @@ class SimplerlangListenerExtended(simplerlangListener):
     # After evaluating condition, mark the evaluation of If_block
     def exitCondition(self, ctx: simplerlangParser.ConditionContext):
         if isinstance(ctx.parentCtx, simplerlangParser.If_blockContext):
-            if self.tmp:
+            if self.tmpL:
                 self.If_block2EvaluationMap[ctx.parentCtx] = True
             else:
                 self.If_block2EvaluationMap[ctx.parentCtx] = False
 
     def exitShow(self, ctx: simplerlangParser.ShowContext):
         if self.ignoreBlockDepth == 0:
-            print(self.tmp)
+            print(self.tmpL)
 
     # Set global flag if entering a block that should be ignored
     def enterCode_block(self, ctx: simplerlangParser.Code_blockContext):
