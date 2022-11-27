@@ -1,4 +1,4 @@
-# Generated from simplerlang.g4 by ANTLR 4.7.2
+# Generated from priveton.g4 by ANTLR 4.7.2
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -79,9 +79,9 @@ def serializedATN():
         return buf.getvalue()
 
 
-class simplerlangParser ( Parser ):
+class privetonParser ( Parser ):
 
-    grammarFileName = "simplerlang.g4"
+    grammarFileName = "priveton.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
@@ -181,13 +181,13 @@ class simplerlangParser ( Parser ):
 
         def statement(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(simplerlangParser.StatementContext)
+                return self.getTypedRuleContexts(privetonParser.StatementContext)
             else:
-                return self.getTypedRuleContext(simplerlangParser.StatementContext,i)
+                return self.getTypedRuleContext(privetonParser.StatementContext,i)
 
 
         def getRuleIndex(self):
-            return simplerlangParser.RULE_program
+            return privetonParser.RULE_program
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterProgram" ):
@@ -202,7 +202,7 @@ class simplerlangParser ( Parser ):
 
     def program(self):
 
-        localctx = simplerlangParser.ProgramContext(self, self._ctx, self.state)
+        localctx = privetonParser.ProgramContext(self, self._ctx, self.state)
         self.enterRule(localctx, 0, self.RULE_program)
         self._la = 0 # Token type
         try:
@@ -216,7 +216,7 @@ class simplerlangParser ( Parser ):
                 self.state = 41 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__2) | (1 << simplerlangParser.T__5) | (1 << simplerlangParser.T__8) | (1 << simplerlangParser.T__20) | (1 << simplerlangParser.NAME))) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << privetonParser.T__2) | (1 << privetonParser.T__5) | (1 << privetonParser.T__8) | (1 << privetonParser.T__20) | (1 << privetonParser.NAME))) != 0)):
                     break
 
         except RecognitionException as re:
@@ -234,27 +234,27 @@ class simplerlangParser ( Parser ):
             self.parser = parser
 
         def let(self):
-            return self.getTypedRuleContext(simplerlangParser.LetContext,0)
+            return self.getTypedRuleContext(privetonParser.LetContext,0)
 
 
         def show(self):
-            return self.getTypedRuleContext(simplerlangParser.ShowContext,0)
+            return self.getTypedRuleContext(privetonParser.ShowContext,0)
 
 
         def if_block(self):
-            return self.getTypedRuleContext(simplerlangParser.If_blockContext,0)
+            return self.getTypedRuleContext(privetonParser.If_blockContext,0)
 
 
         def while_block(self):
-            return self.getTypedRuleContext(simplerlangParser.While_blockContext,0)
+            return self.getTypedRuleContext(privetonParser.While_blockContext,0)
 
 
         def fun_def(self):
-            return self.getTypedRuleContext(simplerlangParser.Fun_defContext,0)
+            return self.getTypedRuleContext(privetonParser.Fun_defContext,0)
 
 
         def getRuleIndex(self):
-            return simplerlangParser.RULE_statement
+            return privetonParser.RULE_statement
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterStatement" ):
@@ -269,30 +269,30 @@ class simplerlangParser ( Parser ):
 
     def statement(self):
 
-        localctx = simplerlangParser.StatementContext(self, self._ctx, self.state)
+        localctx = privetonParser.StatementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_statement)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 48
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [simplerlangParser.NAME]:
+            if token in [privetonParser.NAME]:
                 self.state = 43
                 self.let()
                 pass
-            elif token in [simplerlangParser.T__2]:
+            elif token in [privetonParser.T__2]:
                 self.state = 44
                 self.show()
                 pass
-            elif token in [simplerlangParser.T__5]:
+            elif token in [privetonParser.T__5]:
                 self.state = 45
                 self.if_block()
                 pass
-            elif token in [simplerlangParser.T__8]:
+            elif token in [privetonParser.T__8]:
                 self.state = 46
                 self.while_block()
                 pass
-            elif token in [simplerlangParser.T__20]:
+            elif token in [privetonParser.T__20]:
                 self.state = 47
                 self.fun_def()
                 pass
@@ -300,7 +300,7 @@ class simplerlangParser ( Parser ):
                 raise NoViableAltException(self)
 
             self.state = 50
-            self.match(simplerlangParser.T__0)
+            self.match(privetonParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -316,14 +316,14 @@ class simplerlangParser ( Parser ):
             self.parser = parser
 
         def NAME(self):
-            return self.getToken(simplerlangParser.NAME, 0)
+            return self.getToken(privetonParser.NAME, 0)
 
         def large_expr(self):
-            return self.getTypedRuleContext(simplerlangParser.Large_exprContext,0)
+            return self.getTypedRuleContext(privetonParser.Large_exprContext,0)
 
 
         def getRuleIndex(self):
-            return simplerlangParser.RULE_let
+            return privetonParser.RULE_let
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterLet" ):
@@ -338,14 +338,14 @@ class simplerlangParser ( Parser ):
 
     def let(self):
 
-        localctx = simplerlangParser.LetContext(self, self._ctx, self.state)
+        localctx = privetonParser.LetContext(self, self._ctx, self.state)
         self.enterRule(localctx, 4, self.RULE_let)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 52
-            self.match(simplerlangParser.NAME)
+            self.match(privetonParser.NAME)
             self.state = 53
-            self.match(simplerlangParser.T__1)
+            self.match(privetonParser.T__1)
             self.state = 54
             self.large_expr()
         except RecognitionException as re:
@@ -363,11 +363,11 @@ class simplerlangParser ( Parser ):
             self.parser = parser
 
         def large_expr(self):
-            return self.getTypedRuleContext(simplerlangParser.Large_exprContext,0)
+            return self.getTypedRuleContext(privetonParser.Large_exprContext,0)
 
 
         def getRuleIndex(self):
-            return simplerlangParser.RULE_show
+            return privetonParser.RULE_show
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterShow" ):
@@ -382,16 +382,16 @@ class simplerlangParser ( Parser ):
 
     def show(self):
 
-        localctx = simplerlangParser.ShowContext(self, self._ctx, self.state)
+        localctx = privetonParser.ShowContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_show)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 56
-            self.match(simplerlangParser.T__2)
+            self.match(privetonParser.T__2)
             self.state = 57
             self.large_expr()
             self.state = 58
-            self.match(simplerlangParser.T__3)
+            self.match(privetonParser.T__3)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -407,19 +407,19 @@ class simplerlangParser ( Parser ):
             self.parser = parser
 
         def small_expr(self):
-            return self.getTypedRuleContext(simplerlangParser.Small_exprContext,0)
+            return self.getTypedRuleContext(privetonParser.Small_exprContext,0)
 
 
         def bin_opr(self):
-            return self.getTypedRuleContext(simplerlangParser.Bin_oprContext,0)
+            return self.getTypedRuleContext(privetonParser.Bin_oprContext,0)
 
 
         def large_expr(self):
-            return self.getTypedRuleContext(simplerlangParser.Large_exprContext,0)
+            return self.getTypedRuleContext(privetonParser.Large_exprContext,0)
 
 
         def getRuleIndex(self):
-            return simplerlangParser.RULE_large_expr
+            return privetonParser.RULE_large_expr
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterLarge_expr" ):
@@ -434,7 +434,7 @@ class simplerlangParser ( Parser ):
 
     def large_expr(self):
 
-        localctx = simplerlangParser.Large_exprContext(self, self._ctx, self.state)
+        localctx = privetonParser.Large_exprContext(self, self._ctx, self.state)
         self.enterRule(localctx, 8, self.RULE_large_expr)
         self._la = 0 # Token type
         try:
@@ -448,7 +448,7 @@ class simplerlangParser ( Parser ):
                 self.state = 64
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__11) | (1 << simplerlangParser.T__12) | (1 << simplerlangParser.T__13) | (1 << simplerlangParser.T__14) | (1 << simplerlangParser.T__15) | (1 << simplerlangParser.T__16) | (1 << simplerlangParser.AND_OPR) | (1 << simplerlangParser.OR_OPR) | (1 << simplerlangParser.ADD_OPR) | (1 << simplerlangParser.SUB_OPR) | (1 << simplerlangParser.DIV_OPR) | (1 << simplerlangParser.MUL_OPR))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << privetonParser.T__11) | (1 << privetonParser.T__12) | (1 << privetonParser.T__13) | (1 << privetonParser.T__14) | (1 << privetonParser.T__15) | (1 << privetonParser.T__16) | (1 << privetonParser.AND_OPR) | (1 << privetonParser.OR_OPR) | (1 << privetonParser.ADD_OPR) | (1 << privetonParser.SUB_OPR) | (1 << privetonParser.DIV_OPR) | (1 << privetonParser.MUL_OPR))) != 0):
                     self.state = 61
                     self.bin_opr()
                     self.state = 62
@@ -460,13 +460,13 @@ class simplerlangParser ( Parser ):
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 66
-                self.match(simplerlangParser.T__4)
+                self.match(privetonParser.T__4)
                 self.state = 67
                 self.small_expr()
                 self.state = 71
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__11) | (1 << simplerlangParser.T__12) | (1 << simplerlangParser.T__13) | (1 << simplerlangParser.T__14) | (1 << simplerlangParser.T__15) | (1 << simplerlangParser.T__16) | (1 << simplerlangParser.AND_OPR) | (1 << simplerlangParser.OR_OPR) | (1 << simplerlangParser.ADD_OPR) | (1 << simplerlangParser.SUB_OPR) | (1 << simplerlangParser.DIV_OPR) | (1 << simplerlangParser.MUL_OPR))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << privetonParser.T__11) | (1 << privetonParser.T__12) | (1 << privetonParser.T__13) | (1 << privetonParser.T__14) | (1 << privetonParser.T__15) | (1 << privetonParser.T__16) | (1 << privetonParser.AND_OPR) | (1 << privetonParser.OR_OPR) | (1 << privetonParser.ADD_OPR) | (1 << privetonParser.SUB_OPR) | (1 << privetonParser.DIV_OPR) | (1 << privetonParser.MUL_OPR))) != 0):
                     self.state = 68
                     self.bin_opr()
                     self.state = 69
@@ -474,7 +474,7 @@ class simplerlangParser ( Parser ):
 
 
                 self.state = 73
-                self.match(simplerlangParser.T__3)
+                self.match(privetonParser.T__3)
                 pass
 
 
@@ -493,19 +493,19 @@ class simplerlangParser ( Parser ):
             self.parser = parser
 
         def var(self):
-            return self.getTypedRuleContext(simplerlangParser.VarContext,0)
+            return self.getTypedRuleContext(privetonParser.VarContext,0)
 
 
         def bin_opr(self):
-            return self.getTypedRuleContext(simplerlangParser.Bin_oprContext,0)
+            return self.getTypedRuleContext(privetonParser.Bin_oprContext,0)
 
 
         def small_expr(self):
-            return self.getTypedRuleContext(simplerlangParser.Small_exprContext,0)
+            return self.getTypedRuleContext(privetonParser.Small_exprContext,0)
 
 
         def getRuleIndex(self):
-            return simplerlangParser.RULE_small_expr
+            return privetonParser.RULE_small_expr
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterSmall_expr" ):
@@ -520,14 +520,14 @@ class simplerlangParser ( Parser ):
 
     def small_expr(self):
 
-        localctx = simplerlangParser.Small_exprContext(self, self._ctx, self.state)
+        localctx = privetonParser.Small_exprContext(self, self._ctx, self.state)
         self.enterRule(localctx, 10, self.RULE_small_expr)
         self._la = 0 # Token type
         try:
             self.state = 92
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [simplerlangParser.T__17, simplerlangParser.LOGIC, simplerlangParser.NAME, simplerlangParser.INT, simplerlangParser.FLOAT, simplerlangParser.STRING]:
+            if token in [privetonParser.T__17, privetonParser.LOGIC, privetonParser.NAME, privetonParser.INT, privetonParser.FLOAT, privetonParser.STRING]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 77
                 self.var()
@@ -542,16 +542,16 @@ class simplerlangParser ( Parser ):
 
 
                 pass
-            elif token in [simplerlangParser.T__4]:
+            elif token in [privetonParser.T__4]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 83
-                self.match(simplerlangParser.T__4)
+                self.match(privetonParser.T__4)
                 self.state = 84
                 self.var()
                 self.state = 88
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__11) | (1 << simplerlangParser.T__12) | (1 << simplerlangParser.T__13) | (1 << simplerlangParser.T__14) | (1 << simplerlangParser.T__15) | (1 << simplerlangParser.T__16) | (1 << simplerlangParser.AND_OPR) | (1 << simplerlangParser.OR_OPR) | (1 << simplerlangParser.ADD_OPR) | (1 << simplerlangParser.SUB_OPR) | (1 << simplerlangParser.DIV_OPR) | (1 << simplerlangParser.MUL_OPR))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << privetonParser.T__11) | (1 << privetonParser.T__12) | (1 << privetonParser.T__13) | (1 << privetonParser.T__14) | (1 << privetonParser.T__15) | (1 << privetonParser.T__16) | (1 << privetonParser.AND_OPR) | (1 << privetonParser.OR_OPR) | (1 << privetonParser.ADD_OPR) | (1 << privetonParser.SUB_OPR) | (1 << privetonParser.DIV_OPR) | (1 << privetonParser.MUL_OPR))) != 0):
                     self.state = 85
                     self.bin_opr()
                     self.state = 86
@@ -559,7 +559,7 @@ class simplerlangParser ( Parser ):
 
 
                 self.state = 90
-                self.match(simplerlangParser.T__3)
+                self.match(privetonParser.T__3)
                 pass
             else:
                 raise NoViableAltException(self)
@@ -579,19 +579,19 @@ class simplerlangParser ( Parser ):
             self.parser = parser
 
         def condition(self):
-            return self.getTypedRuleContext(simplerlangParser.ConditionContext,0)
+            return self.getTypedRuleContext(privetonParser.ConditionContext,0)
 
 
         def code_block(self):
-            return self.getTypedRuleContext(simplerlangParser.Code_blockContext,0)
+            return self.getTypedRuleContext(privetonParser.Code_blockContext,0)
 
 
         def else_block(self):
-            return self.getTypedRuleContext(simplerlangParser.Else_blockContext,0)
+            return self.getTypedRuleContext(privetonParser.Else_blockContext,0)
 
 
         def getRuleIndex(self):
-            return simplerlangParser.RULE_if_block
+            return privetonParser.RULE_if_block
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterIf_block" ):
@@ -606,23 +606,23 @@ class simplerlangParser ( Parser ):
 
     def if_block(self):
 
-        localctx = simplerlangParser.If_blockContext(self, self._ctx, self.state)
+        localctx = privetonParser.If_blockContext(self, self._ctx, self.state)
         self.enterRule(localctx, 12, self.RULE_if_block)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 94
-            self.match(simplerlangParser.T__5)
+            self.match(privetonParser.T__5)
             self.state = 95
             self.condition()
             self.state = 96
-            self.match(simplerlangParser.T__6)
+            self.match(privetonParser.T__6)
             self.state = 97
             self.code_block()
             self.state = 99
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==simplerlangParser.T__7:
+            if _la==privetonParser.T__7:
                 self.state = 98
                 self.else_block()
 
@@ -642,11 +642,11 @@ class simplerlangParser ( Parser ):
             self.parser = parser
 
         def code_block(self):
-            return self.getTypedRuleContext(simplerlangParser.Code_blockContext,0)
+            return self.getTypedRuleContext(privetonParser.Code_blockContext,0)
 
 
         def getRuleIndex(self):
-            return simplerlangParser.RULE_else_block
+            return privetonParser.RULE_else_block
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterElse_block" ):
@@ -661,12 +661,12 @@ class simplerlangParser ( Parser ):
 
     def else_block(self):
 
-        localctx = simplerlangParser.Else_blockContext(self, self._ctx, self.state)
+        localctx = privetonParser.Else_blockContext(self, self._ctx, self.state)
         self.enterRule(localctx, 14, self.RULE_else_block)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 101
-            self.match(simplerlangParser.T__7)
+            self.match(privetonParser.T__7)
             self.state = 102
             self.code_block()
         except RecognitionException as re:
@@ -684,15 +684,15 @@ class simplerlangParser ( Parser ):
             self.parser = parser
 
         def condition(self):
-            return self.getTypedRuleContext(simplerlangParser.ConditionContext,0)
+            return self.getTypedRuleContext(privetonParser.ConditionContext,0)
 
 
         def code_block(self):
-            return self.getTypedRuleContext(simplerlangParser.Code_blockContext,0)
+            return self.getTypedRuleContext(privetonParser.Code_blockContext,0)
 
 
         def getRuleIndex(self):
-            return simplerlangParser.RULE_while_block
+            return privetonParser.RULE_while_block
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterWhile_block" ):
@@ -707,16 +707,16 @@ class simplerlangParser ( Parser ):
 
     def while_block(self):
 
-        localctx = simplerlangParser.While_blockContext(self, self._ctx, self.state)
+        localctx = privetonParser.While_blockContext(self, self._ctx, self.state)
         self.enterRule(localctx, 16, self.RULE_while_block)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 104
-            self.match(simplerlangParser.T__8)
+            self.match(privetonParser.T__8)
             self.state = 105
             self.condition()
             self.state = 106
-            self.match(simplerlangParser.T__6)
+            self.match(privetonParser.T__6)
             self.state = 107
             self.code_block()
         except RecognitionException as re:
@@ -734,11 +734,11 @@ class simplerlangParser ( Parser ):
             self.parser = parser
 
         def large_expr(self):
-            return self.getTypedRuleContext(simplerlangParser.Large_exprContext,0)
+            return self.getTypedRuleContext(privetonParser.Large_exprContext,0)
 
 
         def getRuleIndex(self):
-            return simplerlangParser.RULE_condition
+            return privetonParser.RULE_condition
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterCondition" ):
@@ -753,7 +753,7 @@ class simplerlangParser ( Parser ):
 
     def condition(self):
 
-        localctx = simplerlangParser.ConditionContext(self, self._ctx, self.state)
+        localctx = privetonParser.ConditionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 18, self.RULE_condition)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -775,13 +775,13 @@ class simplerlangParser ( Parser ):
 
         def statement(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(simplerlangParser.StatementContext)
+                return self.getTypedRuleContexts(privetonParser.StatementContext)
             else:
-                return self.getTypedRuleContext(simplerlangParser.StatementContext,i)
+                return self.getTypedRuleContext(privetonParser.StatementContext,i)
 
 
         def getRuleIndex(self):
-            return simplerlangParser.RULE_code_block
+            return privetonParser.RULE_code_block
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterCode_block" ):
@@ -796,17 +796,17 @@ class simplerlangParser ( Parser ):
 
     def code_block(self):
 
-        localctx = simplerlangParser.Code_blockContext(self, self._ctx, self.state)
+        localctx = privetonParser.Code_blockContext(self, self._ctx, self.state)
         self.enterRule(localctx, 20, self.RULE_code_block)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 111
-            self.match(simplerlangParser.T__9)
+            self.match(privetonParser.T__9)
             self.state = 115
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__2) | (1 << simplerlangParser.T__5) | (1 << simplerlangParser.T__8) | (1 << simplerlangParser.T__20) | (1 << simplerlangParser.NAME))) != 0):
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << privetonParser.T__2) | (1 << privetonParser.T__5) | (1 << privetonParser.T__8) | (1 << privetonParser.T__20) | (1 << privetonParser.NAME))) != 0):
                 self.state = 112
                 self.statement()
                 self.state = 117
@@ -814,7 +814,7 @@ class simplerlangParser ( Parser ):
                 _la = self._input.LA(1)
 
             self.state = 118
-            self.match(simplerlangParser.T__10)
+            self.match(privetonParser.T__10)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -830,11 +830,11 @@ class simplerlangParser ( Parser ):
             self.parser = parser
 
         def neg_opr(self):
-            return self.getTypedRuleContext(simplerlangParser.Neg_oprContext,0)
+            return self.getTypedRuleContext(privetonParser.Neg_oprContext,0)
 
 
         def getRuleIndex(self):
-            return simplerlangParser.RULE_un_opr
+            return privetonParser.RULE_un_opr
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterUn_opr" ):
@@ -849,7 +849,7 @@ class simplerlangParser ( Parser ):
 
     def un_opr(self):
 
-        localctx = simplerlangParser.Un_oprContext(self, self._ctx, self.state)
+        localctx = privetonParser.Un_oprContext(self, self._ctx, self.state)
         self.enterRule(localctx, 22, self.RULE_un_opr)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -870,14 +870,14 @@ class simplerlangParser ( Parser ):
             self.parser = parser
 
         def NEG_OPR(self):
-            return self.getToken(simplerlangParser.NEG_OPR, 0)
+            return self.getToken(privetonParser.NEG_OPR, 0)
 
         def large_expr(self):
-            return self.getTypedRuleContext(simplerlangParser.Large_exprContext,0)
+            return self.getTypedRuleContext(privetonParser.Large_exprContext,0)
 
 
         def getRuleIndex(self):
-            return simplerlangParser.RULE_neg_opr
+            return privetonParser.RULE_neg_opr
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterNeg_opr" ):
@@ -892,12 +892,12 @@ class simplerlangParser ( Parser ):
 
     def neg_opr(self):
 
-        localctx = simplerlangParser.Neg_oprContext(self, self._ctx, self.state)
+        localctx = privetonParser.Neg_oprContext(self, self._ctx, self.state)
         self.enterRule(localctx, 24, self.RULE_neg_opr)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 122
-            self.match(simplerlangParser.NEG_OPR)
+            self.match(privetonParser.NEG_OPR)
             self.state = 123
             self.large_expr()
         except RecognitionException as re:
@@ -915,15 +915,15 @@ class simplerlangParser ( Parser ):
             self.parser = parser
 
         def logic_opr(self):
-            return self.getTypedRuleContext(simplerlangParser.Logic_oprContext,0)
+            return self.getTypedRuleContext(privetonParser.Logic_oprContext,0)
 
 
         def arthm_opr(self):
-            return self.getTypedRuleContext(simplerlangParser.Arthm_oprContext,0)
+            return self.getTypedRuleContext(privetonParser.Arthm_oprContext,0)
 
 
         def getRuleIndex(self):
-            return simplerlangParser.RULE_bin_opr
+            return privetonParser.RULE_bin_opr
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterBin_opr" ):
@@ -938,18 +938,18 @@ class simplerlangParser ( Parser ):
 
     def bin_opr(self):
 
-        localctx = simplerlangParser.Bin_oprContext(self, self._ctx, self.state)
+        localctx = privetonParser.Bin_oprContext(self, self._ctx, self.state)
         self.enterRule(localctx, 26, self.RULE_bin_opr)
         try:
             self.state = 127
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [simplerlangParser.T__11, simplerlangParser.T__12, simplerlangParser.T__13, simplerlangParser.T__14, simplerlangParser.T__15, simplerlangParser.T__16, simplerlangParser.AND_OPR, simplerlangParser.OR_OPR]:
+            if token in [privetonParser.T__11, privetonParser.T__12, privetonParser.T__13, privetonParser.T__14, privetonParser.T__15, privetonParser.T__16, privetonParser.AND_OPR, privetonParser.OR_OPR]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 125
                 self.logic_opr()
                 pass
-            elif token in [simplerlangParser.ADD_OPR, simplerlangParser.SUB_OPR, simplerlangParser.DIV_OPR, simplerlangParser.MUL_OPR]:
+            elif token in [privetonParser.ADD_OPR, privetonParser.SUB_OPR, privetonParser.DIV_OPR, privetonParser.MUL_OPR]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 126
                 self.arthm_opr()
@@ -972,13 +972,13 @@ class simplerlangParser ( Parser ):
             self.parser = parser
 
         def AND_OPR(self):
-            return self.getToken(simplerlangParser.AND_OPR, 0)
+            return self.getToken(privetonParser.AND_OPR, 0)
 
         def OR_OPR(self):
-            return self.getToken(simplerlangParser.OR_OPR, 0)
+            return self.getToken(privetonParser.OR_OPR, 0)
 
         def getRuleIndex(self):
-            return simplerlangParser.RULE_logic_opr
+            return privetonParser.RULE_logic_opr
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterLogic_opr" ):
@@ -993,14 +993,14 @@ class simplerlangParser ( Parser ):
 
     def logic_opr(self):
 
-        localctx = simplerlangParser.Logic_oprContext(self, self._ctx, self.state)
+        localctx = privetonParser.Logic_oprContext(self, self._ctx, self.state)
         self.enterRule(localctx, 28, self.RULE_logic_opr)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 129
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.T__11) | (1 << simplerlangParser.T__12) | (1 << simplerlangParser.T__13) | (1 << simplerlangParser.T__14) | (1 << simplerlangParser.T__15) | (1 << simplerlangParser.T__16) | (1 << simplerlangParser.AND_OPR) | (1 << simplerlangParser.OR_OPR))) != 0)):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << privetonParser.T__11) | (1 << privetonParser.T__12) | (1 << privetonParser.T__13) | (1 << privetonParser.T__14) | (1 << privetonParser.T__15) | (1 << privetonParser.T__16) | (1 << privetonParser.AND_OPR) | (1 << privetonParser.OR_OPR))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -1020,19 +1020,19 @@ class simplerlangParser ( Parser ):
             self.parser = parser
 
         def ADD_OPR(self):
-            return self.getToken(simplerlangParser.ADD_OPR, 0)
+            return self.getToken(privetonParser.ADD_OPR, 0)
 
         def SUB_OPR(self):
-            return self.getToken(simplerlangParser.SUB_OPR, 0)
+            return self.getToken(privetonParser.SUB_OPR, 0)
 
         def DIV_OPR(self):
-            return self.getToken(simplerlangParser.DIV_OPR, 0)
+            return self.getToken(privetonParser.DIV_OPR, 0)
 
         def MUL_OPR(self):
-            return self.getToken(simplerlangParser.MUL_OPR, 0)
+            return self.getToken(privetonParser.MUL_OPR, 0)
 
         def getRuleIndex(self):
-            return simplerlangParser.RULE_arthm_opr
+            return privetonParser.RULE_arthm_opr
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterArthm_opr" ):
@@ -1047,14 +1047,14 @@ class simplerlangParser ( Parser ):
 
     def arthm_opr(self):
 
-        localctx = simplerlangParser.Arthm_oprContext(self, self._ctx, self.state)
+        localctx = privetonParser.Arthm_oprContext(self, self._ctx, self.state)
         self.enterRule(localctx, 30, self.RULE_arthm_opr)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 131
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << simplerlangParser.ADD_OPR) | (1 << simplerlangParser.SUB_OPR) | (1 << simplerlangParser.DIV_OPR) | (1 << simplerlangParser.MUL_OPR))) != 0)):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << privetonParser.ADD_OPR) | (1 << privetonParser.SUB_OPR) | (1 << privetonParser.DIV_OPR) | (1 << privetonParser.MUL_OPR))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -1074,26 +1074,26 @@ class simplerlangParser ( Parser ):
             self.parser = parser
 
         def NAME(self):
-            return self.getToken(simplerlangParser.NAME, 0)
+            return self.getToken(privetonParser.NAME, 0)
 
         def INT(self):
-            return self.getToken(simplerlangParser.INT, 0)
+            return self.getToken(privetonParser.INT, 0)
 
         def FLOAT(self):
-            return self.getToken(simplerlangParser.FLOAT, 0)
+            return self.getToken(privetonParser.FLOAT, 0)
 
         def STRING(self):
-            return self.getToken(simplerlangParser.STRING, 0)
+            return self.getToken(privetonParser.STRING, 0)
 
         def LOGIC(self):
-            return self.getToken(simplerlangParser.LOGIC, 0)
+            return self.getToken(privetonParser.LOGIC, 0)
 
         def array(self):
-            return self.getTypedRuleContext(simplerlangParser.ArrayContext,0)
+            return self.getTypedRuleContext(privetonParser.ArrayContext,0)
 
 
         def getRuleIndex(self):
-            return simplerlangParser.RULE_var
+            return privetonParser.RULE_var
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterVar" ):
@@ -1108,38 +1108,38 @@ class simplerlangParser ( Parser ):
 
     def var(self):
 
-        localctx = simplerlangParser.VarContext(self, self._ctx, self.state)
+        localctx = privetonParser.VarContext(self, self._ctx, self.state)
         self.enterRule(localctx, 32, self.RULE_var)
         try:
             self.state = 139
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [simplerlangParser.NAME]:
+            if token in [privetonParser.NAME]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 133
-                self.match(simplerlangParser.NAME)
+                self.match(privetonParser.NAME)
                 pass
-            elif token in [simplerlangParser.INT]:
+            elif token in [privetonParser.INT]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 134
-                self.match(simplerlangParser.INT)
+                self.match(privetonParser.INT)
                 pass
-            elif token in [simplerlangParser.FLOAT]:
+            elif token in [privetonParser.FLOAT]:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 135
-                self.match(simplerlangParser.FLOAT)
+                self.match(privetonParser.FLOAT)
                 pass
-            elif token in [simplerlangParser.STRING]:
+            elif token in [privetonParser.STRING]:
                 self.enterOuterAlt(localctx, 4)
                 self.state = 136
-                self.match(simplerlangParser.STRING)
+                self.match(privetonParser.STRING)
                 pass
-            elif token in [simplerlangParser.LOGIC]:
+            elif token in [privetonParser.LOGIC]:
                 self.enterOuterAlt(localctx, 5)
                 self.state = 137
-                self.match(simplerlangParser.LOGIC)
+                self.match(privetonParser.LOGIC)
                 pass
-            elif token in [simplerlangParser.T__17]:
+            elif token in [privetonParser.T__17]:
                 self.enterOuterAlt(localctx, 6)
                 self.state = 138
                 self.array()
@@ -1163,13 +1163,13 @@ class simplerlangParser ( Parser ):
 
         def large_expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(simplerlangParser.Large_exprContext)
+                return self.getTypedRuleContexts(privetonParser.Large_exprContext)
             else:
-                return self.getTypedRuleContext(simplerlangParser.Large_exprContext,i)
+                return self.getTypedRuleContext(privetonParser.Large_exprContext,i)
 
 
         def getRuleIndex(self):
-            return simplerlangParser.RULE_array
+            return privetonParser.RULE_array
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterArray" ):
@@ -1184,7 +1184,7 @@ class simplerlangParser ( Parser ):
 
     def array(self):
 
-        localctx = simplerlangParser.ArrayContext(self, self._ctx, self.state)
+        localctx = privetonParser.ArrayContext(self, self._ctx, self.state)
         self.enterRule(localctx, 34, self.RULE_array)
         try:
             self.state = 155
@@ -1193,7 +1193,7 @@ class simplerlangParser ( Parser ):
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 141
-                self.match(simplerlangParser.T__17)
+                self.match(privetonParser.T__17)
                 self.state = 147
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,12,self._ctx)
@@ -1202,7 +1202,7 @@ class simplerlangParser ( Parser ):
                         self.state = 142
                         self.large_expr()
                         self.state = 143
-                        self.match(simplerlangParser.T__18) 
+                        self.match(privetonParser.T__18) 
                     self.state = 149
                     self._errHandler.sync(self)
                     _alt = self._interp.adaptivePredict(self._input,12,self._ctx)
@@ -1210,15 +1210,15 @@ class simplerlangParser ( Parser ):
                 self.state = 150
                 self.large_expr()
                 self.state = 151
-                self.match(simplerlangParser.T__19)
+                self.match(privetonParser.T__19)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 153
-                self.match(simplerlangParser.T__17)
+                self.match(privetonParser.T__17)
                 self.state = 154
-                self.match(simplerlangParser.T__19)
+                self.match(privetonParser.T__19)
                 pass
 
 
@@ -1237,21 +1237,21 @@ class simplerlangParser ( Parser ):
             self.parser = parser
 
         def NAME(self):
-            return self.getToken(simplerlangParser.NAME, 0)
+            return self.getToken(privetonParser.NAME, 0)
 
         def var(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(simplerlangParser.VarContext)
+                return self.getTypedRuleContexts(privetonParser.VarContext)
             else:
-                return self.getTypedRuleContext(simplerlangParser.VarContext,i)
+                return self.getTypedRuleContext(privetonParser.VarContext,i)
 
 
         def code_block(self):
-            return self.getTypedRuleContext(simplerlangParser.Code_blockContext,0)
+            return self.getTypedRuleContext(privetonParser.Code_blockContext,0)
 
 
         def getRuleIndex(self):
-            return simplerlangParser.RULE_fun_def
+            return privetonParser.RULE_fun_def
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterFun_def" ):
@@ -1266,7 +1266,7 @@ class simplerlangParser ( Parser ):
 
     def fun_def(self):
 
-        localctx = simplerlangParser.Fun_defContext(self, self._ctx, self.state)
+        localctx = privetonParser.Fun_defContext(self, self._ctx, self.state)
         self.enterRule(localctx, 36, self.RULE_fun_def)
         try:
             self.state = 179
@@ -1275,11 +1275,11 @@ class simplerlangParser ( Parser ):
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 157
-                self.match(simplerlangParser.T__20)
+                self.match(privetonParser.T__20)
                 self.state = 158
-                self.match(simplerlangParser.NAME)
+                self.match(privetonParser.NAME)
                 self.state = 159
-                self.match(simplerlangParser.T__4)
+                self.match(privetonParser.T__4)
                 self.state = 165
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,14,self._ctx)
@@ -1288,7 +1288,7 @@ class simplerlangParser ( Parser ):
                         self.state = 160
                         self.var()
                         self.state = 161
-                        self.match(simplerlangParser.T__18) 
+                        self.match(privetonParser.T__18) 
                     self.state = 167
                     self._errHandler.sync(self)
                     _alt = self._interp.adaptivePredict(self._input,14,self._ctx)
@@ -1296,9 +1296,9 @@ class simplerlangParser ( Parser ):
                 self.state = 168
                 self.var()
                 self.state = 169
-                self.match(simplerlangParser.T__3)
+                self.match(privetonParser.T__3)
                 self.state = 170
-                self.match(simplerlangParser.T__6)
+                self.match(privetonParser.T__6)
                 self.state = 171
                 self.code_block()
                 pass
@@ -1306,15 +1306,15 @@ class simplerlangParser ( Parser ):
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 173
-                self.match(simplerlangParser.T__20)
+                self.match(privetonParser.T__20)
                 self.state = 174
-                self.match(simplerlangParser.NAME)
+                self.match(privetonParser.NAME)
                 self.state = 175
-                self.match(simplerlangParser.T__4)
+                self.match(privetonParser.T__4)
                 self.state = 176
-                self.match(simplerlangParser.T__3)
+                self.match(privetonParser.T__3)
                 self.state = 177
-                self.match(simplerlangParser.T__6)
+                self.match(privetonParser.T__6)
                 self.state = 178
                 self.code_block()
                 pass

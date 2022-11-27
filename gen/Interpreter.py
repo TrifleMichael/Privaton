@@ -1,18 +1,17 @@
 import sys
 from antlr4 import *
-from gen.simplerlangListenerExtended import SimplerlangListenerExtended
-
-from simplerlangParser import simplerlangParser
-from simplerlangLexer import simplerlangLexer
+from gen.privatonListenerExtended import PrivetonListenerExtended
+from gen.privetonLexer import privetonLexer
+from gen.privetonParser import privetonParser
 
 
 def main(argv):
     input_stream = FileStream('test.txt')
-    lexer = simplerlangLexer(input_stream)
+    lexer = privetonLexer(input_stream)
     stream = CommonTokenStream(lexer)
-    parser = simplerlangParser(stream)
-    sle = SimplerlangListenerExtended()
-    parser.addParseListener(sle)
+    parser = privetonParser(stream)
+    PLE = PrivetonListenerExtended()
+    parser.addParseListener(PLE)
     parser.program()
 
 

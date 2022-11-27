@@ -1,4 +1,4 @@
-# Generated from simplerlang.g4 by ANTLR 4.7.2
+# Generated from priveton.g4 by ANTLR 4.7.2
 from antlr4 import *
 from io import StringIO
 from typing.io import TextIO
@@ -94,7 +94,7 @@ def serializedATN():
         return buf.getvalue()
 
 
-class simplerlangLexer(Lexer):
+class privetonLexer(Lexer):
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
@@ -156,7 +156,7 @@ class simplerlangLexer(Lexer):
                   "SUB_OPR", "DIV_OPR", "MUL_OPR", "NAME", "INT", "FLOAT", 
                   "STRING", "WS" ]
 
-    grammarFileName = "simplerlang.g4"
+    grammarFileName = "priveton.g4"
 
     def __init__(self, input=None, output:TextIO = sys.stdout):
         super().__init__(input, output)

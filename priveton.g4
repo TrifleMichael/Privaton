@@ -1,4 +1,4 @@
-grammar simplerlang;
+grammar priveton;
 
 program : statement+;
 
