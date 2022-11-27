@@ -11,7 +11,8 @@ show     : 'print(' large_expr ')';
 large_expr   : small_expr (bin_opr large_expr)? | '('small_expr (bin_opr large_expr)?')';
 small_expr   : var (bin_opr small_expr)? | '('var (bin_opr small_expr)?')';
 
-if_block: 'if' condition ':' code_block;
+if_block: 'if' condition ':' code_block (else_block)? ;
+else_block: 'else' code_block;
 //for_block: 'for' NAME 'in' array ':' (code_block | statement);
 while_block: 'while' condition ':' code_block;
 

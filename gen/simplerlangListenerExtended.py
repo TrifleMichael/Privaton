@@ -39,6 +39,9 @@ class SimplerlangListenerExtended(simplerlangListener):
                     elif ctx.var().array() is not None:
                         self.tmp = eval(ctx.var().getText())
 
+                    elif ctx.var().STRING() is not None:
+                        self.tmp = ctx.var().STRING().getText()[1:-1]
+
                     # Single constant
                     else:
                         self.tmp = ctx.var().getText()
@@ -74,14 +77,26 @@ class SimplerlangListenerExtended(simplerlangListener):
 
     # Set global flag if entering a block that should be ignored
     def enterCode_block(self, ctx: simplerlangParser.Code_blockContext):
-        if self.If_block2EvaluationMap[ctx.parentCtx]:
-            pass
-        else:
-            # Condition tied to this block is False. Ignore this block.
-            self.ignoreBlockDepth += 1
+        if isinstance(ctx.parentCtx, simplerlangParser.If_blockContext):
+            if self.If_block2EvaluationMap[ctx.parentCtx]:
+                pass
+            else:
+                # Condition tied to this block is False. Ignore this block.
+                self.ignoreBlockDepth += 1
 
     # If leaving block of ignored code then stop ignoring code
     def exitCode_block(self, ctx: simplerlangParser.Code_blockContext):
-        if not self.If_block2EvaluationMap[ctx.parentCtx]:
-            # Ignored block stopped being processed.
+        if isinstance(ctx.parentCtx, simplerlangParser.If_blockContext):
+            if not self.If_block2EvaluationMap[ctx.parentCtx]:
+                # Ignored block stopped being processed.
+                self.ignoreBlockDepth -= 1
+
+    def enterElse_block(self, ctx:simplerlangParser.Else_blockContext):
+        if self.If_block2EvaluationMap[ctx.parentCtx]:
+            # Evaluation of parent 'if' succeeded so the next code block gets ignored
+            self.ignoreBlockDepth += 1
+
+    def exitElse_block(self, ctx:simplerlangParser.Else_blockContext):
+        if self.If_block2EvaluationMap[ctx.parentCtx]:
+            # Evaluation of parent 'if' succeeded, and code block got processed, so time to restore previous block depth
             self.ignoreBlockDepth -= 1

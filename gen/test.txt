@@ -1,3 +1,20 @@
-if (True): {
-    print(2);
+x = True or False;
+
+if x: {
+    if (2 > 3): {
+        print("Bad");
+    } else {
+        print("Ok");
+    };
+
+    print("Ok");
+} else {
+    print("Bad");
 };
+
+a = 1;
+b = a + 2;
+c = a + b;
+print(c);
+
+print("Hello world!");
