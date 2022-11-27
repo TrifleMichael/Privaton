@@ -2,7 +2,7 @@ grammar simplerlang;
 
 program : statement+;
 
-statement : (let | show | if_block | for_block | fun_def) ';';
+statement : (let | show | if_block | while_block | fun_def) ';';
 
 let    :  NAME '=' small_expr;
 show     : 'print(' small_expr ')';
@@ -10,7 +10,9 @@ show     : 'print(' small_expr ')';
 small_expr   : var (bin_opr small_expr)? | '('var (bin_opr small_expr)?')'; // need to add back unary operations
 
 if_block: 'if' condition ':' code_block;
-for_block: 'for' NAME 'in' array ':' (code_block | statement);
+//for_block: 'for' NAME 'in' array ':' (code_block | statement);
+while_block: 'while' condition ':' code_block;
+
 
 condition: small_expr ;
 code_block : '{' statement* '}';
@@ -19,8 +21,8 @@ neg_opr : NEG_OPR small_expr; // indirect leftside recursion
 bin_opr : logic_opr | arthm_opr;
 logic_opr : AND_OPR | OR_OPR ; //'>' | '<' | '>=' | '<=' | '==' | '!=';
 arthm_opr : ADD_OPR | SUB_OPR | DIV_OPR | MUL_OPR ;
-var : NAME | INT | FLOAT | STRING | LOGIC;
-array : '[' (var',')* var ']' | '['']';
+var : NAME | INT | FLOAT | STRING | LOGIC | array;
+array : '[' (small_expr',')* small_expr ']' | '['']';
 
 fun_def : 'def' NAME'(' (var',')* var')' ':' code_block | 'def' NAME'('')' ':' code_block;
 

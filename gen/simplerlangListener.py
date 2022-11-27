@@ -62,12 +62,12 @@ class simplerlangListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by simplerlangParser#for_block.
-    def enterFor_block(self, ctx:simplerlangParser.For_blockContext):
+    # Enter a parse tree produced by simplerlangParser#while_block.
+    def enterWhile_block(self, ctx:simplerlangParser.While_blockContext):
         pass
 
-    # Exit a parse tree produced by simplerlangParser#for_block.
-    def exitFor_block(self, ctx:simplerlangParser.For_blockContext):
+    # Exit a parse tree produced by simplerlangParser#while_block.
+    def exitWhile_block(self, ctx:simplerlangParser.While_blockContext):
         pass
 
 
