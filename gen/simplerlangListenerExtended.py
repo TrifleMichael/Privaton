@@ -37,11 +37,11 @@ class SimplerlangListenerExtended(simplerlangListener):
 
                     # Single Array
                     elif ctx.var().array() is not None:
-                        self.tmp = eval(ctx.children[0].getText())
+                        self.tmp = eval(ctx.var().getText())
 
                     # Single constant
                     else:
-                        self.tmp = ctx.children[0].getText()
+                        self.tmp = ctx.var().getText()
 
             # Binop
             if ctx.bin_opr() is not None:
@@ -63,7 +63,7 @@ class SimplerlangListenerExtended(simplerlangListener):
     # After evaluating condition, mark the evaluation of If_block
     def exitCondition(self, ctx: simplerlangParser.ConditionContext):
         if isinstance(ctx.parentCtx, simplerlangParser.If_blockContext):
-            if self.tmpL:
+            if eval(str(self.tmpL)):  # This way for every type of self.tmpL
                 self.If_block2EvaluationMap[ctx.parentCtx] = True
             else:
                 self.If_block2EvaluationMap[ctx.parentCtx] = False
