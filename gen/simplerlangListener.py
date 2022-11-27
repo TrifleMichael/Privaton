@@ -71,6 +71,15 @@ class simplerlangListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by simplerlangParser#condition.
+    def enterCondition(self, ctx:simplerlangParser.ConditionContext):
+        pass
+
+    # Exit a parse tree produced by simplerlangParser#condition.
+    def exitCondition(self, ctx:simplerlangParser.ConditionContext):
+        pass
+
+
     # Enter a parse tree produced by simplerlangParser#code_block.
     def enterCode_block(self, ctx:simplerlangParser.Code_blockContext):
         pass
