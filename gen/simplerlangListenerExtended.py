@@ -2,6 +2,6 @@ import simplerlangParser
 from simplerlangListener import simplerlangListener
 
 
-class simplerlangListenerExtended(simplerlangListener):
+class SimplerlangListenerExtended(simplerlangListener):
 
-    def exitLet(self, ctx:simplerlangParser.LetContext):
+    pass
