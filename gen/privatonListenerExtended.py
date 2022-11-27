@@ -7,20 +7,19 @@ class PrivetonListenerExtended(privetonListener):
     variableNamesMap = {}
     If_block2EvaluationMap = {}
     blockIgnoreMap = {}
-    tmp = 0  # Holds value of the last small expression
-    tmpL = 0 # Holds value of the last large expression
+    exprValMap = {}
     ignoreBlockDepth = 0  # How many blocks up, including the one analyzed, will be ignored (used by nested ifs)
 
     def exitLet(self, ctx: privetonParser.LetContext):
         if self.ignoreBlockDepth == 0:
-            self.variableNamesMap[ctx.NAME().__str__()] = self.tmp
+            self.variableNamesMap[ctx.NAME().__str__()] = self.exprValMap[ctx.large_expr()]
 
     def exitLarge_expr(self, ctx:privetonParser.Large_exprContext):
         if self.ignoreBlockDepth == 0:
             if ctx.large_expr() is not None:
-                self.tmpL = eval(str(self.tmp) + " " + ctx.bin_opr().getText() + " " + str(self.tmpL))
+                self.exprValMap[ctx] = eval(str(self.exprValMap[ctx.small_expr()]) + " " + ctx.bin_opr().getText() + " " + str(self.exprValMap[ctx.large_expr()]))
             else:
-                self.tmpL = self.tmp
+                self.exprValMap[ctx] = self.exprValMap[ctx.small_expr()]
 
     # Result of small_expr will be saved to tmp
     def exitSmall_expr(self, ctx: privetonParser.Small_exprContext):
@@ -31,18 +30,18 @@ class PrivetonListenerExtended(privetonListener):
                 if isinstance(ctx.var(), privetonParser.VarContext):
                     # Single NAME
                     if ctx.var().NAME() is not None:
-                        self.tmp = self.variableNamesMap[ctx.children[0].NAME().__str__()]
+                        tmp = self.variableNamesMap[ctx.var().NAME().__str__()]
 
                     # Single Array
                     elif ctx.var().array() is not None:
-                        self.tmp = eval(ctx.var().getText())
+                        tmp = eval(ctx.var().getText())
 
                     elif ctx.var().STRING() is not None:
-                        self.tmp = ctx.var().STRING().getText()[1:-1]
+                        tmp = ctx.var().STRING().getText()[1:-1]
 
                     # Single constant
                     else:
-                        self.tmp = ctx.var().getText()
+                        tmp = ctx.var().getText()
 
             # Binop
             if ctx.bin_opr() is not None:
@@ -50,13 +49,15 @@ class PrivetonListenerExtended(privetonListener):
                     # NAME and binop
                     if ctx.var().NAME() is not None:
                         secondTmp = self.variableNamesMap[ctx.var().NAME().__str__()]
-                        self.tmp = eval(str(secondTmp) + " " + ctx.bin_opr().getText() + " " + str(self.tmp))
+                        tmp = eval(str(secondTmp) + " " + ctx.bin_opr().getText() + " " + str(self.exprValMap[ctx.small_expr()]))
 
                     # TODO: Add array addition
 
                     # Constant and binop
                     else:
-                        self.tmp = eval(ctx.var().getText() + " " + ctx.bin_opr().getText() + " " + str(self.tmp))
+                        tmp = eval(ctx.var().getText() + " " + ctx.bin_opr().getText() + " " + str(self.exprValMap[ctx.small_expr()]))
+
+            self.exprValMap[ctx] = tmp
         else:
             # print("Block ignored")
             pass
@@ -64,14 +65,14 @@ class PrivetonListenerExtended(privetonListener):
     # After evaluating condition, mark the evaluation of If_block
     def exitCondition(self, ctx: privetonParser.ConditionContext):
         if isinstance(ctx.parentCtx, privetonParser.If_blockContext):
-            if eval(str(self.tmpL)):  # This way for every type of self.tmpL
+            if eval(str(self.exprValMap[ctx.large_expr()])):  # This way for every type of self.tmpL
                 self.If_block2EvaluationMap[ctx.parentCtx] = True
             else:
                 self.If_block2EvaluationMap[ctx.parentCtx] = False
 
     def exitShow(self, ctx: privetonParser.ShowContext):
         if self.ignoreBlockDepth == 0:
-            print(self.tmpL)
+            print(self.exprValMap[ctx.large_expr()])
 
     # Set global flag if entering a block that should be ignored
     def enterCode_block(self, ctx: privetonParser.Code_blockContext):
@@ -98,3 +99,7 @@ class PrivetonListenerExtended(privetonListener):
         if self.If_block2EvaluationMap[ctx.parentCtx]:
             # Evaluation of parent 'if' succeeded, and code block got processed, so time to restore previous block depth
             self.ignoreBlockDepth -= 1
+
+    # Clean expression to value map after leaving statement
+    def exitStatement(self, ctx:privetonParser.StatementContext):
+        self.exprValMap = {}
