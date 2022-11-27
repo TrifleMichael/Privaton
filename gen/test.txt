@@ -13,8 +13,8 @@ if x: {
 };
 
 a = 1;
-b = a + 2;
-c = a + b;
+b = a + 6;
+c = (a * (b-3) / (a+1));
 print(c);
 
 print("Hello world!");

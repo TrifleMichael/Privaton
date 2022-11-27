@@ -5,8 +5,6 @@ from gen.privetonParser import privetonParser
 
 class PrivetonListenerExtended(privetonListener):
     variableNamesMap = {}
-    # variableNamesMap["True"] = True # So far works good without it
-    # variableNamesMap["False"] = False
     If_block2EvaluationMap = {}
     blockIgnoreMap = {}
     tmp = 0  # Holds value of the last small expression

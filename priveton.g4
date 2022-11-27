@@ -31,7 +31,6 @@ fun_def : 'def' NAME'(' (var',')* var')' ':' code_block | 'def' NAME'('')' ':' c
 
 AND_OPR: 'and';
 OR_OPR: 'or';
-//MORE_OPR: '>';
 
 LOGIC : 'True' | 'False' ;
 NEG_OPR : '!';
@@ -40,7 +39,7 @@ SUB_OPR : '-';
 DIV_OPR : '/';
 MUL_OPR : '*';
 NAME     : [a-zA-Z] ([a-zA-Z0-9] | '_')*;
-INT : '-'*[1-9]+[0-9]* | [0] ;
+INT : [1-9]+[0-9]* | [0] ;
 FLOAT : INT'.'[0-9]+ ;
 STRING : '"'(.)*?'"';
 WS     : [ \r\n\t]+ -> skip;
