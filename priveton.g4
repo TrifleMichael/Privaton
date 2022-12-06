@@ -2,7 +2,7 @@ grammar priveton;
 
 program : statement+;
 
-statement : (let | show | if_block | while_block | fun_def) ';';
+statement : (let | show | if_block | while_block | fun_def | large_expr) ';';
 
 let    :  NAME '=' large_expr;
 show     : 'print(' large_expr ')';
