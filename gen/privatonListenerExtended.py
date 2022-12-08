@@ -17,53 +17,31 @@ class PrivetonListenerExtended(privetonListener):
 
     def exitLarge_expr(self, ctx: privetonParser.Large_exprContext):
         if self.environment.ignore_block_depth == 0:
-            if ctx.large_expr() is not None:
-                self.environment.expressions_value_map[ctx] = eval(
-                    str(self.environment.expressions_value_map[
-                            ctx.small_expr()]) + " " + ctx.bin_opr().getText() + " " + str(
-                        self.environment.expressions_value_map[ctx.large_expr()]))
-            else:
-                self.environment.expressions_value_map[ctx] = self.environment.expressions_value_map[ctx.small_expr()]
+            string = ""
+            for i, smallExpr in enumerate(ctx.small_expr()):
+                string += str(self.environment.expressions_value_map[smallExpr])
+                if i != len(ctx.bin_opr()):
+                    string += ctx.bin_opr(i).getText()
+            self.environment.expressions_value_map[ctx] = eval(string)
+
         self.environment.evaluations.append(self.environment.expressions_value_map[ctx])
 
     # Result of small_expr will be saved to tmp
     def exitSmall_expr(self, ctx: privetonParser.Small_exprContext):
         if self.environment.ignore_block_depth == 0:
             # SINGLE VALUE
-            if ctx.bin_opr() is None:
-
-                if isinstance(ctx.var(), privetonParser.VarContext):
-                    # Single NAME
-                    if ctx.var().NAME() is not None:
-                        tmp = self.environment.variable_names_map[ctx.var().NAME().__str__()]
-
-                    # Single Array
-                    elif ctx.var().array() is not None:
-                        tmp = eval(ctx.var().getText())
-
-                    elif ctx.var().STRING() is not None:
-                        tmp = ctx.var().STRING().getText()[1:-1]
-
-                    # Single constant
-                    else:
-                        tmp = ctx.var().getText()
-
-            # Binop
-            if ctx.bin_opr() is not None:
-                if isinstance(ctx.var(), privetonParser.VarContext):
-                    # NAME and binop
-                    if ctx.var().NAME() is not None:
-                        secondTmp = self.environment.variable_names_map[ctx.var().NAME().__str__()]
-                        tmp = eval(str(secondTmp) + " " + ctx.bin_opr().getText() + " " + str(
-                            self.environment.expressions_value_map[ctx.small_expr()]))
-
-                    # TODO: Add array addition
-
-                    # Constant and binop
-                    else:
-                        tmp = eval(ctx.var().getText() + " " + ctx.bin_opr().getText() + " " + str(
-                            self.environment.expressions_value_map[ctx.small_expr()]))
-            self.environment.expressions_value_map[ctx] = tmp
+            if ctx.var() is None:
+                string = ""
+                for i, smallExpr in enumerate(ctx.small_expr()):
+                    string += str(self.environment.expressions_value_map[smallExpr])
+                    if i != len(ctx.bin_opr()):
+                        string += ctx.bin_opr(i).getText()
+                self.environment.expressions_value_map[ctx] = eval(string)
+            else:
+                if ctx.var().NAME() is not None:
+                    self.environment.expressions_value_map[ctx] = self.environment.variable_names_map[ctx.var().getText()]
+                else:
+                    self.environment.expressions_value_map[ctx] = ctx.var().getText()
         else:
             # print("Block ignored")
             pass

@@ -10,8 +10,8 @@ from gen.privetonParser import privetonParser
 
 
 def main(argv):
-    # input_stream = FileStream(str(ROOT_PATH) + "/test.txt")
-    input_stream = InputStream('1/2*2;')
+    input_stream = FileStream("test.txt")
+    # input_stream = InputStream('1/2*2;')
     lexer = privetonLexer(input_stream)
     stream = CommonTokenStream(lexer)
     parser = privetonParser(stream)

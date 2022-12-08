@@ -6,10 +6,8 @@ statement : (let | show | if_block | while_block | fun_def | large_expr) ';';
 
 let    :  NAME '=' large_expr;
 show     : 'print(' large_expr ')';
-//large_expr   : small_expr (bin_opr small_expr)* | '('small_expr (bin_opr small_expr)*')';
-//large_expr   : var (bin_opr large_expr)? | '('var (bin_opr large_expr)?')'; // need to add back unary operations
-large_expr   : small_expr (bin_opr large_expr)? | '('small_expr (bin_opr large_expr)?')';
-small_expr   : var (bin_opr small_expr)? | '('var (bin_opr small_expr)?')';
+large_expr   : small_expr (bin_opr small_expr)*;
+small_expr   : small_expr (bin_opr small_expr)+ | '('small_expr (bin_opr small_expr)*')' | var;
 
 if_block: 'if' condition ':' code_block (else_block)? ;
 else_block: 'else' code_block;
