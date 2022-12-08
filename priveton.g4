@@ -6,8 +6,8 @@ statement : (let | show | if_block | while_block | fun_def | large_expr) ';';
 
 let    :  NAME '=' large_expr;
 show     : 'print(' large_expr ')';
-large_expr   : small_expr (bin_opr small_expr)*;
-small_expr   : small_expr (bin_opr small_expr)+ | '('small_expr (bin_opr small_expr)*')' | var;
+large_expr   : (small_expr bin_opr)* small_expr;
+small_expr   : small_expr bin_opr small_expr | '('small_expr bin_opr small_expr')' | var;
 
 if_block: 'if' condition ':' code_block (else_block)? ;
 else_block: 'else' code_block;
@@ -37,7 +37,7 @@ SUB_OPR : '-';
 DIV_OPR : '/';
 MUL_OPR : '*';
 NAME     : [a-zA-Z] ([a-zA-Z0-9] | '_')*;
-INT : [1-9]+[0-9]* | [0] ;
+INT : '-'?[1-9]+[0-9]* | [0] ;
 FLOAT : INT'.'[0-9]+ ;
 STRING : '"'(.)*?'"';
 WS     : [ \r\n\t]+ -> skip;

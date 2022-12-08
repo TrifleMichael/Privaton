@@ -32,10 +32,9 @@ class PrivetonListenerExtended(privetonListener):
             # SINGLE VALUE
             if ctx.var() is None:
                 string = ""
-                for i, smallExpr in enumerate(ctx.small_expr()):
-                    string += str(self.environment.expressions_value_map[smallExpr])
-                    if i != len(ctx.bin_opr()):
-                        string += ctx.bin_opr(i).getText()
+                string += str(self.environment.expressions_value_map[ctx.small_expr(0)])
+                string += ctx.bin_opr().getText()
+                string += str(self.environment.expressions_value_map[ctx.small_expr(1)])
                 self.environment.expressions_value_map[ctx] = eval(string)
             else:
                 if ctx.var().NAME() is not None:
