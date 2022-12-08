@@ -12,29 +12,17 @@ class PrivetonListenerExtended(privetonListener):
 
     def exitLet(self, ctx: privetonParser.LetContext):
         if self.environment.ignore_block_depth == 0:
-            self.environment.variable_names_map[ctx.NAME().__str__()] = self.environment.expressions_value_map[
-                ctx.large_expr()]
-
-    def exitLarge_expr(self, ctx: privetonParser.Large_exprContext):
-        if self.environment.ignore_block_depth == 0:
-            string = ""
-            for i, smallExpr in enumerate(ctx.small_expr()):
-                string += str(self.environment.expressions_value_map[smallExpr])
-                if i != len(ctx.bin_opr()):
-                    string += ctx.bin_opr(i).getText()
-            self.environment.expressions_value_map[ctx] = eval(string)
-
-        self.environment.evaluations.append(self.environment.expressions_value_map[ctx])
+            self.environment.variable_names_map[ctx.NAME().__str__()] = self.environment.expressions_value_map[ctx.expr()]
 
     # Result of small_expr will be saved to tmp
-    def exitSmall_expr(self, ctx: privetonParser.Small_exprContext):
+    def exitExpr(self, ctx: privetonParser.ExprContext):
         if self.environment.ignore_block_depth == 0:
             # SINGLE VALUE
             if ctx.var() is None:
                 string = ""
-                string += str(self.environment.expressions_value_map[ctx.small_expr(0)])
+                string += str(self.environment.expressions_value_map[ctx.expr(0)])
                 string += ctx.bin_opr().getText()
-                string += str(self.environment.expressions_value_map[ctx.small_expr(1)])
+                string += str(self.environment.expressions_value_map[ctx.expr(1)])
                 self.environment.expressions_value_map[ctx] = eval(string)
             else:
                 if ctx.var().NAME() is not None:
@@ -49,14 +37,14 @@ class PrivetonListenerExtended(privetonListener):
     def exitCondition(self, ctx: privetonParser.ConditionContext):
         if isinstance(ctx.parentCtx, privetonParser.If_blockContext):
             if eval(str(
-                    self.environment.expressions_value_map[ctx.large_expr()])):  # This way for every type of self.tmpL
+                    self.environment.expressions_value_map[ctx.expr()])):  # This way for every type of self.tmpL
                 self.environment.if_block_to_evaluation_map[ctx.parentCtx] = True
             else:
                 self.environment.if_block_to_evaluation_map[ctx.parentCtx] = False
 
     def exitShow(self, ctx: privetonParser.ShowContext):
         if self.environment.ignore_block_depth == 0:
-            print(self.environment.expressions_value_map[ctx.large_expr()])
+            print(self.environment.expressions_value_map[ctx.expr()])
 
     # Set global flag if entering a block that should be ignored
     def enterCode_block(self, ctx: privetonParser.Code_blockContext):

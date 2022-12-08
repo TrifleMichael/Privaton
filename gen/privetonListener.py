@@ -44,21 +44,12 @@ class privetonListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by privetonParser#large_expr.
-    def enterLarge_expr(self, ctx:privetonParser.Large_exprContext):
+    # Enter a parse tree produced by privetonParser#expr.
+    def enterExpr(self, ctx:privetonParser.ExprContext):
         pass
 
-    # Exit a parse tree produced by privetonParser#large_expr.
-    def exitLarge_expr(self, ctx:privetonParser.Large_exprContext):
-        pass
-
-
-    # Enter a parse tree produced by privetonParser#small_expr.
-    def enterSmall_expr(self, ctx:privetonParser.Small_exprContext):
-        pass
-
-    # Exit a parse tree produced by privetonParser#small_expr.
-    def exitSmall_expr(self, ctx:privetonParser.Small_exprContext):
+    # Exit a parse tree produced by privetonParser#expr.
+    def exitExpr(self, ctx:privetonParser.ExprContext):
         pass
 
 
