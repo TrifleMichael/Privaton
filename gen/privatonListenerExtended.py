@@ -8,6 +8,8 @@ class PrivetonListenerExtended(privetonListener):
     def __init__(self):
         self.environment = Environment()
 
+    # How many blocks up, including the one analyzed, will be ignored (used by nested ifs)
+
     def exitLet(self, ctx: privetonParser.LetContext):
         if self.environment.ignore_block_depth == 0:
             self.environment.variable_names_map[ctx.NAME().__str__()] = self.environment.expressions_value_map[ctx.expr()]
@@ -15,28 +17,18 @@ class PrivetonListenerExtended(privetonListener):
     # Result of small_expr will be saved to tmp
     def exitExpr(self, ctx: privetonParser.ExprContext):
         if self.environment.ignore_block_depth == 0:
-            # SINGLE VAR
-            if ctx.var() is not None:
-                if ctx.var().NAME() is not None:
-                    self.environment.expressions_value_map[ctx] = self.environment.variable_names_map[ctx.var().getText()]
-                else:
-                    self.environment.expressions_value_map[ctx] = ctx.var().getText()
-
-
-            # UNARY OPERATION
-            elif ctx.un_opr() is not None:
-                helperString = str(ctx.un_opr().getText())
-                helperString += str(self.environment.expressions_value_map[ctx.expr(0)])
-                self.environment.expressions_value_map[ctx] = eval(helperString)
-            # OTHER
-            elif ctx.expr(1) is not None:
+            # SINGLE VALUE
+            if ctx.var() is None:
                 string = ""
                 string += str(self.environment.expressions_value_map[ctx.expr(0)])
                 string += ctx.bin_opr().getText()
                 string += str(self.environment.expressions_value_map[ctx.expr(1)])
                 self.environment.expressions_value_map[ctx] = eval(string)
             else:
-                print("ERROR, INVALID EXPRESSION:", ctx.getText())
+                if ctx.var().NAME() is not None:
+                    self.environment.expressions_value_map[ctx] = self.environment.variable_names_map[ctx.var().getText()]
+                else:
+                    self.environment.expressions_value_map[ctx] = ctx.var().getText()
         else:
             # print("Block ignored")
             pass
