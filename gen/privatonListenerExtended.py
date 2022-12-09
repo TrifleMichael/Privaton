@@ -30,21 +30,34 @@ class PrivetonListenerExtended(privetonListener):
             # ONE EXPR
             elif ctx.expr(0) is not None and ctx.expr(1) is None and ctx.un_opr() is None:
                 self.environment.expressions_value_map[ctx] = self.environment.expressions_value_map[ctx.expr(0)]
+            # UNARY OPR
             elif ctx.un_opr() is not None:
                 temp = eval(ctx.un_opr().getText() + str(self.environment.expressions_value_map[ctx.expr(0)]))
                 self.environment.expressions_value_map[ctx] = temp
-                # ONE VAR
+            # ONE VAR
             elif ctx.var() is not None:
                 if ctx.var().NAME() is not None:
                     self.environment.expressions_value_map[ctx] = self.environment.variable_names_map[ctx.var().getText()]
                 else:
-                    self.environment.expressions_value_map[ctx] = ctx.var().getText()
+                    self.environment.expressions_value_map[ctx] = self.castVarToProperType(ctx.var())
             else:
                 print("INCORRECT EXPRESSION:", ctx.getText())
 
             self.environment.evaluations.append(self.environment.expressions_value_map[ctx])
         else:
             # print("Block ignored")
+            pass
+
+    def castVarToProperType(self, ctx):
+        if ctx.INT() is not None:
+            return int(ctx.getText())
+        if ctx.FLOAT() is not None:
+            return float(ctx.getText())
+        if ctx.STRING() is not None:
+            return ctx.getText()[1:-1]  # Removing the quotations from input
+        if ctx.LOGIC() is not None:
+            return ctx.getText() == "True"
+        if ctx.ARRAY() is not None:
             pass
 
     # After evaluating condition, mark the evaluation of If_block

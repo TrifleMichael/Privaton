@@ -27,57 +27,57 @@ class TestNegativeNumbers(unittest.TestCase):
     def testNegativeNumbers1(self):
         self.my_set_up("(-1)+1;")
         self.assertEqual(self.PLE.environment.evaluations[-1], 0)
-        self.assertIsInstance(self.PLE.environment.evaluations[0], int)
+        self.assertIsInstance(self.PLE.environment.evaluations[-1], int)
 
     def testNegativeNumbers2(self):
         self.my_set_up("(-1)*1;")
         self.assertEqual(self.PLE.environment.evaluations[-1], -1)
-        self.assertIsInstance(self.PLE.environment.evaluations[0], int)
+        self.assertIsInstance(self.PLE.environment.evaluations[-1], int)
 
     def testNegativeNumbers3(self):
         self.my_set_up("(-1)*(-1);")
         self.assertEqual(self.PLE.environment.evaluations[-1], 1)
-        self.assertIsInstance(self.PLE.environment.evaluations[0], int)
+        self.assertIsInstance(self.PLE.environment.evaluations[-1], int)
 
     def testNegativeNumbers4(self):
         self.my_set_up("(-1)+(-1);")
         self.assertEqual(self.PLE.environment.evaluations[-1], -2)
-        self.assertIsInstance(self.PLE.environment.evaluations[0], int)
+        self.assertIsInstance(self.PLE.environment.evaluations[-1], int)
 
     def testNegativeNumbers5(self):
         self.my_set_up("(-1)-1;")
         self.assertEqual(self.PLE.environment.evaluations[-1], -2)
-        self.assertIsInstance(self.PLE.environment.evaluations[0], int)
+        self.assertIsInstance(self.PLE.environment.evaluations[-1], int)
 
     def testNegativeNumbers6(self):
         self.my_set_up("1+(-1);")
         self.assertEqual(self.PLE.environment.evaluations[-1], 0)
-        self.assertIsInstance(self.PLE.environment.evaluations[0], int)
+        self.assertIsInstance(self.PLE.environment.evaluations[-1], int)
 
     def testNegativeNumbers7(self):
         self.my_set_up("1*(-1);")
         self.assertEqual(self.PLE.environment.evaluations[-1], -1)
-        self.assertIsInstance(self.PLE.environment.evaluations[0], int)
+        self.assertIsInstance(self.PLE.environment.evaluations[-1], int)
 
     def testNegativeNumbers8(self):
         self.my_set_up("1/(-1);")
         self.assertEqual(self.PLE.environment.evaluations[-1], -1.0)
-        self.assertIsInstance(self.PLE.environment.evaluations[0], float)
+        self.assertIsInstance(self.PLE.environment.evaluations[-1], float)
 
     def testNegativeNumbers9(self):
         self.my_set_up("(-1)/(-1);")
         self.assertEqual(self.PLE.environment.evaluations[-1], 1.0)
-        self.assertIsInstance(self.PLE.environment.evaluations[0], float)
+        self.assertIsInstance(self.PLE.environment.evaluations[-1], float)
 
     def testNegativeNumbers10(self):
         self.my_set_up("(-1)/1;")
         self.assertEqual(self.PLE.environment.evaluations[-1], -1.0)
-        self.assertIsInstance(self.PLE.environment.evaluations[0], float)
+        self.assertIsInstance(self.PLE.environment.evaluations[-1], float)
 
     def testNegativeNumbers11(self):
         self.my_set_up("(-1)-(-1);")
         self.assertEqual(self.PLE.environment.evaluations[-1], 0)
-        self.assertIsInstance(self.PLE.environment.evaluations[0], int)
+        self.assertIsInstance(self.PLE.environment.evaluations[-1], int)
 
     def testNegativeNumbers12(self):
         self.assertRaises(ZeroDivisionError, self.my_set_up, "(-1)/(-0);")
@@ -85,29 +85,29 @@ class TestNegativeNumbers(unittest.TestCase):
     def testNegativeNumbers13(self):
         self.my_set_up("(-1.0)/1;")
         self.assertEqual(self.PLE.environment.evaluations[-1], -1.0)
-        self.assertIsInstance(self.PLE.environment.evaluations[0], float)
+        self.assertIsInstance(self.PLE.environment.evaluations[-1], float)
 
     def testNegativeNumbers14(self):
         self.my_set_up("(-1)/1.0;")
         self.assertEqual(self.PLE.environment.evaluations[-1], -1.0)
-        self.assertIsInstance(self.PLE.environment.evaluations[0], float)
+        self.assertIsInstance(self.PLE.environment.evaluations[-1], float)
 
     def testNegativeNumbers15(self):
         self.my_set_up("1.0/(-1.0);")
         self.assertEqual(self.PLE.environment.evaluations[-1], -1.0)
-        self.assertIsInstance(self.PLE.environment.evaluations[0], float)
+        self.assertIsInstance(self.PLE.environment.evaluations[-1], float)
 
     def testNegativeNumbers16(self):
         self.my_set_up("1/(-1.0);")
         self.assertEqual(self.PLE.environment.evaluations[-1], -1.0)
-        self.assertIsInstance(self.PLE.environment.evaluations[0], float)
+        self.assertIsInstance(self.PLE.environment.evaluations[-1], float)
 
     def testNegativeNumbers17(self):
         self.my_set_up("(-1.0)/(-1.0);")
         self.assertEqual(self.PLE.environment.evaluations[-1], 1.0)
-        self.assertIsInstance(self.PLE.environment.evaluations[0], float)
+        self.assertIsInstance(self.PLE.environment.evaluations[-1], float)
 
     def testNegativeNumbers18(self):
         self.my_set_up("(-1)/(-1.0);")
         self.assertEqual(self.PLE.environment.evaluations[-1], 1.0)
-        self.assertIsInstance(self.PLE.environment.evaluations[0], float)
+        self.assertIsInstance(self.PLE.environment.evaluations[-1], float)

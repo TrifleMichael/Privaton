@@ -49,7 +49,7 @@ class TestAdd(unittest.TestCase):
     def testAdditionOperation6(self):
         self.my_set_up("1+1.0;")
         self.assertEqual(self.PLE.environment.evaluations[-1], 2.0)
-        self.assertIsInstance(self.PLE.environment.evaluations[0], float)
+        self.assertIsInstance(self.PLE.environment.evaluations[-1], float)
 
     def testAdditionOperation7(self):
         self.my_set_up("0+(-2);")
