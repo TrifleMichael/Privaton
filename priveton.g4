@@ -6,7 +6,7 @@ statement : (let | show | if_block | while_block | fun_def | expr) ';';
 
 let    :  NAME '=' expr;
 show     : 'print(' expr ')';
-expr   : expr bin_opr expr | '('expr bin_opr expr')' |  var ;
+expr   : expr bin_opr expr | '('expr (bin_opr expr)?')' | var | '(' un_opr expr ')';
 
 if_block: 'if' condition ':' code_block (else_block)? ;
 else_block: 'else' code_block;

@@ -11,24 +11,34 @@ class PrivetonListenerExtended(privetonListener):
     # How many blocks up, including the one analyzed, will be ignored (used by nested ifs)
 
     def exitLet(self, ctx: privetonParser.LetContext):
+        print("exitLet:", ctx.getText())
         if self.environment.ignore_block_depth == 0:
             self.environment.variable_names_map[ctx.NAME().__str__()] = self.environment.expressions_value_map[ctx.expr()]
 
     # Result of small_expr will be saved to tmp
     def exitExpr(self, ctx: privetonParser.ExprContext):
         if self.environment.ignore_block_depth == 0:
-            # SINGLE VALUE
-            if ctx.var() is None:
+            # TWO EXPR
+            if ctx.expr(0) is not None and ctx.expr(1) is not None:
                 string = ""
                 string += str(self.environment.expressions_value_map[ctx.expr(0)])
                 string += ctx.bin_opr().getText()
                 string += str(self.environment.expressions_value_map[ctx.expr(1)])
                 self.environment.expressions_value_map[ctx] = eval(string)
-            else:
+            # ONE EXPR
+            elif ctx.expr(0) is not None and ctx.expr(1) is None and ctx.un_opr() is None:
+                self.environment.expressions_value_map[ctx] = self.environment.expressions_value_map[ctx.expr(0)]
+            elif ctx.un_opr() is not None:
+                temp = eval(ctx.un_opr().getText() + str(self.environment.expressions_value_map[ctx.expr(0)]))
+                self.environment.expressions_value_map[ctx] = temp
+                # ONE VAR
+            elif ctx.var() is not None:
                 if ctx.var().NAME() is not None:
                     self.environment.expressions_value_map[ctx] = self.environment.variable_names_map[ctx.var().getText()]
                 else:
                     self.environment.expressions_value_map[ctx] = ctx.var().getText()
+            else:
+                print("INCORRECT EXPRESSION:", ctx.getText())
         else:
             # print("Block ignored")
             pass
