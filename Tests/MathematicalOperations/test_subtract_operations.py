@@ -23,40 +23,40 @@ class TestSubtract(unittest.TestCase):
 
     def testSubtractOperation1(self):
         self.my_set_up("1-1;")
-        self.assertEqual(self.PLE.environment.evaluations[0], 0)
+        self.assertEqual(self.PLE.environment.evaluations[-1], 0)
         self.assertIsInstance(self.PLE.environment.evaluations[0], int)
 
     def testSubtractOperation2(self):
         self.my_set_up("1-2;")
-        self.assertEqual(self.PLE.environment.evaluations[0], -1)
+        self.assertEqual(self.PLE.environment.evaluations[-1], -1)
         self.assertIsInstance(self.PLE.environment.evaluations[0], int)
 
     def testSubtractOperation3(self):
         self.my_set_up("3.0-2;")
-        self.assertEqual(self.PLE.environment.evaluations[0], 1.0)
+        self.assertEqual(self.PLE.environment.evaluations[-1], 1.0)
         self.assertIsInstance(self.PLE.environment.evaluations[0], float)
 
     def testSubtractOperation4(self):
         self.my_set_up("1.0-2;")
-        self.assertEqual(self.PLE.environment.evaluations[0], -1.0)
+        self.assertEqual(self.PLE.environment.evaluations[-1], -1.0)
         self.assertIsInstance(self.PLE.environment.evaluations[0], float)
 
     def testSubtractOperation5(self):
         self.my_set_up("1-1.0;")
-        self.assertEqual(self.PLE.environment.evaluations[0], 0.0)
+        self.assertEqual(self.PLE.environment.evaluations[-1], 0.0)
         self.assertIsInstance(self.PLE.environment.evaluations[0], float)
 
     def testSubtractOperation6(self):
         self.my_set_up("0-0;")
-        self.assertEqual(self.PLE.environment.evaluations[0], 0)
+        self.assertEqual(self.PLE.environment.evaluations[-1], 0)
         self.assertIsInstance(self.PLE.environment.evaluations[0], int)
 
     def testSubtractOperation7(self):
         self.my_set_up("0-0.0;")
-        self.assertEqual(self.PLE.environment.evaluations[0], 0.0)
+        self.assertEqual(self.PLE.environment.evaluations[-1], 0.0)
         self.assertIsInstance(self.PLE.environment.evaluations[0], float)
 
     def testSubtractOperation8(self):
         self.my_set_up("0.0-0.0;")
-        self.assertEqual(self.PLE.environment.evaluations[0], 0.0)
+        self.assertEqual(self.PLE.environment.evaluations[-1], 0.0)
         self.assertIsInstance(self.PLE.environment.evaluations[0], float)

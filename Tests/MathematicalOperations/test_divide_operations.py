@@ -26,22 +26,22 @@ class TestDivide(unittest.TestCase):
 
     def testDivideOperation1(self):
         self.my_set_up("1/1;")
-        self.assertEqual(self.PLE.environment.evaluations[0], 1.0)
+        self.assertEqual(self.PLE.environment.evaluations[-1], 1.0)
         self.assertIsInstance(self.PLE.environment.evaluations[0], float)
 
     def testDivideOperation2(self):
         self.my_set_up("1/2;")
-        self.assertEqual(self.PLE.environment.evaluations[0], 1 / 2)
+        self.assertEqual(self.PLE.environment.evaluations[-1], 1 / 2)
         self.assertIsInstance(self.PLE.environment.evaluations[0], float)
 
     def testDivideOperation3(self):
         self.my_set_up("1/2/3;")
-        self.assertEqual(self.PLE.environment.evaluations[0], 1 / 2 / 3)
+        self.assertEqual(self.PLE.environment.evaluations[-1], 1 / 2 / 3)
         self.assertIsInstance(self.PLE.environment.evaluations[0], float)
 
     def testDivideOperation4(self):
         self.my_set_up("2/1;")
-        self.assertEqual(self.PLE.environment.evaluations[0], 2.0)
+        self.assertEqual(self.PLE.environment.evaluations[-1], 2.0)
         self.assertIsInstance(self.PLE.environment.evaluations[0], float)
 
     def testDivideOperation5(self):

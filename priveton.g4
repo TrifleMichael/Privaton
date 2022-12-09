@@ -20,7 +20,7 @@ un_opr : neg_opr ;
 neg_opr : LOG_NEG_OPR | SUB_OPR;
 bin_opr : logic_opr | arthm_opr;
 logic_opr : AND_OPR | OR_OPR | '>' | '<' | '>=' | '<=' | '==' | '!=';
-arthm_opr : ADD_OPR | SUB_OPR | DIV_OPR | MUL_OPR ;
+arthm_opr : DIV_OPR | MUL_OPR |  ADD_OPR | SUB_OPR;
 var : NAME | INT | FLOAT | STRING | LOGIC | array;
 array : '[' (expr',')* expr ']' | '['']';
 

@@ -39,6 +39,8 @@ class PrivetonListenerExtended(privetonListener):
                     self.environment.expressions_value_map[ctx] = ctx.var().getText()
             else:
                 print("INCORRECT EXPRESSION:", ctx.getText())
+
+            self.environment.evaluations.append(self.environment.expressions_value_map[ctx])
         else:
             # print("Block ignored")
             pass

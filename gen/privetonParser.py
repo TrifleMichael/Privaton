@@ -975,17 +975,17 @@ class privetonParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def ADD_OPR(self):
-            return self.getToken(privetonParser.ADD_OPR, 0)
-
-        def SUB_OPR(self):
-            return self.getToken(privetonParser.SUB_OPR, 0)
-
         def DIV_OPR(self):
             return self.getToken(privetonParser.DIV_OPR, 0)
 
         def MUL_OPR(self):
             return self.getToken(privetonParser.MUL_OPR, 0)
+
+        def ADD_OPR(self):
+            return self.getToken(privetonParser.ADD_OPR, 0)
+
+        def SUB_OPR(self):
+            return self.getToken(privetonParser.SUB_OPR, 0)
 
         def getRuleIndex(self):
             return privetonParser.RULE_arthm_opr
