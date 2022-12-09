@@ -80,6 +80,24 @@ class privetonListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by privetonParser#priority_opr.
+    def enterPriority_opr(self, ctx:privetonParser.Priority_oprContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#priority_opr.
+    def exitPriority_opr(self, ctx:privetonParser.Priority_oprContext):
+        pass
+
+
+    # Enter a parse tree produced by privetonParser#non_priority_opr.
+    def enterNon_priority_opr(self, ctx:privetonParser.Non_priority_oprContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#non_priority_opr.
+    def exitNon_priority_opr(self, ctx:privetonParser.Non_priority_oprContext):
+        pass
+
+
     # Enter a parse tree produced by privetonParser#condition.
     def enterCondition(self, ctx:privetonParser.ConditionContext):
         pass
@@ -116,30 +134,12 @@ class privetonListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by privetonParser#bin_opr.
-    def enterBin_opr(self, ctx:privetonParser.Bin_oprContext):
-        pass
-
-    # Exit a parse tree produced by privetonParser#bin_opr.
-    def exitBin_opr(self, ctx:privetonParser.Bin_oprContext):
-        pass
-
-
     # Enter a parse tree produced by privetonParser#logic_opr.
     def enterLogic_opr(self, ctx:privetonParser.Logic_oprContext):
         pass
 
     # Exit a parse tree produced by privetonParser#logic_opr.
     def exitLogic_opr(self, ctx:privetonParser.Logic_oprContext):
-        pass
-
-
-    # Enter a parse tree produced by privetonParser#arthm_opr.
-    def enterArthm_opr(self, ctx:privetonParser.Arthm_oprContext):
-        pass
-
-    # Exit a parse tree produced by privetonParser#arthm_opr.
-    def exitArthm_opr(self, ctx:privetonParser.Arthm_oprContext):
         pass
 
 

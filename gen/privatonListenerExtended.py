@@ -11,7 +11,6 @@ class PrivetonListenerExtended(privetonListener):
     # How many blocks up, including the one analyzed, will be ignored (used by nested ifs)
 
     def exitLet(self, ctx: privetonParser.LetContext):
-        print("exitLet:", ctx.getText())
         if self.environment.ignore_block_depth == 0:
             self.environment.variable_names_map[ctx.NAME().__str__()] = self.environment.expressions_value_map[ctx.expr()]
 
@@ -22,7 +21,10 @@ class PrivetonListenerExtended(privetonListener):
             if ctx.expr(0) is not None and ctx.expr(1) is not None:
                 string = ""
                 string += str(self.environment.expressions_value_map[ctx.expr(0)])
-                string += ctx.bin_opr().getText()
+                if ctx.priority_opr() is not None:
+                    string += ctx.priority_opr().getText()
+                else:
+                    string += ctx.non_priority_opr().getText()
                 string += str(self.environment.expressions_value_map[ctx.expr(1)])
                 self.environment.expressions_value_map[ctx] = eval(string)
             # ONE EXPR

@@ -159,8 +159,8 @@ class TestVariableAssignment(unittest.TestCase):
 
     def testAssignmentWithVariousOperations9(self):
         self.my_set_up('a=2;b=3;c=a*b+2*1.0;')
-        self.assertEqual(self.PLE.environment.evaluations[-3], 2)
-        self.assertEqual(self.PLE.environment.evaluations[-2], 3)
+        self.assertEqual(self.PLE.environment.evaluations[-9], 2)
+        self.assertEqual(self.PLE.environment.evaluations[-8], 3)
         self.assertEqual(self.PLE.environment.evaluations[-1], 8.0)
         self.assertIsInstance(self.PLE.environment.evaluations[0], int)
         self.assertIsInstance(self.PLE.environment.evaluations[1], int)

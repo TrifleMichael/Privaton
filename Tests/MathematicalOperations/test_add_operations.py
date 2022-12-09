@@ -28,35 +28,35 @@ class TestAdd(unittest.TestCase):
 
     def testAdditionOperation2(self):
         self.my_set_up("1+11;")
-        self.assertEqual(self.PLE.environment.evaluations[0], 12)
+        self.assertEqual(self.PLE.environment.evaluations[-1], 12)
         self.assertIsInstance(self.PLE.environment.evaluations[0], int)
 
     def testAdditionOperation3(self):
         self.my_set_up("0+0;")
-        self.assertEqual(self.PLE.environment.evaluations[0], 0)
+        self.assertEqual(self.PLE.environment.evaluations[-1], 0)
         self.assertIsInstance(self.PLE.environment.evaluations[0], int)
 
     def testAdditionOperation4(self):
         self.my_set_up("0.0+0;")
-        self.assertEqual(self.PLE.environment.evaluations[0], 0.0)
+        self.assertEqual(self.PLE.environment.evaluations[-1], 0.0)
         self.assertIsInstance(self.PLE.environment.evaluations[0], float)
 
     def testAdditionOperation5(self):
         self.my_set_up("1.0+1.0;")
-        self.assertEqual(self.PLE.environment.evaluations[0], 2.0)
+        self.assertEqual(self.PLE.environment.evaluations[-1], 2.0)
         self.assertIsInstance(self.PLE.environment.evaluations[0], float)
 
     def testAdditionOperation6(self):
         self.my_set_up("1+1.0;")
-        self.assertEqual(self.PLE.environment.evaluations[0], 2.0)
+        self.assertEqual(self.PLE.environment.evaluations[-1], 2.0)
         self.assertIsInstance(self.PLE.environment.evaluations[0], float)
 
     def testAdditionOperation7(self):
         self.my_set_up("0+(-2);")
-        self.assertEqual(self.PLE.environment.evaluations[0], -2)
+        self.assertEqual(self.PLE.environment.evaluations[-1], -2)
         self.assertIsInstance(self.PLE.environment.evaluations[0], int)
 
     def testAdditionOperation8(self):
         self.my_set_up("1.0+(-1);")
-        self.assertEqual(self.PLE.environment.evaluations[0], 0.0)
+        self.assertEqual(self.PLE.environment.evaluations[-1], 0.0)
         self.assertIsInstance(self.PLE.environment.evaluations[0], float)

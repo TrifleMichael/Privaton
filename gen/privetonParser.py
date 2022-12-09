@@ -13,22 +13,22 @@ def serializedATN():
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
         buf.write("\3\2\6\2(\n\2\r\2\16\2)\3\3\3\3\3\3\3\3\3\3\3\3\5\3\62")
         buf.write("\n\3\3\3\3\3\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3\6\3\6\3")
-        buf.write("\6\3\6\3\6\3\6\5\6D\n\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3")
-        buf.write("\6\5\6N\n\6\3\6\3\6\3\6\3\6\7\6T\n\6\f\6\16\6W\13\6\3")
-        buf.write("\7\3\7\3\7\3\7\3\7\5\7^\n\7\3\b\3\b\3\b\3\t\3\t\3\t\3")
-        buf.write("\t\3\t\3\n\3\n\3\13\3\13\7\13l\n\13\f\13\16\13o\13\13")
-        buf.write("\3\13\3\13\3\f\3\f\3\r\3\r\3\16\3\16\5\16y\n\16\3\17\3")
-        buf.write("\17\3\20\3\20\3\21\3\21\3\21\3\21\3\21\3\21\5\21\u0085")
-        buf.write("\n\21\3\22\3\22\3\22\3\22\7\22\u008b\n\22\f\22\16\22\u008e")
-        buf.write("\13\22\3\22\3\22\3\22\3\22\3\22\5\22\u0095\n\22\3\23\3")
-        buf.write("\23\3\23\3\23\3\23\3\23\7\23\u009d\n\23\f\23\16\23\u00a0")
+        buf.write("\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\5\6I\n\6\3\6\3\6\3")
+        buf.write("\6\3\6\3\6\3\6\3\6\3\6\7\6S\n\6\f\6\16\6V\13\6\3\7\3\7")
+        buf.write("\3\7\3\7\3\7\5\7]\n\7\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3\t")
+        buf.write("\3\n\3\n\3\13\3\13\3\13\5\13l\n\13\3\f\3\f\3\r\3\r\7\r")
+        buf.write("r\n\r\f\r\16\ru\13\r\3\r\3\r\3\16\3\16\3\17\3\17\3\20")
+        buf.write("\3\20\3\21\3\21\3\21\3\21\3\21\3\21\5\21\u0085\n\21\3")
+        buf.write("\22\3\22\3\22\3\22\7\22\u008b\n\22\f\22\16\22\u008e\13")
+        buf.write("\22\3\22\3\22\3\22\3\22\3\22\5\22\u0095\n\22\3\23\3\23")
+        buf.write("\3\23\3\23\3\23\3\23\7\23\u009d\n\23\f\23\16\23\u00a0")
         buf.write("\13\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3")
         buf.write("\23\3\23\5\23\u00ad\n\23\3\23\2\3\n\24\2\4\6\b\n\f\16")
-        buf.write("\20\22\24\26\30\32\34\36 \"$\2\5\4\2\33\33\35\35\4\2\16")
-        buf.write("\23\30\31\3\2\34\37\2\u00b2\2\'\3\2\2\2\4\61\3\2\2\2\6")
-        buf.write("\65\3\2\2\2\b9\3\2\2\2\nM\3\2\2\2\fX\3\2\2\2\16_\3\2\2")
-        buf.write("\2\20b\3\2\2\2\22g\3\2\2\2\24i\3\2\2\2\26r\3\2\2\2\30")
-        buf.write("t\3\2\2\2\32x\3\2\2\2\34z\3\2\2\2\36|\3\2\2\2 \u0084\3")
+        buf.write("\20\22\24\26\30\32\34\36 \"$\2\5\3\2\36\37\4\2\33\33\35")
+        buf.write("\35\4\2\16\23\30\31\2\u00b3\2\'\3\2\2\2\4\61\3\2\2\2\6")
+        buf.write("\65\3\2\2\2\b9\3\2\2\2\nH\3\2\2\2\fW\3\2\2\2\16^\3\2\2")
+        buf.write("\2\20a\3\2\2\2\22f\3\2\2\2\24k\3\2\2\2\26m\3\2\2\2\30")
+        buf.write("o\3\2\2\2\32x\3\2\2\2\34z\3\2\2\2\36|\3\2\2\2 \u0084\3")
         buf.write("\2\2\2\"\u0094\3\2\2\2$\u00ac\3\2\2\2&(\5\4\3\2\'&\3\2")
         buf.write("\2\2()\3\2\2\2)\'\3\2\2\2)*\3\2\2\2*\3\3\2\2\2+\62\5\6")
         buf.write("\4\2,\62\5\b\5\2-\62\5\f\7\2.\62\5\20\t\2/\62\5$\23\2")
@@ -36,42 +36,42 @@ def serializedATN():
         buf.write(".\3\2\2\2\61/\3\2\2\2\61\60\3\2\2\2\62\63\3\2\2\2\63\64")
         buf.write("\7\3\2\2\64\5\3\2\2\2\65\66\7 \2\2\66\67\7\4\2\2\678\5")
         buf.write("\n\6\28\7\3\2\2\29:\7\5\2\2:;\5\n\6\2;<\7\6\2\2<\t\3\2")
-        buf.write("\2\2=>\b\6\1\2>?\7\7\2\2?C\5\n\6\2@A\5\32\16\2AB\5\n\6")
-        buf.write("\2BD\3\2\2\2C@\3\2\2\2CD\3\2\2\2DE\3\2\2\2EF\7\6\2\2F")
-        buf.write("N\3\2\2\2GN\5 \21\2HI\7\7\2\2IJ\5\26\f\2JK\5\n\6\2KL\7")
-        buf.write("\6\2\2LN\3\2\2\2M=\3\2\2\2MG\3\2\2\2MH\3\2\2\2NU\3\2\2")
-        buf.write("\2OP\f\6\2\2PQ\5\32\16\2QR\5\n\6\7RT\3\2\2\2SO\3\2\2\2")
-        buf.write("TW\3\2\2\2US\3\2\2\2UV\3\2\2\2V\13\3\2\2\2WU\3\2\2\2X")
-        buf.write("Y\7\b\2\2YZ\5\22\n\2Z[\7\t\2\2[]\5\24\13\2\\^\5\16\b\2")
-        buf.write("]\\\3\2\2\2]^\3\2\2\2^\r\3\2\2\2_`\7\n\2\2`a\5\24\13\2")
-        buf.write("a\17\3\2\2\2bc\7\13\2\2cd\5\22\n\2de\7\t\2\2ef\5\24\13")
-        buf.write("\2f\21\3\2\2\2gh\5\n\6\2h\23\3\2\2\2im\7\f\2\2jl\5\4\3")
-        buf.write("\2kj\3\2\2\2lo\3\2\2\2mk\3\2\2\2mn\3\2\2\2np\3\2\2\2o")
-        buf.write("m\3\2\2\2pq\7\r\2\2q\25\3\2\2\2rs\5\30\r\2s\27\3\2\2\2")
-        buf.write("tu\t\2\2\2u\31\3\2\2\2vy\5\34\17\2wy\5\36\20\2xv\3\2\2")
-        buf.write("\2xw\3\2\2\2y\33\3\2\2\2z{\t\3\2\2{\35\3\2\2\2|}\t\4\2")
-        buf.write("\2}\37\3\2\2\2~\u0085\7 \2\2\177\u0085\7!\2\2\u0080\u0085")
-        buf.write("\7\"\2\2\u0081\u0085\7#\2\2\u0082\u0085\7\32\2\2\u0083")
-        buf.write("\u0085\5\"\22\2\u0084~\3\2\2\2\u0084\177\3\2\2\2\u0084")
-        buf.write("\u0080\3\2\2\2\u0084\u0081\3\2\2\2\u0084\u0082\3\2\2\2")
-        buf.write("\u0084\u0083\3\2\2\2\u0085!\3\2\2\2\u0086\u008c\7\24\2")
-        buf.write("\2\u0087\u0088\5\n\6\2\u0088\u0089\7\25\2\2\u0089\u008b")
-        buf.write("\3\2\2\2\u008a\u0087\3\2\2\2\u008b\u008e\3\2\2\2\u008c")
-        buf.write("\u008a\3\2\2\2\u008c\u008d\3\2\2\2\u008d\u008f\3\2\2\2")
-        buf.write("\u008e\u008c\3\2\2\2\u008f\u0090\5\n\6\2\u0090\u0091\7")
-        buf.write("\26\2\2\u0091\u0095\3\2\2\2\u0092\u0093\7\24\2\2\u0093")
-        buf.write("\u0095\7\26\2\2\u0094\u0086\3\2\2\2\u0094\u0092\3\2\2")
-        buf.write("\2\u0095#\3\2\2\2\u0096\u0097\7\27\2\2\u0097\u0098\7 ")
-        buf.write("\2\2\u0098\u009e\7\7\2\2\u0099\u009a\5 \21\2\u009a\u009b")
-        buf.write("\7\25\2\2\u009b\u009d\3\2\2\2\u009c\u0099\3\2\2\2\u009d")
-        buf.write("\u00a0\3\2\2\2\u009e\u009c\3\2\2\2\u009e\u009f\3\2\2\2")
-        buf.write("\u009f\u00a1\3\2\2\2\u00a0\u009e\3\2\2\2\u00a1\u00a2\5")
-        buf.write(" \21\2\u00a2\u00a3\7\6\2\2\u00a3\u00a4\7\t\2\2\u00a4\u00a5")
-        buf.write("\5\24\13\2\u00a5\u00ad\3\2\2\2\u00a6\u00a7\7\27\2\2\u00a7")
-        buf.write("\u00a8\7 \2\2\u00a8\u00a9\7\7\2\2\u00a9\u00aa\7\6\2\2")
-        buf.write("\u00aa\u00ab\7\t\2\2\u00ab\u00ad\5\24\13\2\u00ac\u0096")
-        buf.write("\3\2\2\2\u00ac\u00a6\3\2\2\2\u00ad%\3\2\2\2\17)\61CMU")
-        buf.write("]mx\u0084\u008c\u0094\u009e\u00ac")
+        buf.write("\2\2=>\b\6\1\2>?\7\7\2\2?@\5\n\6\2@A\7\6\2\2AI\3\2\2\2")
+        buf.write("BI\5 \21\2CD\7\7\2\2DE\5\32\16\2EF\5\n\6\2FG\7\6\2\2G")
+        buf.write("I\3\2\2\2H=\3\2\2\2HB\3\2\2\2HC\3\2\2\2IT\3\2\2\2JK\f")
+        buf.write("\6\2\2KL\5\22\n\2LM\5\n\6\7MS\3\2\2\2NO\f\5\2\2OP\5\24")
+        buf.write("\13\2PQ\5\n\6\6QS\3\2\2\2RJ\3\2\2\2RN\3\2\2\2SV\3\2\2")
+        buf.write("\2TR\3\2\2\2TU\3\2\2\2U\13\3\2\2\2VT\3\2\2\2WX\7\b\2\2")
+        buf.write("XY\5\26\f\2YZ\7\t\2\2Z\\\5\30\r\2[]\5\16\b\2\\[\3\2\2")
+        buf.write("\2\\]\3\2\2\2]\r\3\2\2\2^_\7\n\2\2_`\5\30\r\2`\17\3\2")
+        buf.write("\2\2ab\7\13\2\2bc\5\26\f\2cd\7\t\2\2de\5\30\r\2e\21\3")
+        buf.write("\2\2\2fg\t\2\2\2g\23\3\2\2\2hl\7\34\2\2il\7\35\2\2jl\5")
+        buf.write("\36\20\2kh\3\2\2\2ki\3\2\2\2kj\3\2\2\2l\25\3\2\2\2mn\5")
+        buf.write("\n\6\2n\27\3\2\2\2os\7\f\2\2pr\5\4\3\2qp\3\2\2\2ru\3\2")
+        buf.write("\2\2sq\3\2\2\2st\3\2\2\2tv\3\2\2\2us\3\2\2\2vw\7\r\2\2")
+        buf.write("w\31\3\2\2\2xy\5\34\17\2y\33\3\2\2\2z{\t\3\2\2{\35\3\2")
+        buf.write("\2\2|}\t\4\2\2}\37\3\2\2\2~\u0085\7 \2\2\177\u0085\7!")
+        buf.write("\2\2\u0080\u0085\7\"\2\2\u0081\u0085\7#\2\2\u0082\u0085")
+        buf.write("\7\32\2\2\u0083\u0085\5\"\22\2\u0084~\3\2\2\2\u0084\177")
+        buf.write("\3\2\2\2\u0084\u0080\3\2\2\2\u0084\u0081\3\2\2\2\u0084")
+        buf.write("\u0082\3\2\2\2\u0084\u0083\3\2\2\2\u0085!\3\2\2\2\u0086")
+        buf.write("\u008c\7\24\2\2\u0087\u0088\5\n\6\2\u0088\u0089\7\25\2")
+        buf.write("\2\u0089\u008b\3\2\2\2\u008a\u0087\3\2\2\2\u008b\u008e")
+        buf.write("\3\2\2\2\u008c\u008a\3\2\2\2\u008c\u008d\3\2\2\2\u008d")
+        buf.write("\u008f\3\2\2\2\u008e\u008c\3\2\2\2\u008f\u0090\5\n\6\2")
+        buf.write("\u0090\u0091\7\26\2\2\u0091\u0095\3\2\2\2\u0092\u0093")
+        buf.write("\7\24\2\2\u0093\u0095\7\26\2\2\u0094\u0086\3\2\2\2\u0094")
+        buf.write("\u0092\3\2\2\2\u0095#\3\2\2\2\u0096\u0097\7\27\2\2\u0097")
+        buf.write("\u0098\7 \2\2\u0098\u009e\7\7\2\2\u0099\u009a\5 \21\2")
+        buf.write("\u009a\u009b\7\25\2\2\u009b\u009d\3\2\2\2\u009c\u0099")
+        buf.write("\3\2\2\2\u009d\u00a0\3\2\2\2\u009e\u009c\3\2\2\2\u009e")
+        buf.write("\u009f\3\2\2\2\u009f\u00a1\3\2\2\2\u00a0\u009e\3\2\2\2")
+        buf.write("\u00a1\u00a2\5 \21\2\u00a2\u00a3\7\6\2\2\u00a3\u00a4\7")
+        buf.write("\t\2\2\u00a4\u00a5\5\30\r\2\u00a5\u00ad\3\2\2\2\u00a6")
+        buf.write("\u00a7\7\27\2\2\u00a7\u00a8\7 \2\2\u00a8\u00a9\7\7\2\2")
+        buf.write("\u00a9\u00aa\7\6\2\2\u00aa\u00ab\7\t\2\2\u00ab\u00ad\5")
+        buf.write("\30\r\2\u00ac\u0096\3\2\2\2\u00ac\u00a6\3\2\2\2\u00ad")
+        buf.write("%\3\2\2\2\17)\61HRT\\ks\u0084\u008c\u0094\u009e\u00ac")
         return buf.getvalue()
 
 
@@ -108,20 +108,20 @@ class privetonParser ( Parser ):
     RULE_if_block = 5
     RULE_else_block = 6
     RULE_while_block = 7
-    RULE_condition = 8
-    RULE_code_block = 9
-    RULE_un_opr = 10
-    RULE_neg_opr = 11
-    RULE_bin_opr = 12
-    RULE_logic_opr = 13
-    RULE_arthm_opr = 14
+    RULE_priority_opr = 8
+    RULE_non_priority_opr = 9
+    RULE_condition = 10
+    RULE_code_block = 11
+    RULE_un_opr = 12
+    RULE_neg_opr = 13
+    RULE_logic_opr = 14
     RULE_var = 15
     RULE_array = 16
     RULE_fun_def = 17
 
     ruleNames =  [ "program", "statement", "let", "show", "expr", "if_block", 
-                   "else_block", "while_block", "condition", "code_block", 
-                   "un_opr", "neg_opr", "bin_opr", "logic_opr", "arthm_opr", 
+                   "else_block", "while_block", "priority_opr", "non_priority_opr", 
+                   "condition", "code_block", "un_opr", "neg_opr", "logic_opr", 
                    "var", "array", "fun_def" ]
 
     EOF = Token.EOF
@@ -420,16 +420,20 @@ class privetonParser ( Parser ):
                 return self.getTypedRuleContext(privetonParser.ExprContext,i)
 
 
-        def bin_opr(self):
-            return self.getTypedRuleContext(privetonParser.Bin_oprContext,0)
-
-
         def var(self):
             return self.getTypedRuleContext(privetonParser.VarContext,0)
 
 
         def un_opr(self):
             return self.getTypedRuleContext(privetonParser.Un_oprContext,0)
+
+
+        def priority_opr(self):
+            return self.getTypedRuleContext(privetonParser.Priority_oprContext,0)
+
+
+        def non_priority_opr(self):
+            return self.getTypedRuleContext(privetonParser.Non_priority_oprContext,0)
 
 
         def getRuleIndex(self):
@@ -452,50 +456,39 @@ class privetonParser ( Parser ):
         _prevctx = localctx
         _startState = 8
         self.enterRecursionRule(localctx, 8, self.RULE_expr, _p)
-        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 75
+            self.state = 70
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,2,self._ctx)
             if la_ == 1:
                 self.state = 60
                 self.match(privetonParser.T__4)
                 self.state = 61
                 self.expr(0)
-                self.state = 65
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << privetonParser.T__11) | (1 << privetonParser.T__12) | (1 << privetonParser.T__13) | (1 << privetonParser.T__14) | (1 << privetonParser.T__15) | (1 << privetonParser.T__16) | (1 << privetonParser.AND_OPR) | (1 << privetonParser.OR_OPR) | (1 << privetonParser.ADD_OPR) | (1 << privetonParser.SUB_OPR) | (1 << privetonParser.DIV_OPR) | (1 << privetonParser.MUL_OPR))) != 0):
-                    self.state = 62
-                    self.bin_opr()
-                    self.state = 63
-                    self.expr(0)
-
-
-                self.state = 67
+                self.state = 62
                 self.match(privetonParser.T__3)
                 pass
 
             elif la_ == 2:
-                self.state = 69
+                self.state = 64
                 self.var()
                 pass
 
             elif la_ == 3:
-                self.state = 70
+                self.state = 65
                 self.match(privetonParser.T__4)
-                self.state = 71
+                self.state = 66
                 self.un_opr()
-                self.state = 72
+                self.state = 67
                 self.expr(0)
-                self.state = 73
+                self.state = 68
                 self.match(privetonParser.T__3)
                 pass
 
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 83
+            self.state = 82
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,4,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
@@ -503,17 +496,37 @@ class privetonParser ( Parser ):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = privetonParser.ExprContext(self, _parentctx, _parentState)
-                    self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                    self.state = 77
-                    if not self.precpred(self._ctx, 4):
-                        from antlr4.error.Errors import FailedPredicateException
-                        raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
-                    self.state = 78
-                    self.bin_opr()
-                    self.state = 79
-                    self.expr(5) 
-                self.state = 85
+                    self.state = 80
+                    self._errHandler.sync(self)
+                    la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
+                    if la_ == 1:
+                        localctx = privetonParser.ExprContext(self, _parentctx, _parentState)
+                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        self.state = 72
+                        if not self.precpred(self._ctx, 4):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
+                        self.state = 73
+                        self.priority_opr()
+                        self.state = 74
+                        self.expr(5)
+                        pass
+
+                    elif la_ == 2:
+                        localctx = privetonParser.ExprContext(self, _parentctx, _parentState)
+                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        self.state = 76
+                        if not self.precpred(self._ctx, 3):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 3)")
+                        self.state = 77
+                        self.non_priority_opr()
+                        self.state = 78
+                        self.expr(4)
+                        pass
+
+             
+                self.state = 84
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,4,self._ctx)
 
@@ -564,19 +577,19 @@ class privetonParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 86
+            self.state = 85
             self.match(privetonParser.T__5)
-            self.state = 87
+            self.state = 86
             self.condition()
-            self.state = 88
+            self.state = 87
             self.match(privetonParser.T__6)
-            self.state = 89
+            self.state = 88
             self.code_block()
-            self.state = 91
+            self.state = 90
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==privetonParser.T__7:
-                self.state = 90
+                self.state = 89
                 self.else_block()
 
 
@@ -618,9 +631,9 @@ class privetonParser ( Parser ):
         self.enterRule(localctx, 12, self.RULE_else_block)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 93
+            self.state = 92
             self.match(privetonParser.T__7)
-            self.state = 94
+            self.state = 93
             self.code_block()
         except RecognitionException as re:
             localctx.exception = re
@@ -664,14 +677,126 @@ class privetonParser ( Parser ):
         self.enterRule(localctx, 14, self.RULE_while_block)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 96
+            self.state = 95
             self.match(privetonParser.T__8)
-            self.state = 97
+            self.state = 96
             self.condition()
-            self.state = 98
+            self.state = 97
             self.match(privetonParser.T__6)
-            self.state = 99
+            self.state = 98
             self.code_block()
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+    class Priority_oprContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def MUL_OPR(self):
+            return self.getToken(privetonParser.MUL_OPR, 0)
+
+        def DIV_OPR(self):
+            return self.getToken(privetonParser.DIV_OPR, 0)
+
+        def getRuleIndex(self):
+            return privetonParser.RULE_priority_opr
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPriority_opr" ):
+                listener.enterPriority_opr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPriority_opr" ):
+                listener.exitPriority_opr(self)
+
+
+
+
+    def priority_opr(self):
+
+        localctx = privetonParser.Priority_oprContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 16, self.RULE_priority_opr)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 100
+            _la = self._input.LA(1)
+            if not(_la==privetonParser.DIV_OPR or _la==privetonParser.MUL_OPR):
+                self._errHandler.recoverInline(self)
+            else:
+                self._errHandler.reportMatch(self)
+                self.consume()
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+    class Non_priority_oprContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def ADD_OPR(self):
+            return self.getToken(privetonParser.ADD_OPR, 0)
+
+        def SUB_OPR(self):
+            return self.getToken(privetonParser.SUB_OPR, 0)
+
+        def logic_opr(self):
+            return self.getTypedRuleContext(privetonParser.Logic_oprContext,0)
+
+
+        def getRuleIndex(self):
+            return privetonParser.RULE_non_priority_opr
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNon_priority_opr" ):
+                listener.enterNon_priority_opr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNon_priority_opr" ):
+                listener.exitNon_priority_opr(self)
+
+
+
+
+    def non_priority_opr(self):
+
+        localctx = privetonParser.Non_priority_oprContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 18, self.RULE_non_priority_opr)
+        try:
+            self.state = 105
+            self._errHandler.sync(self)
+            token = self._input.LA(1)
+            if token in [privetonParser.ADD_OPR]:
+                self.enterOuterAlt(localctx, 1)
+                self.state = 102
+                self.match(privetonParser.ADD_OPR)
+                pass
+            elif token in [privetonParser.SUB_OPR]:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 103
+                self.match(privetonParser.SUB_OPR)
+                pass
+            elif token in [privetonParser.T__11, privetonParser.T__12, privetonParser.T__13, privetonParser.T__14, privetonParser.T__15, privetonParser.T__16, privetonParser.AND_OPR, privetonParser.OR_OPR]:
+                self.enterOuterAlt(localctx, 3)
+                self.state = 104
+                self.logic_opr()
+                pass
+            else:
+                raise NoViableAltException(self)
+
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -707,10 +832,10 @@ class privetonParser ( Parser ):
     def condition(self):
 
         localctx = privetonParser.ConditionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 16, self.RULE_condition)
+        self.enterRule(localctx, 20, self.RULE_condition)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 101
+            self.state = 107
             self.expr(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -750,23 +875,23 @@ class privetonParser ( Parser ):
     def code_block(self):
 
         localctx = privetonParser.Code_blockContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 18, self.RULE_code_block)
+        self.enterRule(localctx, 22, self.RULE_code_block)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 103
+            self.state = 109
             self.match(privetonParser.T__9)
-            self.state = 107
+            self.state = 113
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << privetonParser.T__2) | (1 << privetonParser.T__4) | (1 << privetonParser.T__5) | (1 << privetonParser.T__8) | (1 << privetonParser.T__17) | (1 << privetonParser.T__20) | (1 << privetonParser.LOGIC) | (1 << privetonParser.NAME) | (1 << privetonParser.INT) | (1 << privetonParser.FLOAT) | (1 << privetonParser.STRING))) != 0):
-                self.state = 104
+                self.state = 110
                 self.statement()
-                self.state = 109
+                self.state = 115
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 110
+            self.state = 116
             self.match(privetonParser.T__10)
         except RecognitionException as re:
             localctx.exception = re
@@ -803,10 +928,10 @@ class privetonParser ( Parser ):
     def un_opr(self):
 
         localctx = privetonParser.Un_oprContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 20, self.RULE_un_opr)
+        self.enterRule(localctx, 24, self.RULE_un_opr)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 112
+            self.state = 118
             self.neg_opr()
         except RecognitionException as re:
             localctx.exception = re
@@ -845,74 +970,17 @@ class privetonParser ( Parser ):
     def neg_opr(self):
 
         localctx = privetonParser.Neg_oprContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 22, self.RULE_neg_opr)
+        self.enterRule(localctx, 26, self.RULE_neg_opr)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 114
+            self.state = 120
             _la = self._input.LA(1)
             if not(_la==privetonParser.LOG_NEG_OPR or _la==privetonParser.SUB_OPR):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
                 self.consume()
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-    class Bin_oprContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def logic_opr(self):
-            return self.getTypedRuleContext(privetonParser.Logic_oprContext,0)
-
-
-        def arthm_opr(self):
-            return self.getTypedRuleContext(privetonParser.Arthm_oprContext,0)
-
-
-        def getRuleIndex(self):
-            return privetonParser.RULE_bin_opr
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterBin_opr" ):
-                listener.enterBin_opr(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitBin_opr" ):
-                listener.exitBin_opr(self)
-
-
-
-
-    def bin_opr(self):
-
-        localctx = privetonParser.Bin_oprContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 24, self.RULE_bin_opr)
-        try:
-            self.state = 118
-            self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [privetonParser.T__11, privetonParser.T__12, privetonParser.T__13, privetonParser.T__14, privetonParser.T__15, privetonParser.T__16, privetonParser.AND_OPR, privetonParser.OR_OPR]:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 116
-                self.logic_opr()
-                pass
-            elif token in [privetonParser.ADD_OPR, privetonParser.SUB_OPR, privetonParser.DIV_OPR, privetonParser.MUL_OPR]:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 117
-                self.arthm_opr()
-                pass
-            else:
-                raise NoViableAltException(self)
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -950,67 +1018,13 @@ class privetonParser ( Parser ):
     def logic_opr(self):
 
         localctx = privetonParser.Logic_oprContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 26, self.RULE_logic_opr)
-        self._la = 0 # Token type
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 120
-            _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << privetonParser.T__11) | (1 << privetonParser.T__12) | (1 << privetonParser.T__13) | (1 << privetonParser.T__14) | (1 << privetonParser.T__15) | (1 << privetonParser.T__16) | (1 << privetonParser.AND_OPR) | (1 << privetonParser.OR_OPR))) != 0)):
-                self._errHandler.recoverInline(self)
-            else:
-                self._errHandler.reportMatch(self)
-                self.consume()
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-    class Arthm_oprContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def DIV_OPR(self):
-            return self.getToken(privetonParser.DIV_OPR, 0)
-
-        def MUL_OPR(self):
-            return self.getToken(privetonParser.MUL_OPR, 0)
-
-        def ADD_OPR(self):
-            return self.getToken(privetonParser.ADD_OPR, 0)
-
-        def SUB_OPR(self):
-            return self.getToken(privetonParser.SUB_OPR, 0)
-
-        def getRuleIndex(self):
-            return privetonParser.RULE_arthm_opr
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterArthm_opr" ):
-                listener.enterArthm_opr(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitArthm_opr" ):
-                listener.exitArthm_opr(self)
-
-
-
-
-    def arthm_opr(self):
-
-        localctx = privetonParser.Arthm_oprContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 28, self.RULE_arthm_opr)
+        self.enterRule(localctx, 28, self.RULE_logic_opr)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 122
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << privetonParser.ADD_OPR) | (1 << privetonParser.SUB_OPR) | (1 << privetonParser.DIV_OPR) | (1 << privetonParser.MUL_OPR))) != 0)):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << privetonParser.T__11) | (1 << privetonParser.T__12) | (1 << privetonParser.T__13) | (1 << privetonParser.T__14) | (1 << privetonParser.T__15) | (1 << privetonParser.T__16) | (1 << privetonParser.AND_OPR) | (1 << privetonParser.OR_OPR))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -1299,6 +1313,10 @@ class privetonParser ( Parser ):
     def expr_sempred(self, localctx:ExprContext, predIndex:int):
             if predIndex == 0:
                 return self.precpred(self._ctx, 4)
+         
+
+            if predIndex == 1:
+                return self.precpred(self._ctx, 3)
          
 
 
