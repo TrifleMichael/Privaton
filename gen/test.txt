@@ -1,11 +1,19 @@
-x = 2;
-while (x > 0): {
-    x = x - 1;
-    print(x);
-};
+y = (-1);
+x = 5;
 
-y = 3;
-while (y > 0): {
-    y = y - 1;
-    print(y);
+while (x > 0): {
+
+    print("X:");
+    print(x);
+    x = x - 1;
+
+    y = 2;
+    while (y > 0): {
+        print("Y:");
+        print(y);
+        y = y - 1;
+    };
+
+    print("BOOT");
+
 };
