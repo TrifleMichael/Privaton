@@ -8,7 +8,6 @@ class ContextTree:
         #  TODO: ADD TO LIST ONLY IF CURRENT NODE IS NOT REPEATING, IN EACH CASE ENTER THE CORRECT NODE
         self.currentNode.children.append(ContextTreeNode(ctx, self.currentNode, entering))
         self.currentNode = self.currentNode.children[-1]
-        print("ENTERING", ctx.getText())
         self.depth += 1
 
     def addChildToCurrentNode(self, ctx, entering):
@@ -16,7 +15,6 @@ class ContextTree:
             self.currentNode.children.append(ContextTreeNode(ctx, self.currentNode, entering))
 
     def leaveChildNode(self):
-        print("LEAVING", self.currentNode.ctx.getText())
         self.currentNode = self.currentNode.parent
         if self.currentNode.parent is None:
             self.nodes = []
@@ -91,5 +89,11 @@ class ContextTreeNode:
     def addExpression(self, ctx, value):
         self.expressions_value_map[ctx] = value
 
-    def addCondition(self, conditionContex, value):
-        self.condition_evaluation_map[conditionContex] = value
+    def blockNode(self):
+        self.blocked = True
+
+    def unblockNode(self):
+        self.blocked = False
+
+    def isBlocked(self):
+        return self.blocked

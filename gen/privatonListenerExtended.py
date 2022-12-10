@@ -3,6 +3,7 @@ from gen.ContextTree import ContextTree
 from gen.privetonListener import privetonListener
 from gen.privetonParser import privetonParser
 from gen.Environment import Environment
+
 class PrivetonListenerExtended(privetonListener):
     def __init__(self):
         self.environment = Environment()
@@ -24,7 +25,7 @@ class PrivetonListenerExtended(privetonListener):
         # Reevaluate condition, if still True then repeat loop
         self.contextTree.currentNode.repeating = True
         self.reevaluateCondition()
-        while self.contextTree.getConditionValue():
+        while not self.contextTree.currentNode.isBlocked():
             for child in self.contextTree.currentNode.children:
                 entry = child.ctx
                 if child.entering:
@@ -34,16 +35,14 @@ class PrivetonListenerExtended(privetonListener):
             self.reevaluateCondition()
 
         self.contextTree.currentNode.repeating = False
-        print("BEST Y2:", self.contextTree.searchVariable("y"))
         self.contextTree.leaveChildNode()
-        print("BEST Y:", self.contextTree.searchVariable("y"))
         if not self.contextTree.currentNode.repeating:
             self.contextTree.addChildToCurrentNode(ctx, False)
 
 
     def exitLet(self, ctx: privetonParser.LetContext):
         self.contextTree.addChildToCurrentNode(ctx, False)
-        if not self.contextTree.currentNode.blocked:
+        if not self.contextTree.currentNode.isBlocked():
             self.contextTree.addVariable(ctx.NAME().__str__(), self.contextTree.searchExpression(ctx.expr()))
 
     # Result of small_expr will be saved to tmp
@@ -51,7 +50,8 @@ class PrivetonListenerExtended(privetonListener):
         if self.contextTree.currentNode.evaluating:
             self.contextTree.currentNode.conditionReevaluationSteps.append([ctx, False])  # Context - Entering
         self.contextTree.addChildToCurrentNode(ctx, False)
-        if not self.contextTree.currentNode.blocked:
+
+        if not self.contextTree.currentNode.isBlocked():
             # TWO EXPR
             if ctx.expr(0) is not None and ctx.expr(1) is not None:
                 string = ""
@@ -101,17 +101,25 @@ class PrivetonListenerExtended(privetonListener):
     def exitCondition(self, ctx: privetonParser.ConditionContext):
         if self.contextTree.currentNode.evaluating:
             self.contextTree.currentNode.conditionReevaluationSteps.append([ctx, False])  # Context - Entering
-        if eval(str(self.contextTree.searchExpression(ctx.expr()))):  # This way for every type of self.tmpL
-            self.contextTree.addCondition(ctx, True)
-        else:
-            self.contextTree.addCondition(ctx, False)
 
+        self.contextTree.currentNode.conditionContext = ctx
+        if eval(str(self.contextTree.searchExpression(ctx.expr()))):  # This way for every type of self.tmpL
+            self.contextTree.currentNode.unblockNode()
+        else:
+            self.contextTree.currentNode.blockNode()
         self.contextTree.endConditionEvaluation()
 
     def exitShow(self, ctx: privetonParser.ShowContext):
         self.contextTree.addChildToCurrentNode(ctx, False)
-        if not self.contextTree.currentNode.blocked:
+
+        if not self.contextTree.currentNode.isBlocked():
             print(self.contextTree.searchExpression(ctx.expr()))
+
+    def enterIf_block(self, ctx:privetonParser.If_blockContext):
+        self.contextTree.enterAndAddChildToCurrentNode(ctx, True)
+
+    def exitIf_block(self, ctx:privetonParser.If_blockContext):
+        self.contextTree.leaveChildNode()
 
     # Set global flag if entering a block that should be ignored
     def enterCode_block(self, ctx: privetonParser.Code_blockContext):
