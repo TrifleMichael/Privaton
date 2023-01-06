@@ -170,3 +170,12 @@ class privetonListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by privetonParser#outer_name.
+    def enterOuter_name(self, ctx:privetonParser.Outer_nameContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#outer_name.
+    def exitOuter_name(self, ctx:privetonParser.Outer_nameContext):
+        pass
+
+

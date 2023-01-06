@@ -4,7 +4,7 @@ program : statement+;
 
 statement : (let | show | if_block | while_block | fun_def | expr) ';';
 
-let    :  NAME '=' expr;
+let    :  (NAME | outer_name) '=' expr;
 show     : 'print(' expr ')';
 expr   : '('expr')' | expr priority_opr expr | expr non_priority_opr expr | var | '(' un_opr expr ')';
 
@@ -22,10 +22,11 @@ un_opr : neg_opr ;
 neg_opr : LOG_NEG_OPR | SUB_OPR;
 logic_opr : AND_OPR | OR_OPR | '>' | '<' | '>=' | '<=' | '==' | '!=';
 //arthm_opr : DIV_OPR | MUL_OPR |  ADD_OPR | SUB_OPR;
-var : NAME | INT | FLOAT | STRING | LOGIC | array;
+var : outer_name | NAME | INT | FLOAT | STRING | LOGIC | array;
 array : '[' (expr',')* expr ']' | '['']';
 
 fun_def : 'def' NAME'(' (var',')* var')' ':' code_block | 'def' NAME'('')' ':' code_block;
+outer_name : 'parent::'NAME;
 
 AND_OPR: 'and';
 OR_OPR: 'or';

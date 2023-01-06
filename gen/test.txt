@@ -1,13 +1,8 @@
-x = 3;
+x = 2;
+if (parent::x > 0): {
 
-while (x > 0): {
-
+    x = (-1);
     print(x);
-    x = x - 1;
-};
+    print(parent::x);
 
-a = True;
-
-if (a): {
-    print(a);
 };
