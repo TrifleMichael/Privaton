@@ -25,7 +25,7 @@ logic_opr : AND_OPR | OR_OPR | '>' | '<' | '>=' | '<=' | '==' | '!=';
 var : outer_name | NAME | INT | FLOAT | STRING | LOGIC | array;
 array : '[' (expr',')* expr ']' | '['']';
 
-fun_def : 'def' NAME'(' (var',')* var')' ':' code_block | 'def' NAME'('')' ':' code_block;
+fun_def : 'def' NAME'(' (var',')* var')' ':' code_block | 'def' NAME'():' code_block;
 outer_name : 'parent::'NAME;
 
 AND_OPR: 'and';

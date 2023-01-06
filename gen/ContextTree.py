@@ -4,6 +4,7 @@ class NodeType(Enum):
     LOOP = 1
     IF_BLOCK = 2
     OTHER = 3
+    ELSE_BLOCK = 4
 
 class ContextTree:
     def __init__(self):

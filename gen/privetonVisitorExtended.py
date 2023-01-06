@@ -8,6 +8,15 @@ class privetonVisitorExtended(privetonVisitor):
     def __init__(self):
         self.contextTree = ContextTree()
 
+    def visitFun_def(self, ctx:privetonParser.Fun_defContext):
+        self.visitChildren(ctx)
+
+    def visitElse_block(self, ctx:privetonParser.Else_blockContext):
+        if self.contextTree.currentNode.isBlocked():
+            self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.ELSE_BLOCK)
+            self.visitChildren(ctx)
+            self.contextTree.leaveChildNode()
+
     def visitWhile_block(self, ctx:privetonParser.While_blockContext):
         self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.LOOP)
         # Visit each node below that one. Condition will be executed first, and it will define if the rest will execute
@@ -25,6 +34,7 @@ class privetonVisitorExtended(privetonVisitor):
     def visitIf_block(self, ctx:privetonParser.If_blockContext):
         self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.IF_BLOCK)
         self.visitChildren(ctx)
+        self.contextTree.leaveChildNode()
 
     def visitCondition(self, ctx: privetonParser.ConditionContext):
         self.visitChildren(ctx)
