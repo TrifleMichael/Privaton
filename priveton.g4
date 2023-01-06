@@ -2,7 +2,7 @@ grammar priveton;
 
 program : statement+;
 
-statement : (let | show | if_block | while_block | fun_def | expr) ';';
+statement : (let | show | if_block | while_block | fun_def | func_call | expr) ';';
 
 let    :  (NAME | outer_name) '=' expr;
 show     : 'print(' expr ')';
@@ -26,6 +26,7 @@ var : outer_name | NAME | INT | FLOAT | STRING | LOGIC | array;
 array : '[' (expr',')* expr ']' | '['']';
 
 fun_def : 'def' NAME'(' (var',')* var')' ':' code_block | 'def' NAME'():' code_block;
+func_call : NAME'(' (var',')* var')' | NAME'()';
 outer_name : 'parent::'NAME;
 
 AND_OPR: 'and';

@@ -1,15 +1,8 @@
-x = 1;
-if (parent::x == 2): {
-    print("z");
-} else {
+a = 1;
+if (True): {
 
-    print("u2");
+    a = 7;
+    print(a);
+    print(parent::a);
 
-    if (parent::x == 0): {
-        print("w");
-    } else {
-        print("h");
-    };
-
-    print("u1");
 };

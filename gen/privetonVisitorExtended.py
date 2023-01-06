@@ -9,7 +9,26 @@ class privetonVisitorExtended(privetonVisitor):
         self.contextTree = ContextTree()
 
     def visitFun_def(self, ctx:privetonParser.Fun_defContext):
-        self.visitChildren(ctx)
+        self.contextTree.addFunctionNode(ctx)
+
+    def visitFunc_call(self, ctx:privetonParser.Func_callContext):
+        # Find the function
+        funcNode = self.contextTree.searchFunctionNode(ctx.NAME().__str__())
+        # Check for proper number of arguments
+        if len(ctx.var()) != len(funcNode.funcArgs):
+            raise Exception("Expecting "+str(len(funcNode.funcArgs))+" arguments for function "+ctx.NAME().__str__()+" got "+str(len(ctx.var()))+" instead.")
+        # Set the arguments from call as values in the function argument map
+        for varArg, argName in zip(ctx.var(), funcNode.funcArgs):
+            funcNode.funcArgs[argName] = self.castVarToProperType(varArg)
+
+        # Run the function
+        self.contextTree.enterAndAddChildToCurrentNode(funcNode.ctx, NodeType.FUNCTION_CALL)
+        self.visitChildren(funcNode.ctx)
+        # Leave the function context
+        self.contextTree.leaveChildNode()
+
+        # print("Found function "+funcNode.ctx.NAME().__str__())
+        # self.visitChildren(funcNode.ctx)
 
     def visitElse_block(self, ctx:privetonParser.Else_blockContext):
         if self.contextTree.currentNode.isBlocked():
@@ -80,10 +99,13 @@ class privetonVisitorExtended(privetonVisitor):
                 self.contextTree.addExpression(ctx, temp)
             # ONE VAR
             elif ctx.var() is not None:
+                # Internal variable
                 if ctx.var().NAME() is not None:
                     self.contextTree.addExpression(ctx, self.contextTree.searchVariable(ctx.var().getText()))
+                # External variable
                 elif ctx.var().outer_name() is not None:
                     self.contextTree.addExpression(ctx, self.contextTree.searchOuterVariable(ctx.var().outer_name().NAME().getText()))
+                # Actually a constant. The names aren't perfect...
                 else:
                     self.contextTree.addExpression(ctx, self.castVarToProperType(ctx.var()))
             else:

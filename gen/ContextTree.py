@@ -1,16 +1,35 @@
 from enum import Enum
 
+from gen.privetonParser import privetonParser
+
+
 class NodeType(Enum):
     LOOP = 1
     IF_BLOCK = 2
     OTHER = 3
     ELSE_BLOCK = 4
+    FUNCTION = 5
+    FUNCTION_CALL = 6
 
 class ContextTree:
     def __init__(self):
         self.nodes = [ContextTreeNode(None, None, NodeType.OTHER)]
+        self.functionNodes = {}
         self.currentNode = self.nodes[0]
         self.depth = 0  # used for debug
+
+    def addFunctionNode(self, ctx:privetonParser.Fun_defContext):
+        funcName = ctx.NAME().__str__()
+        # Saving function in a global map
+        self.functionNodes[funcName] = ContextTreeNode(ctx, None, NodeType.FUNCTION)
+        # Saving function argument names with None values
+        for varArg in ctx.var():
+            self.functionNodes[funcName].funcArgs[varArg.getText()] = None
+
+    def searchFunctionNode(self, funcName):
+        if funcName in self.functionNodes:
+            return self.functionNodes[funcName]
+        raise Exception("Function with name "+str(funcName)+" does not exit.")
 
     def enterAndAddChildToCurrentNode(self, ctx, type):
         self.currentNode.children.append(ContextTreeNode(ctx, self.currentNode, type))
@@ -42,21 +61,15 @@ class ContextTree:
     def addExpression(self, ctx, value):
         self.currentNode.addExpression(ctx, value)
 
-    # def addCondition(self, ctx, value):
-    #     self.currentNode.conditionContext = ctx
-    #     self.currentNode.conditionValue = value
-    #
-    # def getConditionValue(self):
-    #     if self.currentNode.conditionValue is not None and self.currentNode.conditionContext is not None:
-    #         return self.currentNode.conditionValue
-    #
-    # def startConditionEvaluation(self):
-    #     self.currentNode.evaluating = True
-    #
-    # def endConditionEvaluation(self):
-    #     self.currentNode.evaluating = False
-    #
     def searchVariable(self, variableName):
+        # Search in function context, if currently in a function
+        if self.currentNode.type == NodeType.FUNCTION_CALL:
+            # Find the function that is being ran, through name stored in the call that is being executed
+            funcNode = self.functionNodes[self.currentNode.ctx.NAME().__str__()]
+            # Check if function contains the name that is used, if so return the value.
+            if variableName in funcNode.funcArgs:
+                return funcNode.funcArgs[variableName]
+        # Search in local context
         if variableName in self.currentNode.variable_names_map:
             return self.currentNode.variable_names_map[variableName]
         raise Exception("VARIABLE WITH NAME " + str(variableName) + " NOT FOUND")
@@ -88,22 +101,14 @@ class ContextTreeNode:
         self.type = type
         self.children = []
 
-    #     self.parent = parent
-    #     self.children = []
-    #     self.ctx = ctx
-    #     self.entering = entering
-    #
         self.expressions_value_map = {}
         self.variable_names_map = {}
 
         self.conditionNode = None
-    #     self.conditionReevaluationSteps = []
-    #
-    #     self.repeating = False
-    #     self.reevaluating = False
-    #     self.evaluating = True
-    #
+
         self.blocked = False
+
+        self.funcArgs = {}
 
     def addVariable(self, name, value):
         self.variable_names_map[name] = value
