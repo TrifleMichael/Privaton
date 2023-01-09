@@ -1,8 +1,5 @@
-a = 1;
-if (True): {
-
-    a = 7;
-    print(a);
-    print(parent::a);
-
+def f(x): {
+    return x;
 };
+
+print(f(5) + f(3));

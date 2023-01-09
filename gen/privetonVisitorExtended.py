@@ -8,6 +8,18 @@ class privetonVisitorExtended(privetonVisitor):
     def __init__(self):
         self.contextTree = ContextTree()
 
+    def visitReturn_call(self, ctx:privetonParser.Return_callContext):
+        if not self.contextTree.currentNode.isBlocked():
+            # Evaluate value of return
+            self.visitChildren(ctx)
+            # Find value of the evaluation
+            returnEvaluation = self.contextTree.searchExpression(ctx.expr())
+            # Find the function call to be assigned value
+            functionCallCtx = self.contextTree.findCurrentFunctionCallCtx()
+            # Set the value of the call to the evaluation
+            self.contextTree.functionCallEvaluations[functionCallCtx] = returnEvaluation
+            # TODO: Block further processing of the call
+
     def visitFun_def(self, ctx:privetonParser.Fun_defContext):
         self.contextTree.addFunctionNode(ctx)
 
@@ -19,16 +31,17 @@ class privetonVisitorExtended(privetonVisitor):
             raise Exception("Expecting "+str(len(funcNode.funcArgs))+" arguments for function "+ctx.NAME().__str__()+" got "+str(len(ctx.var()))+" instead.")
         # Set the arguments from call as values in the function argument map
         for varArg, argName in zip(ctx.var(), funcNode.funcArgs):
-            funcNode.funcArgs[argName] = self.castVarToProperType(varArg)
+            try:
+                funcNode.funcArgs[argName] = self.castVarToProperType(varArg)
+            except:
+                raise Exception("Argument could not be evaluated in call: "+str(ctx.getText()))
 
         # Run the function
-        self.contextTree.enterAndAddChildToCurrentNode(funcNode.ctx, NodeType.FUNCTION_CALL)
+        self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.FUNCTION_CALL)
+        # self.contextTree.enterAndAddChildToCurrentNode(funcNode.ctx, NodeType.FUNCTION_CALL)
         self.visitChildren(funcNode.ctx)
         # Leave the function context
         self.contextTree.leaveChildNode()
-
-        # print("Found function "+funcNode.ctx.NAME().__str__())
-        # self.visitChildren(funcNode.ctx)
 
     def visitElse_block(self, ctx:privetonParser.Else_blockContext):
         if self.contextTree.currentNode.isBlocked():
@@ -116,11 +129,16 @@ class privetonVisitorExtended(privetonVisitor):
     def castVarToProperType(self, ctx):
         if ctx.INT() is not None:
             return int(ctx.getText())
-        if ctx.FLOAT() is not None:
+        elif ctx.FLOAT() is not None:
             return float(ctx.getText())
-        if ctx.STRING() is not None:
+        elif ctx.STRING() is not None:
             return ctx.getText()[1:-1]  # Removing the quotations from input
-        if ctx.LOGIC() is not None:
+        elif ctx.LOGIC() is not None:
             return ctx.getText() == "True"
-        if ctx.ARRAY() is not None:
-            pass
+        elif ctx.func_call() is not None:
+            if ctx.func_call() in self.contextTree.functionCallEvaluations:
+                return self.contextTree.functionCallEvaluations[ctx.func_call()]
+            else:
+                return None
+        else:
+            raise Exception("Internal error: No cast found for "+str(ctx.getText()))

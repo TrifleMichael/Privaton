@@ -188,3 +188,12 @@ class privetonListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by privetonParser#return_call.
+    def enterReturn_call(self, ctx:privetonParser.Return_callContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#return_call.
+    def exitReturn_call(self, ctx:privetonParser.Return_callContext):
+        pass
+
+

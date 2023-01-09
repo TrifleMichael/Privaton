@@ -15,8 +15,18 @@ class ContextTree:
     def __init__(self):
         self.nodes = [ContextTreeNode(None, None, NodeType.OTHER)]
         self.functionNodes = {}
+        self.functionCallEvaluations = {}
         self.currentNode = self.nodes[0]
         self.depth = 0  # used for debug
+
+    def findCurrentFunctionCallCtx(self):
+        node = self.currentNode
+        while node is not None and node.type is not NodeType.FUNCTION_CALL:
+            node = node.parent
+        if node is None:
+            raise Exception("Internal error, resolving function call failed.")
+        else:
+            return node.ctx
 
     def addFunctionNode(self, ctx:privetonParser.Fun_defContext):
         funcName = ctx.NAME().__str__()
