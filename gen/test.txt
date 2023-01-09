@@ -1,6 +1,9 @@
 def f(x): {
-    x = x + 1;
-    return x;
+    y = x;
+    if (parent::y > 0): {
+        return parent::y+1;
+    };
+    return y-1;
 };
 
-print(f(5) + f(3));
+print(f(0));

@@ -4,6 +4,7 @@ from gen.privetonListener import privetonListener
 from gen.privetonParser import privetonParser
 from gen.Environment import Environment
 
+# TODO: Add possibility to modify function variables when in deeper contexts
 class PrivetonListenerExtended(privetonListener):
     def __init__(self):
         self.environment = Environment()

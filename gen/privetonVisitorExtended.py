@@ -18,7 +18,7 @@ class privetonVisitorExtended(privetonVisitor):
             functionCallCtx = self.contextTree.findCurrentFunctionCallCtx()
             # Set the value of the call to the evaluation
             self.contextTree.functionCallEvaluations[functionCallCtx] = returnEvaluation
-            # TODO: Block further processing of the call
+            self.contextTree.blockedByReturn = True
 
     def visitFun_def(self, ctx:privetonParser.Fun_defContext):
         self.contextTree.addFunctionNode(ctx)
@@ -39,8 +39,9 @@ class privetonVisitorExtended(privetonVisitor):
 
             # Run the function
             self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.FUNCTION_CALL)
-            # self.contextTree.enterAndAddChildToCurrentNode(funcNode.ctx, NodeType.FUNCTION_CALL)
             self.visitChildren(funcNode.ctx)
+            # Unblock after the function returned
+            self.contextTree.blockedByReturn = False
             # Leave the function context
             self.contextTree.leaveChildNode()
 

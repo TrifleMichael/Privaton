@@ -96,7 +96,6 @@ class ContextTree:
                 return tempNode.variable_names_map[variableName]
             # Check in function call variables
             if tempNode.type == NodeType.FUNCTION_CALL:
-                print("SEARCHING FOR", variableName, "IN", tempNode.ctx.getText())
                 if variableName in tempNode.funcArgs:
                     return tempNode.funcArgs[variableName]
             tempNode = tempNode.parent
