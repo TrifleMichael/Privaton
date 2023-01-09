@@ -9,7 +9,7 @@ class privetonVisitorExtended(privetonVisitor):
         self.contextTree = ContextTree()
 
     def visitReturn_call(self, ctx:privetonParser.Return_callContext):
-        if not self.contextTree.currentNode.isBlocked():
+        if not self.contextTree.isCurrentlyBlocked():
             # Evaluate value of return
             self.visitChildren(ctx)
             # Find value of the evaluation
@@ -24,75 +24,79 @@ class privetonVisitorExtended(privetonVisitor):
         self.contextTree.addFunctionNode(ctx)
 
     def visitFunc_call(self, ctx:privetonParser.Func_callContext):
-        # Find the function
-        funcNode = self.contextTree.searchFunctionNode(ctx.NAME().__str__())
-        # Check for proper number of arguments
-        if len(ctx.var()) != len(funcNode.funcArgs):
-            raise Exception("Expecting "+str(len(funcNode.funcArgs))+" arguments for function "+ctx.NAME().__str__()+" got "+str(len(ctx.var()))+" instead.")
-        # Set the arguments from call as values in the function argument map
-        for varArg, argName in zip(ctx.var(), funcNode.funcArgs):
-            try:
-                funcNode.funcArgs[argName] = self.castVarToProperType(varArg)
-            except:
-                raise Exception("Argument could not be evaluated in call: "+str(ctx.getText()))
+        if not self.contextTree.isCurrentlyBlocked():
+            # Find the function
+            funcNode = self.contextTree.searchFunctionNode(ctx.NAME().__str__())
+            # Check for proper number of arguments
+            if len(ctx.var()) != len(funcNode.funcArgs):
+                raise Exception("Expecting "+str(len(funcNode.funcArgs))+" arguments for function "+ctx.NAME().__str__()+" got "+str(len(ctx.var()))+" instead.")
+            # Set the arguments from call as values in the function argument map
+            for varArg, argName in zip(ctx.var(), funcNode.funcArgs):
+                try:
+                    funcNode.funcArgs[argName] = self.castVarToProperType(varArg)
+                except:
+                    raise Exception("Argument could not be evaluated in call: "+str(ctx.getText()))
 
-        # Run the function
-        self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.FUNCTION_CALL)
-        # self.contextTree.enterAndAddChildToCurrentNode(funcNode.ctx, NodeType.FUNCTION_CALL)
-        self.visitChildren(funcNode.ctx)
-        # Leave the function context
-        self.contextTree.leaveChildNode()
+            # Run the function
+            self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.FUNCTION_CALL)
+            # self.contextTree.enterAndAddChildToCurrentNode(funcNode.ctx, NodeType.FUNCTION_CALL)
+            self.visitChildren(funcNode.ctx)
+            # Leave the function context
+            self.contextTree.leaveChildNode()
 
     def visitElse_block(self, ctx:privetonParser.Else_blockContext):
-        if self.contextTree.currentNode.isBlocked():
+        if not self.contextTree.isCurrentlyBlocked():
             self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.ELSE_BLOCK)
             self.visitChildren(ctx)
             self.contextTree.leaveChildNode()
 
     def visitWhile_block(self, ctx:privetonParser.While_blockContext):
-        self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.LOOP)
-        # Visit each node below that one. Condition will be executed first, and it will define if the rest will execute
-        self.visitChildren(ctx)
-        # Reevaluate condition after the loop ran
-        self.visitCondition(self.contextTree.currentNode.conditionNode.ctx)
-        # If condition is still met then run the block again
-        while not self.contextTree.currentNode.isBlocked():
-            # Run code block
-            self.visitCode_block(ctx.code_block())
-            # Check condition
+        if not self.contextTree.isCurrentlyBlocked():
+            self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.LOOP)
+            # Visit each node below that one. Condition will be executed first, and it will define if the rest will execute
+            self.visitChildren(ctx)
+            # Reevaluate condition after the loop ran
             self.visitCondition(self.contextTree.currentNode.conditionNode.ctx)
-        self.contextTree.leaveChildNode()
+            # If condition is still met then run the block again
+            while not self.contextTree.currentNode.isBlocked():
+                # Run code block
+                self.visitCode_block(ctx.code_block())
+                # Check condition
+                self.visitCondition(self.contextTree.currentNode.conditionNode.ctx)
+            self.contextTree.leaveChildNode()
 
     def visitIf_block(self, ctx:privetonParser.If_blockContext):
-        self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.IF_BLOCK)
-        self.visitChildren(ctx)
-        self.contextTree.leaveChildNode()
+        if not self.contextTree.isCurrentlyBlocked():
+            self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.IF_BLOCK)
+            self.visitChildren(ctx)
+            self.contextTree.leaveChildNode()
 
     def visitCondition(self, ctx: privetonParser.ConditionContext):
-        self.visitChildren(ctx)
-        if self.contextTree.currentNode.conditionNode is None:
-            self.contextTree.addConditionNodeToCurrentNode(ctx)
-        evaluatedCondition = eval(str(self.contextTree.searchExpression(ctx.expr())))
-        self.contextTree.currentNode.blocked = not evaluatedCondition
+        if not self.contextTree.isCurrentlyBlocked():
+            self.visitChildren(ctx)
+            if self.contextTree.currentNode.conditionNode is None:
+                self.contextTree.addConditionNodeToCurrentNode(ctx)
+            evaluatedCondition = eval(str(self.contextTree.searchExpression(ctx.expr())))
+            self.contextTree.currentNode.blocked = not evaluatedCondition
 
     def visitShow(self, ctx: privetonParser.ShowContext):
-        self.visitChildren(ctx)
-        if not self.contextTree.currentNode.isBlocked():
+        if not self.contextTree.isCurrentlyBlocked():
+            self.visitChildren(ctx)
             print(self.contextTree.searchExpression(ctx.expr()))
 
     def visitLet(self, ctx:privetonParser.LetContext):
-        self.visitChildren(ctx)
-        if not self.contextTree.currentNode.isBlocked():
+        if not self.contextTree.isCurrentlyBlocked():
+            self.visitChildren(ctx)
             if ctx.NAME() is not None:
                 self.contextTree.addVariable(ctx.NAME().__str__(), self.contextTree.searchExpression(ctx.expr()))
             if ctx.outer_name() is not None:
                 self.contextTree.modifyOuterVariable(ctx.outer_name().NAME().__str__(), self.contextTree.searchExpression(ctx.expr()))
 
     def visitExpr(self, ctx: privetonParser.ExprContext):
-        self.visitChildren(ctx)
-        self.contextTree.addChildToCurrentNode(ctx, NodeType.OTHER)
+        if not self.contextTree.isCurrentlyBlocked():
+            self.visitChildren(ctx)
+            self.contextTree.addChildToCurrentNode(ctx, NodeType.OTHER)
 
-        if not self.contextTree.currentNode.isBlocked():
             # TWO EXPR
             if ctx.expr(0) is not None and ctx.expr(1) is not None:
                 string = ""

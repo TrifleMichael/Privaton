@@ -16,8 +16,12 @@ class ContextTree:
         self.nodes = [ContextTreeNode(None, None, NodeType.OTHER)]
         self.functionNodes = {}
         self.functionCallEvaluations = {}
+        self.blockedByReturn = False
         self.currentNode = self.nodes[0]
         self.depth = 0  # used for debug
+
+    def isCurrentlyBlocked(self):
+        return self.blockedByReturn or self.currentNode.isBlocked()
 
     def findCurrentFunctionCallCtx(self):
         node = self.currentNode
@@ -87,10 +91,17 @@ class ContextTree:
     def searchOuterVariable(self, variableName):
         tempNode = self.currentNode.parent
         while tempNode is not None:
+            # Check in normal variables
             if variableName in tempNode.variable_names_map:
                 return tempNode.variable_names_map[variableName]
+            # Check in function call variables
+            if tempNode.type == NodeType.FUNCTION_CALL:
+                print("SEARCHING FOR", variableName, "IN", tempNode.ctx.getText())
+                if variableName in tempNode.funcArgs:
+                    return tempNode.funcArgs[variableName]
             tempNode = tempNode.parent
         raise Exception("VARIABLE WITH NAME " + str(variableName) + " NOT FOUND IN OUTER SCOPE")
+
 
     def searchExpression(self, expression):
         tempNode = self.currentNode
