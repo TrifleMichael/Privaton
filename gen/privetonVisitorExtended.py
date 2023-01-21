@@ -110,7 +110,9 @@ class privetonVisitorExtended(privetonVisitor):
     def visitShow(self, ctx: privetonParser.ShowContext):
         if not self.contextTree.isCurrentlyBlocked():
             self.visitChildren(ctx)
-            print(self.contextTree.searchExpression(ctx.expr()))
+            for expr in ctx.expr():
+                print(self.contextTree.searchExpression(expr), end='')
+            print()
 
     def visitLet(self, ctx:privetonParser.LetContext):
         if not self.contextTree.isCurrentlyBlocked():

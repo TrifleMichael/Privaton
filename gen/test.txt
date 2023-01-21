@@ -3,3 +3,4 @@ class Test: {
 };
 
 a = class.Test;
+print("A", "B");

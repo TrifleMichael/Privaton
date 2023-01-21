@@ -6,7 +6,7 @@ statement : (let | show | if_block | while_block | fun_def | expr | return_call 
 
 let_object : NAME '=' object_declaration;
 let    :  (NAME | outer_name) '=' expr;
-show     : 'print(' expr ')';
+show     : 'print(' expr (',' expr)* ')';
 expr   : '('expr')' | expr priority_opr expr | expr non_priority_opr expr | var | '(' un_opr expr ')';
 
 if_block: 'if' condition ':' code_block (else_block)? ;

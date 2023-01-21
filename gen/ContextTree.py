@@ -57,7 +57,7 @@ class ContextTree:
 
     def addFunctionNode(self, ctx:privetonParser.Fun_defContext):
         funcName = ctx.NAME().__str__()
-        # Saving function in a global map
+        # Saving function in a global map # TODO: Switch to local map. Readjust search functions accordingly
         self.functionNodes[funcName] = ContextTreeNode(ctx, None, NodeType.FUNCTION)
         # Saving function argument names with None values
         for varArg in ctx.var():
