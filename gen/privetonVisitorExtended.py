@@ -46,7 +46,8 @@ class privetonVisitorExtended(privetonVisitor):
             self.contextTree.leaveChildNode()
 
     def visitElse_block(self, ctx:privetonParser.Else_blockContext):
-        if not self.contextTree.isCurrentlyBlocked():
+        # Run only if the context is block (original if)
+        if self.contextTree.isCurrentlyBlocked():
             self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.ELSE_BLOCK)
             self.visitChildren(ctx)
             self.contextTree.leaveChildNode()

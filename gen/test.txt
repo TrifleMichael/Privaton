@@ -1,9 +1,10 @@
 def f(x): {
     y = x;
     if (parent::y > 0): {
-        return parent::y+1;
+        return 1;
+    } else {
+        return 0;
     };
-    return y-1;
 };
 
-print(f(0));
+print(f(1));

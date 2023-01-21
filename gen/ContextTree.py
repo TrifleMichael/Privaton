@@ -20,6 +20,18 @@ class ContextTree:
         self.currentNode = self.nodes[0]
         self.depth = 0  # used for debug
 
+    # Used in debug
+    def explainBlock(self):
+        s = "---Explain Block---\nNode type: " + str(self.currentNode.type) + "\nReason for block: "
+        if self.blockedByReturn:
+            s += "Blocked by return"
+        elif self.currentNode.isBlocked():
+            s += "Other"
+        else:
+            s += "Invalid reason (something broke)"
+        s += "\n-------------------"
+        print(s)
+
     def isCurrentlyBlocked(self):
         return self.blockedByReturn or self.currentNode.isBlocked()
 
