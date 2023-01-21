@@ -55,13 +55,15 @@ class privetonVisitorExtended(privetonVisitor):
             funcNode = self.contextTree.searchFunctionNode(ctx.NAME().__str__())
             # Check for proper number of arguments
             if len(ctx.var()) != len(funcNode.funcArgs):
-                raise Exception("Expecting "+str(len(funcNode.funcArgs))+" arguments for function "+ctx.NAME().__str__()+" got "+str(len(ctx.var()))+" instead.")
+                print("Expecting "+str(len(funcNode.funcArgs))+" arguments for function "+ctx.NAME().__str__()+" got "+str(len(ctx.var()))+" instead.")
+                exit()
             # Set the arguments from call as values in the function argument map
             for varArg, argName in zip(ctx.var(), funcNode.funcArgs):
                 try:
                     funcNode.funcArgs[argName] = self.castVarToProperType(varArg)
                 except:
-                    raise Exception("Argument could not be evaluated in call: "+str(ctx.getText()))
+                    print("Argument could not be evaluated in call: "+str(ctx.getText()))
+                    exit()
 
             # Run the function
             self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.FUNCTION_CALL)
@@ -157,6 +159,7 @@ class privetonVisitorExtended(privetonVisitor):
                     self.contextTree.addExpression(ctx, self.castVarToProperType(ctx.var()))
             else:
                 print("INCORRECT EXPRESSION:", ctx.getText())
+                exit()
 
             # self.environment.evaluations.append(self.contextTree.searchExpression(ctx))
 
@@ -175,4 +178,5 @@ class privetonVisitorExtended(privetonVisitor):
             else:
                 return None
         else:
-            raise Exception("Internal error: No cast found for "+str(ctx.getText()))
+            print("Internal error: No cast found for "+str(ctx.getText()))
+            exit()

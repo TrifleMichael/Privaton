@@ -1,6 +1,0 @@
-class Test: {
-    print("Sample text");
-};
-
-a = class.Test;
-print("A", "B");

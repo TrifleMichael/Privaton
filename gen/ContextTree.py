@@ -51,7 +51,8 @@ class ContextTree:
         while node is not None and node.type is not NodeType.FUNCTION_CALL:
             node = node.parent
         if node is None:
-            raise Exception("Internal error, resolving function call failed.")
+            print("Internal error, resolving function call failed.")
+            exit()
         else:
             return node.ctx
 
@@ -66,7 +67,8 @@ class ContextTree:
     def searchFunctionNode(self, funcName):
         if funcName in self.functionNodes:
             return self.functionNodes[funcName]
-        raise Exception("Function with name "+str(funcName)+" does not exit.")
+        print("Function with name "+str(funcName)+" does not exit.")
+        exit()
 
     def enterAndAddChildToCurrentNode(self, ctx, type):
         self.currentNode.children.append(ContextTreeNode(ctx, self.currentNode, type))
@@ -89,7 +91,8 @@ class ContextTree:
                 node.variable_names_map[name] = value
                 return
             node = node.parent
-        raise Exception("No variable "+str(name)+" found in outer scope.")
+        print("No variable "+str(name)+" found in outer scope.")
+        exit()
         # self.currentNode.addVariable(name, value)
 
     def addVariable(self, name, value):
@@ -109,7 +112,8 @@ class ContextTree:
         # Search in local context
         if variableName in self.currentNode.variable_names_map:
             return self.currentNode.variable_names_map[variableName]
-        raise Exception("VARIABLE WITH NAME " + str(variableName) + " NOT FOUND")
+        print("VARIABLE WITH NAME " + str(variableName) + " NOT FOUND")
+        exit()
 
     def searchOuterVariable(self, variableName):
         tempNode = self.currentNode.parent
@@ -122,7 +126,8 @@ class ContextTree:
                 if variableName in tempNode.funcArgs:
                     return tempNode.funcArgs[variableName]
             tempNode = tempNode.parent
-        raise Exception("VARIABLE WITH NAME " + str(variableName) + " NOT FOUND IN OUTER SCOPE")
+        print("VARIABLE WITH NAME " + str(variableName) + " NOT FOUND IN OUTER SCOPE")
+        exit()
 
 
     def searchExpression(self, expression):
@@ -131,7 +136,8 @@ class ContextTree:
             if expression in tempNode.expressions_value_map:
                 return tempNode.expressions_value_map[expression]
             tempNode = tempNode.parent
-        raise Exception("EXPRESSION: " + str(expression.getText()) + " NOT FOUND")
+        print("EXPRESSION: " + str(expression.getText()) + " NOT FOUND")
+        exit()
 
     def addConditionNodeToCurrentNode(self, conditionCtx):
         self.currentNode.conditionNode = ContextTreeNode(conditionCtx, self.currentNode, NodeType.OTHER)
