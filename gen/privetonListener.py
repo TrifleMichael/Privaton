@@ -26,6 +26,15 @@ class privetonListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by privetonParser#let_object.
+    def enterLet_object(self, ctx:privetonParser.Let_objectContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#let_object.
+    def exitLet_object(self, ctx:privetonParser.Let_objectContext):
+        pass
+
+
     # Enter a parse tree produced by privetonParser#let.
     def enterLet(self, ctx:privetonParser.LetContext):
         pass
@@ -152,15 +161,6 @@ class privetonListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by privetonParser#array.
-    def enterArray(self, ctx:privetonParser.ArrayContext):
-        pass
-
-    # Exit a parse tree produced by privetonParser#array.
-    def exitArray(self, ctx:privetonParser.ArrayContext):
-        pass
-
-
     # Enter a parse tree produced by privetonParser#fun_def.
     def enterFun_def(self, ctx:privetonParser.Fun_defContext):
         pass
@@ -176,6 +176,24 @@ class privetonListener(ParseTreeListener):
 
     # Exit a parse tree produced by privetonParser#func_call.
     def exitFunc_call(self, ctx:privetonParser.Func_callContext):
+        pass
+
+
+    # Enter a parse tree produced by privetonParser#class_def.
+    def enterClass_def(self, ctx:privetonParser.Class_defContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#class_def.
+    def exitClass_def(self, ctx:privetonParser.Class_defContext):
+        pass
+
+
+    # Enter a parse tree produced by privetonParser#object_declaration.
+    def enterObject_declaration(self, ctx:privetonParser.Object_declarationContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#object_declaration.
+    def exitObject_declaration(self, ctx:privetonParser.Object_declarationContext):
         pass
 
 

@@ -8,6 +8,32 @@ class privetonVisitorExtended(privetonVisitor):
     def __init__(self):
         self.contextTree = ContextTree()
 
+    def visitLet_object(self, ctx:privetonParser.Let_objectContext):
+        if not self.contextTree.isCurrentlyBlocked():
+            self.visitChildren(ctx)
+            # The actual assignment is performed in object_declaration
+
+    def visitObject_declaration(self, ctx:privetonParser.Object_declarationContext):
+        # TODO: Double check this code
+        if not self.contextTree.isCurrentlyBlocked():
+            # Find class declaration
+            classCtx = self.contextTree.findClassContext(ctx.NAME().getText())
+            # Enter class declaration, with object initialization context
+            self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.OBJECT)
+            # Run child nodes in class declaration
+            self.visitChildren(classCtx)
+            # Save the node, it will be used in a moment
+            objectNode = self.contextTree.currentNode
+            # Exit object initialization context
+            self.contextTree.leaveChildNode()
+            # Save object name and reference in local dictionary
+            self.contextTree.currentNode.object_names_map[ctx.NAME().getText()] = objectNode
+
+    def visitClass_def(self, ctx:privetonParser.Class_defContext):
+        # Add class node to global class dictionary
+        self.contextTree.classNodes[ctx.NAME().getText()] = ctx # TODO: Rename class nodes to contexts, or change contexts to nodes
+        # print("ADDING", ctx.NAME(), "AS", ctx.getText(), "IN NODE", self.contextTree.currentNode.type)
+
     def visitReturn_call(self, ctx:privetonParser.Return_callContext):
         if not self.contextTree.isCurrentlyBlocked():
             # Evaluate value of return

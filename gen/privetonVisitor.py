@@ -19,6 +19,11 @@ class privetonVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by privetonParser#let_object.
+    def visitLet_object(self, ctx:privetonParser.Let_objectContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by privetonParser#let.
     def visitLet(self, ctx:privetonParser.LetContext):
         return self.visitChildren(ctx)
@@ -89,11 +94,6 @@ class privetonVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by privetonParser#array.
-    def visitArray(self, ctx:privetonParser.ArrayContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by privetonParser#fun_def.
     def visitFun_def(self, ctx:privetonParser.Fun_defContext):
         return self.visitChildren(ctx)
@@ -101,6 +101,16 @@ class privetonVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by privetonParser#func_call.
     def visitFunc_call(self, ctx:privetonParser.Func_callContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by privetonParser#class_def.
+    def visitClass_def(self, ctx:privetonParser.Class_defContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by privetonParser#object_declaration.
+    def visitObject_declaration(self, ctx:privetonParser.Object_declarationContext):
         return self.visitChildren(ctx)
 
 

@@ -6,19 +6,30 @@ from gen.privetonParser import privetonParser
 class NodeType(Enum):
     LOOP = 1
     IF_BLOCK = 2
-    OTHER = 3
+    BASE = 3
     ELSE_BLOCK = 4
     FUNCTION = 5
     FUNCTION_CALL = 6
+    CLASS = 7
+    OBJECT = 8
+    OTHER = 9
 
 class ContextTree:
     def __init__(self):
-        self.nodes = [ContextTreeNode(None, None, NodeType.OTHER)]
+        self.nodes = [ContextTreeNode(None, None, NodeType.BASE)]
+        self.classNodes = {}
         self.functionNodes = {}
         self.functionCallEvaluations = {}
         self.blockedByReturn = False
         self.currentNode = self.nodes[0]
         self.depth = 0  # used for debug
+
+    def findClassContext(self, name):
+        if name in self.classNodes:
+            return self.classNodes[name]
+        else:
+            print("Cannot find class with name:", name)
+            exit()
 
     # Used in debug
     def explainBlock(self):
@@ -135,6 +146,7 @@ class ContextTreeNode:
 
         self.expressions_value_map = {}
         self.variable_names_map = {}
+        self.object_names_map = {}
 
         self.conditionNode = None
 
