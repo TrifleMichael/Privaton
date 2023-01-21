@@ -39,7 +39,7 @@ class ContextTree:
         elif self.currentNode.isBlocked():
             s += "Other"
         else:
-            s += "Invalid reason (something broke)"
+            s += "Invalid reason (something broke, or is not actualy blocked)"
         s += "\n-------------------"
         print(s)
 
@@ -101,19 +101,28 @@ class ContextTree:
     def addExpression(self, ctx, value):
         self.currentNode.addExpression(ctx, value)
 
-    def searchVariable(self, variableName):
-        # Search in function context, if currently in a function
-        if self.currentNode.type == NodeType.FUNCTION_CALL:
+    def searchVariableInFunctionContext(self, node, variableName):
+        # Checks if current node is function call context, if so searches for the variable in it
+        if node.type == NodeType.FUNCTION_CALL:
             # Find the function that is being ran, through name stored in the call that is being executed
-            funcNode = self.functionNodes[self.currentNode.ctx.NAME().__str__()]
+            funcNode = self.functionNodes[node.ctx.NAME().__str__()]
             # Check if function contains the name that is used, if so return the value.
             if variableName in funcNode.funcArgs:
                 return funcNode.funcArgs[variableName]
+        return None
+
+    def searchVariable(self, variableName):
+        # Try to find it in current context, if it's a function context
+        maybeVariable = self.searchVariableInFunctionContext(self.currentNode, variableName)
+        if maybeVariable is not None:
+            return maybeVariable
+
         # Search in local context
         if variableName in self.currentNode.variable_names_map:
             return self.currentNode.variable_names_map[variableName]
-        print("VARIABLE WITH NAME " + str(variableName) + " NOT FOUND")
-        exit()
+
+        # Search in external context
+        return self.searchOuterVariable(variableName)
 
     def searchOuterVariable(self, variableName):
         tempNode = self.currentNode.parent
@@ -121,14 +130,14 @@ class ContextTree:
             # Check in normal variables
             if variableName in tempNode.variable_names_map:
                 return tempNode.variable_names_map[variableName]
-            # Check in function call variables
-            if tempNode.type == NodeType.FUNCTION_CALL:
-                if variableName in tempNode.funcArgs:
-                    return tempNode.funcArgs[variableName]
+
+            maybeVariable = self.searchVariableInFunctionContext(tempNode, variableName)
+            if maybeVariable is not None:
+                return maybeVariable
+
             tempNode = tempNode.parent
         print("VARIABLE WITH NAME " + str(variableName) + " NOT FOUND IN OUTER SCOPE")
         exit()
-
 
     def searchExpression(self, expression):
         tempNode = self.currentNode
