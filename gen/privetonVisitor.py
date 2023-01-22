@@ -19,6 +19,11 @@ class privetonVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by privetonParser#comment.
+    def visitComment(self, ctx:privetonParser.CommentContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by privetonParser#let_object.
     def visitLet_object(self, ctx:privetonParser.Let_objectContext):
         return self.visitChildren(ctx)

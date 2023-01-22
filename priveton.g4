@@ -2,7 +2,9 @@ grammar priveton;
 
 program : statement+;
 
-statement : (let | show | if_block | while_block | fun_def | expr | return_call | class_def | let_object | let_object_variable) ';';
+statement : (comment | (let | show | if_block | while_block | fun_def | expr | return_call | class_def | let_object | let_object_variable) ';');
+
+comment : '#' ~'#'* '#';
 
 let_object : NAME '=' object_declaration;
 let_object_variable : NAME'.'NAME '=' expr;

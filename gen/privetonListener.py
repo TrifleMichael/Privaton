@@ -26,6 +26,15 @@ class privetonListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by privetonParser#comment.
+    def enterComment(self, ctx:privetonParser.CommentContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#comment.
+    def exitComment(self, ctx:privetonParser.CommentContext):
+        pass
+
+
     # Enter a parse tree produced by privetonParser#let_object.
     def enterLet_object(self, ctx:privetonParser.Let_objectContext):
         pass
