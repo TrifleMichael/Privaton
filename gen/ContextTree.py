@@ -36,11 +36,29 @@ class ContextTree:
     def findObjectVariable(self, ctx:privetonParser.Object_variable_callContext):
         # Find object node
         objectNode = self.findObjectNode(ctx.NAME(0).getText())
-        # Find the value of the variable
+
+        # Find the value of the variable in base variables
         variableName = ctx.NAME(1).getText()
         if variableName in objectNode.variable_names_map:
             return objectNode.variable_names_map[variableName]
+
+        # Check if last object node exists and is the same class as the referenced object
+        lastObjectNode = self.lastObjectNode()
+        if lastObjectNode is not None and lastObjectNode.ctx.NAME().getText() == objectNode.ctx.NAME().getText():
+            # Check for variable in the private variables of the referenced object
+            if variableName in objectNode.private_variable_names_map:
+                return objectNode.private_variable_names_map[variableName]
+
         print("Variable", variableName, "not found for object with name", ctx.NAME(0).getText())
+        exit()
+
+    def lastObjectNode(self):
+        node = self.currentNode
+        while node is not None:
+            if node.type == NodeType.OBJECT:
+                return node
+            node = node.parent
+        return node
 
     def findClassContext(self, name):
         if name in self.classContexts:
@@ -185,6 +203,7 @@ class ContextTreeNode:
 
         self.expressions_value_map = {}
         self.variable_names_map = {}
+        self.private_variable_names_map = {}
         self.objectNodesMap = {}
 
         self.functionNodes = {}

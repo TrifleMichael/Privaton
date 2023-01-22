@@ -2,7 +2,5 @@ class T: {
     x = 1;
 };
 
-t = class.T;
-t.x = 2;
-
+t = object.T;
 print(t.x);

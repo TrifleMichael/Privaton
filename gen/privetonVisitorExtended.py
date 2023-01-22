@@ -135,10 +135,16 @@ class privetonVisitorExtended(privetonVisitor):
     def visitLet(self, ctx:privetonParser.LetContext):
         if not self.contextTree.isCurrentlyBlocked():
             self.visitChildren(ctx)
-            if ctx.NAME() is not None:
-                self.contextTree.addVariable(ctx.NAME().__str__(), self.contextTree.searchExpression(ctx.expr()))
-            if ctx.outer_name() is not None:
-                self.contextTree.modifyOuterVariable(ctx.outer_name().NAME().__str__(), self.contextTree.searchExpression(ctx.expr()))
+            expressionValue = self.contextTree.searchExpression(ctx.expr())
+            if ctx.PRIVATE_TAG() is not None:
+                self.contextTree.currentNode.private_variable_names_map[ctx.NAME().__str__()] = expressionValue
+                if ctx.outer_name() is not None:
+                    print("Cannot create a outer private variable:", ctx.NAME().__str__())
+                    exit()
+            elif ctx.NAME() is not None:
+                self.contextTree.addVariable(ctx.NAME().__str__(), expressionValue)
+            elif ctx.outer_name() is not None:
+                self.contextTree.modifyOuterVariable(ctx.outer_name().NAME().__str__(), expressionValue)
 
     def visitExpr(self, ctx: privetonParser.ExprContext):
         if not self.contextTree.isCurrentlyBlocked():

@@ -6,7 +6,8 @@ statement : (let | show | if_block | while_block | fun_def | expr | return_call 
 
 let_object : NAME '=' object_declaration;
 let_object_variable : NAME'.'NAME '=' expr;
-let    :  (NAME | outer_name) '=' expr;
+let    : PRIVATE_TAG? (NAME | outer_name) '=' expr;
+
 show     : 'print(' expr (',' expr)* ')';
 expr   : '('expr')' | expr priority_opr expr | expr non_priority_opr expr | var | '(' un_opr expr ')';
 
@@ -29,7 +30,7 @@ fun_def : 'def' NAME'(' (var',')* var')' ':' code_block | 'def' NAME'():' code_b
 func_call : NAME'(' (var',')* var')' | NAME'()';
 
 class_def : 'class' NAME ':' code_block;
-object_declaration : 'class.' NAME;
+object_declaration : 'object.' NAME;
 object_variable_call : NAME'.'NAME;
 
 outer_name : 'parent::'NAME;
@@ -38,6 +39,7 @@ return_call : 'return' expr;
 AND_OPR: 'and';
 OR_OPR: 'or';
 
+PRIVATE_TAG : 'private';
 LOGIC : 'True' | 'False' ;
 LOG_NEG_OPR : '!';
 ADD_OPR : '+';
