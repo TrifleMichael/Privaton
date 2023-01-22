@@ -8,6 +8,22 @@ class privetonVisitorExtended(privetonVisitor):
     def __init__(self):
         self.contextTree = ContextTree()
 
+    def visitLet_object_variable(self, ctx:privetonParser.Let_object_variableContext):
+        if not self.contextTree.isCurrentlyBlocked():
+            # Visit the expression to evaluate it
+            self.visitChildren(ctx)
+            # Get the object node
+            objectNode = self.contextTree.findObjectNode(ctx.NAME(0).getText())
+            # Get the new value of the variable
+            newValue = self.contextTree.searchExpression(ctx.expr())
+            # Change the value of the variable within the object base node
+            variableName = ctx.NAME(1).getText()
+            if variableName in objectNode.variable_names_map:
+                objectNode.variable_names_map[variableName] = newValue
+            else:
+                print("Error,", variableName, "is not declared in object:", ctx.NAME(0).getText())
+                exit()
+
     def visitLet_object(self, ctx:privetonParser.Let_objectContext):
         if not self.contextTree.isCurrentlyBlocked():
             # Save the name of currently created object

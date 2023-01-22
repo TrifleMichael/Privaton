@@ -35,6 +35,15 @@ class privetonListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by privetonParser#let_object_variable.
+    def enterLet_object_variable(self, ctx:privetonParser.Let_object_variableContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#let_object_variable.
+    def exitLet_object_variable(self, ctx:privetonParser.Let_object_variableContext):
+        pass
+
+
     # Enter a parse tree produced by privetonParser#let.
     def enterLet(self, ctx:privetonParser.LetContext):
         pass

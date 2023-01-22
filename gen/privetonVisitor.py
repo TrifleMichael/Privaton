@@ -24,6 +24,11 @@ class privetonVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by privetonParser#let_object_variable.
+    def visitLet_object_variable(self, ctx:privetonParser.Let_object_variableContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by privetonParser#let.
     def visitLet(self, ctx:privetonParser.LetContext):
         return self.visitChildren(ctx)

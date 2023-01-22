@@ -2,9 +2,10 @@ grammar priveton;
 
 program : statement+;
 
-statement : (let | show | if_block | while_block | fun_def | expr | return_call | class_def | let_object) ';';
+statement : (let | show | if_block | while_block | fun_def | expr | return_call | class_def | let_object | let_object_variable) ';';
 
 let_object : NAME '=' object_declaration;
+let_object_variable : NAME'.'NAME '=' expr;
 let    :  (NAME | outer_name) '=' expr;
 show     : 'print(' expr (',' expr)* ')';
 expr   : '('expr')' | expr priority_opr expr | expr non_priority_opr expr | var | '(' un_opr expr ')';

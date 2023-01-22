@@ -1,7 +1,8 @@
 class T: {
     x = 1;
-    y = 3;
 };
 
 t = class.T;
-print(t.x + t.y); k
+t.x = 2;
+
+print(t.x);
