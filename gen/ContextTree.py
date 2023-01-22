@@ -13,6 +13,7 @@ class NodeType(Enum):
     CLASS = 7
     OBJECT = 8
     OTHER = 9
+    OBJECT_FUNCTION_CALL = 10
 
 class ContextTree:
     def __init__(self):
@@ -84,7 +85,7 @@ class ContextTree:
 
     def findCurrentFunctionCallCtx(self):
         node = self.currentNode
-        while node is not None and node.type is not NodeType.FUNCTION_CALL:
+        while node is not None and node.type is not NodeType.FUNCTION_CALL and node.type is not NodeType.OBJECT_FUNCTION_CALL:
             node = node.parent
         if node is None:
             print("Internal error, resolving function call failed.")
@@ -101,8 +102,8 @@ class ContextTree:
             if funcName in node.functionNodes:
                 return node.functionNodes[funcName]
             node = node.parent
-        print("Function with name "+str(funcName)+" does not exit.")
-        exit()
+        # print("Function with name "+funcName+" does not exit.")
+        # exit()
 
     def findFunctionEvaluation(self, ctx:privetonParser.Func_callContext):
         if ctx in self.functionCallEvaluations:
@@ -115,7 +116,12 @@ class ContextTree:
     def enterAndAddChildToCurrentNode(self, ctx, type):
         self.currentNode.children.append(ContextTreeNode(ctx, self.currentNode, type))
         self.currentNode = self.currentNode.children[-1]
-        self.depth += 1
+
+    def reenterChildNode(self, node):
+        if node not in self.currentNode.children:
+            self.currentNode.children.append(node)
+            node.parent = self.currentNode
+        self.currentNode = node
 
     def addChildToCurrentNode(self, ctx, type):
         self.currentNode.children.append(ContextTreeNode(ctx, self.currentNode, type))
@@ -145,11 +151,14 @@ class ContextTree:
 
     def searchVariableInFunctionContext(self, node, variableName):
         # Checks if current node is function call context, if so searches for the variable in it
-        if node.type == NodeType.FUNCTION_CALL:
+        if node.type == NodeType.FUNCTION_CALL or node.type == NodeType.OBJECT_FUNCTION_CALL:
             # Find the function that is being ran, through name stored in the call that is being executed
-            funcNode = self.searchFunctionNode(node.ctx.NAME().__str__())
+            if node.type == NodeType.FUNCTION_CALL:
+                funcNode = self.searchFunctionNode(node.ctx.NAME().__str__())
+            else:
+                funcNode = self.searchFunctionNode(node.ctx.NAME(1).__str__())
             # Check if function contains the name that is used, if so return the value.
-            if variableName in funcNode.funcArgs:
+            if funcNode is not None and variableName in funcNode.funcArgs:
                 return funcNode.funcArgs[variableName]
         return None
 
@@ -169,6 +178,7 @@ class ContextTree:
     def searchOuterVariable(self, variableName):
         tempNode = self.currentNode.parent
         while tempNode is not None:
+
             # Check in normal variables
             if variableName in tempNode.variable_names_map:
                 return tempNode.variable_names_map[variableName]
@@ -221,12 +231,6 @@ class ContextTreeNode:
         # Saving function argument names with None values
         for varArg in ctx.var():
             self.functionNodes[funcName].funcArgs[varArg.getText()] = None
-
-    def searchFunctionNode(self, funcName):
-        if funcName in self.functionNodes:
-            return self.functionNodes[funcName]
-        print("Function with name "+str(funcName)+" does not exit.")
-        exit()
 
     def addVariable(self, name, value):
         self.variable_names_map[name] = value

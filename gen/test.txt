@@ -1,6 +1,11 @@
 class T: {
     x = 1;
+    def f(): {
+        x = x+1;
+        print(x);
+        print("A");
+    };
 };
 
 t = object.T;
-print(t.x);
+t.f();

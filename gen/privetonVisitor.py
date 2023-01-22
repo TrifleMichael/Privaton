@@ -124,6 +124,11 @@ class privetonVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by privetonParser#object_function_call.
+    def visitObject_function_call(self, ctx:privetonParser.Object_function_callContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by privetonParser#outer_name.
     def visitOuter_name(self, ctx:privetonParser.Outer_nameContext):
         return self.visitChildren(ctx)

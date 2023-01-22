@@ -24,7 +24,7 @@ un_opr : neg_opr ;
 neg_opr : LOG_NEG_OPR | SUB_OPR;
 logic_opr : AND_OPR | OR_OPR | '>' | '<' | '>=' | '<=' | '==' | '!=';
 //arthm_opr : DIV_OPR | MUL_OPR |  ADD_OPR | SUB_OPR;
-var : outer_name | NAME | INT | FLOAT | STRING | LOGIC | func_call | object_variable_call ;
+var : outer_name | NAME | INT | FLOAT | STRING | LOGIC | func_call | object_variable_call | object_function_call;
 
 fun_def : 'def' NAME'(' (var',')* var')' ':' code_block | 'def' NAME'():' code_block;
 func_call : NAME'(' (var',')* var')' | NAME'()';
@@ -32,6 +32,7 @@ func_call : NAME'(' (var',')* var')' | NAME'()';
 class_def : 'class' NAME ':' code_block;
 object_declaration : 'object.' NAME;
 object_variable_call : NAME'.'NAME;
+object_function_call : NAME'.'NAME'(' (var',')* var')' | NAME'.'NAME'()';
 
 outer_name : 'parent::'NAME;
 return_call : 'return' expr;

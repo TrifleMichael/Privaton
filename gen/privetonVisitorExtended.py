@@ -8,6 +8,8 @@ class privetonVisitorExtended(privetonVisitor):
     def __init__(self):
         self.contextTree = ContextTree()
 
+    # TODO: Test if block for return works properly in nested functions
+
     def visitLet_object_variable(self, ctx:privetonParser.Let_object_variableContext):
         if not self.contextTree.isCurrentlyBlocked():
             # Visit the expression to evaluate it
@@ -87,6 +89,36 @@ class privetonVisitorExtended(privetonVisitor):
             # Unblock after the function returned
             self.contextTree.blockedByReturn = False
             # Leave the function context
+            self.contextTree.leaveChildNode()
+
+    def visitObject_function_call(self, ctx:privetonParser.Object_function_callContext):
+        if not self.contextTree.isCurrentlyBlocked():
+            # Find node of the object
+            objectNode = self.contextTree.findObjectNode(ctx.NAME(0).getText())
+            # Find the function within the object
+            funcNode = objectNode.functionNodes[ctx.NAME(1).__str__()]
+            # Check for proper number of arguments
+            if len(ctx.var()) != len(funcNode.funcArgs):
+                print("Expecting "+str(len(funcNode.funcArgs))+" arguments for function "+ctx.NAME().__str__()+" got "+str(len(ctx.var()))+" instead.")
+                exit()
+            # Set the arguments from call as values in the function argument map
+            for varArg, argName in zip(ctx.var(), funcNode.funcArgs):
+                try:
+                    funcNode.funcArgs[argName] = self.castVarToProperType(varArg)
+                except:
+                    print("Argument could not be evaluated in call: "+str(ctx.getText()))
+                    exit()
+
+            # Enter the object node
+            self.contextTree.reenterChildNode(objectNode)
+            # Run the function
+            self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.OBJECT_FUNCTION_CALL)
+            self.visitChildren(funcNode.ctx)
+            # Unblock after the function returned
+            self.contextTree.blockedByReturn = False
+            # Leave the function context
+            self.contextTree.leaveChildNode()
+            # Leave the object context
             self.contextTree.leaveChildNode()
 
     def visitElse_block(self, ctx:privetonParser.Else_blockContext):
@@ -194,7 +226,7 @@ class privetonVisitorExtended(privetonVisitor):
             return ctx.getText()[1:-1]  # Removing the quotations from input
         elif ctx.LOGIC() is not None:
             return ctx.getText() == "True"
-        elif ctx.func_call() is not None:
+        elif ctx.func_call() is not None or ctx.object_function_call() is not None:
             return self.contextTree.findFunctionEvaluation(ctx.func_call())
         elif ctx.object_variable_call() is not None:
             return self.contextTree.findObjectVariable(ctx.object_variable_call())
