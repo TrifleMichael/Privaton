@@ -44,6 +44,7 @@ class privetonVisitorExtended(privetonVisitor):
             functionCallCtx = self.contextTree.findCurrentFunctionCallCtx()
             # Set the value of the call to the evaluation
             self.contextTree.functionCallEvaluations[functionCallCtx] = returnEvaluation
+            # Block the execution of code until function call finishes
             self.contextTree.blockedByReturn = True
 
     def visitFun_def(self, ctx:privetonParser.Fun_defContext):
@@ -173,10 +174,9 @@ class privetonVisitorExtended(privetonVisitor):
         elif ctx.LOGIC() is not None:
             return ctx.getText() == "True"
         elif ctx.func_call() is not None:
-            if ctx.func_call() in self.contextTree.functionCallEvaluations:
-                return self.contextTree.functionCallEvaluations[ctx.func_call()]
-            else:
-                return None
+            return self.contextTree.findFunctionEvaluation(ctx.func_call())
+            # if ctx.func_call() in self.contextTree.functionCallEvaluations:
+            #     return self.contextTree.functionCallEvaluations[ctx.func_call()]
         else:
             print("Internal error: No cast found for "+str(ctx.getText()))
             exit()
