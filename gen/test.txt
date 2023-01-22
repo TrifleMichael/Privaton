@@ -3,17 +3,19 @@ class FibCalc: {
     f1 = 1;
 
     def fib(x): {
-        print("x: ", x);
         if (x == 0): {
             return f0;
         };
+
         if (x == 1): {
             return f1;
         };
 
-        return fib(x-1) + fib(x-2);
+        fc1 = object.FibCalc;
+        fc2 = object.FibCalc;
+        return fc1.fib(x-1) + fc2.fib(x-2);
     };
 };
 
 fc = object.FibCalc;
-print(fc.fib(2));
+print(fc.fib(7));

@@ -71,8 +71,10 @@ class privetonVisitorExtended(privetonVisitor):
         if not self.contextTree.isCurrentlyBlocked():
             # Evaluate expressions
             self.visitChildren(ctx)
-            # Find the function
+            # Find the function definition node
             funcNode = self.contextTree.searchFunctionNode(ctx.NAME().__str__())
+            # Enter function call node
+            self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.FUNCTION_CALL)
             # Check for proper number of arguments
             if len(ctx.expr()) != len(funcNode.funcArgs):
                 print("Expecting "+str(len(funcNode.funcArgs))+" arguments for function "+ctx.NAME().__str__()+" got "+str(len(ctx.expr()))+" instead.")
@@ -80,13 +82,12 @@ class privetonVisitorExtended(privetonVisitor):
             # Set the arguments from call as values in the function argument map
             for exprArg, argName in zip(ctx.expr(), funcNode.funcArgs):
                 try:
-                    funcNode.funcArgs[argName] = self.contextTree.searchExpression(exprArg)
+                    self.contextTree.currentNode.funcArgs[argName] = self.contextTree.searchExpression(exprArg)
                 except:
                     print("Argument could not be evaluated in function call: "+str(ctx.getText()))
                     exit()
 
             # Run the function
-            self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.FUNCTION_CALL)
             self.visitChildren(funcNode.ctx)
             # Unblock after the function returned
             self.contextTree.blockedByReturn = False
@@ -101,6 +102,10 @@ class privetonVisitorExtended(privetonVisitor):
             objectNode = self.contextTree.findObjectNode(ctx.NAME(0).getText())
             # Find the function within the object
             funcNode = objectNode.functionNodes[ctx.NAME(1).__str__()]
+            # Enter the object node
+            self.contextTree.reenterChildNode(objectNode)
+            # Enter function call node
+            self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.OBJECT_FUNCTION_CALL)
             # Check for proper number of arguments
             if len(ctx.expr()) != len(funcNode.funcArgs):
                 print("Expecting "+str(len(funcNode.funcArgs))+" arguments for function "+ctx.NAME().__str__()+" got "+str(len(ctx.expr()))+" instead.")
@@ -109,15 +114,12 @@ class privetonVisitorExtended(privetonVisitor):
             # Set the arguments from call as values in the function argument map
             for exprArg, argName in zip(ctx.expr(), funcNode.funcArgs):
                 try:
-                    funcNode.funcArgs[argName] = self.contextTree.searchExpression(exprArg)
+                    self.contextTree.currentNode.funcArgs[argName] = self.contextTree.searchExpression(exprArg)
                 except:
                     print("Argument", exprArg.getText(), "could not be evaluated in method call: "+str(ctx.getText()))
                     exit()
 
-            # Enter the object node
-            self.contextTree.reenterChildNode(objectNode)
             # Run the function
-            self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.OBJECT_FUNCTION_CALL)
             self.visitChildren(funcNode.ctx)
             # Unblock after the function returned
             self.contextTree.blockedByReturn = False

@@ -152,14 +152,8 @@ class ContextTree:
     def searchVariableInFunctionContext(self, node, variableName):
         # Checks if current node is function call context, if so searches for the variable in it
         if node.type == NodeType.FUNCTION_CALL or node.type == NodeType.OBJECT_FUNCTION_CALL:
-            # Find the function that is being ran, through name stored in the call that is being executed
-            if node.type == NodeType.FUNCTION_CALL:
-                funcNode = self.searchFunctionNode(node.ctx.NAME().__str__())
-            else:
-                funcNode = self.searchFunctionNode(node.ctx.NAME(1).__str__())
-            # Check if function contains the name that is used, if so return the value.
-            if funcNode is not None and variableName in funcNode.funcArgs:
-                return funcNode.funcArgs[variableName]
+            if variableName in node.funcArgs:
+                return node.funcArgs[variableName]
         return None
 
     def searchVariable(self, variableName):
