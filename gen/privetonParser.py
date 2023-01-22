@@ -91,11 +91,11 @@ def serializedATN():
         buf.write("\u00c9\3\2\2\2\u00c4\u00c5\7\26\2\2\u00c5\u00c6\7&\2\2")
         buf.write("\u00c6\u00c7\7\27\2\2\u00c7\u00c9\5\34\17\2\u00c8\u00b4")
         buf.write("\3\2\2\2\u00c8\u00c4\3\2\2\2\u00c9\'\3\2\2\2\u00ca\u00cb")
-        buf.write("\7&\2\2\u00cb\u00d1\7\t\2\2\u00cc\u00cd\5$\23\2\u00cd")
+        buf.write("\7&\2\2\u00cb\u00d1\7\t\2\2\u00cc\u00cd\5\16\b\2\u00cd")
         buf.write("\u00ce\7\7\2\2\u00ce\u00d0\3\2\2\2\u00cf\u00cc\3\2\2\2")
         buf.write("\u00d0\u00d3\3\2\2\2\u00d1\u00cf\3\2\2\2\u00d1\u00d2\3")
         buf.write("\2\2\2\u00d2\u00d4\3\2\2\2\u00d3\u00d1\3\2\2\2\u00d4\u00d5")
-        buf.write("\5$\23\2\u00d5\u00d6\7\b\2\2\u00d6\u00da\3\2\2\2\u00d7")
+        buf.write("\5\16\b\2\u00d5\u00d6\7\b\2\2\u00d6\u00da\3\2\2\2\u00d7")
         buf.write("\u00d8\7&\2\2\u00d8\u00da\7\30\2\2\u00d9\u00ca\3\2\2\2")
         buf.write("\u00d9\u00d7\3\2\2\2\u00da)\3\2\2\2\u00db\u00dc\7\31\2")
         buf.write("\2\u00dc\u00dd\7&\2\2\u00dd\u00de\7\13\2\2\u00de\u00df")
@@ -103,17 +103,17 @@ def serializedATN():
         buf.write("\7&\2\2\u00e2-\3\2\2\2\u00e3\u00e4\7&\2\2\u00e4\u00e5")
         buf.write("\7\5\2\2\u00e5\u00e6\7&\2\2\u00e6/\3\2\2\2\u00e7\u00e8")
         buf.write("\7&\2\2\u00e8\u00e9\7\5\2\2\u00e9\u00ea\7&\2\2\u00ea\u00f0")
-        buf.write("\7\t\2\2\u00eb\u00ec\5$\23\2\u00ec\u00ed\7\7\2\2\u00ed")
+        buf.write("\7\t\2\2\u00eb\u00ec\5\16\b\2\u00ec\u00ed\7\7\2\2\u00ed")
         buf.write("\u00ef\3\2\2\2\u00ee\u00eb\3\2\2\2\u00ef\u00f2\3\2\2\2")
         buf.write("\u00f0\u00ee\3\2\2\2\u00f0\u00f1\3\2\2\2\u00f1\u00f3\3")
-        buf.write("\2\2\2\u00f2\u00f0\3\2\2\2\u00f3\u00f4\5$\23\2\u00f4\u00f5")
-        buf.write("\7\b\2\2\u00f5\u00fb\3\2\2\2\u00f6\u00f7\7&\2\2\u00f7")
-        buf.write("\u00f8\7\5\2\2\u00f8\u00f9\7&\2\2\u00f9\u00fb\7\30\2\2")
-        buf.write("\u00fa\u00e7\3\2\2\2\u00fa\u00f6\3\2\2\2\u00fb\61\3\2")
-        buf.write("\2\2\u00fc\u00fd\7\33\2\2\u00fd\u00fe\7&\2\2\u00fe\63")
-        buf.write("\3\2\2\2\u00ff\u0100\7\34\2\2\u0100\u0101\5\16\b\2\u0101")
-        buf.write("\65\3\2\2\2\249ETXcs}\177\u0087\u0096\u009e\u00b2\u00bc")
-        buf.write("\u00c8\u00d1\u00d9\u00f0\u00fa")
+        buf.write("\2\2\2\u00f2\u00f0\3\2\2\2\u00f3\u00f4\5\16\b\2\u00f4")
+        buf.write("\u00f5\7\b\2\2\u00f5\u00fb\3\2\2\2\u00f6\u00f7\7&\2\2")
+        buf.write("\u00f7\u00f8\7\5\2\2\u00f8\u00f9\7&\2\2\u00f9\u00fb\7")
+        buf.write("\30\2\2\u00fa\u00e7\3\2\2\2\u00fa\u00f6\3\2\2\2\u00fb")
+        buf.write("\61\3\2\2\2\u00fc\u00fd\7\33\2\2\u00fd\u00fe\7&\2\2\u00fe")
+        buf.write("\63\3\2\2\2\u00ff\u0100\7\34\2\2\u0100\u0101\5\16\b\2")
+        buf.write("\u0101\65\3\2\2\2\249ETXcs}\177\u0087\u0096\u009e\u00b2")
+        buf.write("\u00bc\u00c8\u00d1\u00d9\u00f0\u00fa")
         return buf.getvalue()
 
 
@@ -1618,11 +1618,11 @@ class privetonParser ( Parser ):
         def NAME(self):
             return self.getToken(privetonParser.NAME, 0)
 
-        def var(self, i:int=None):
+        def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(privetonParser.VarContext)
+                return self.getTypedRuleContexts(privetonParser.ExprContext)
             else:
-                return self.getTypedRuleContext(privetonParser.VarContext,i)
+                return self.getTypedRuleContext(privetonParser.ExprContext,i)
 
 
         def getRuleIndex(self):
@@ -1665,7 +1665,7 @@ class privetonParser ( Parser ):
                 while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                     if _alt==1:
                         self.state = 202
-                        self.var()
+                        self.expr(0)
                         self.state = 203
                         self.match(privetonParser.T__4) 
                     self.state = 209
@@ -1673,7 +1673,7 @@ class privetonParser ( Parser ):
                     _alt = self._interp.adaptivePredict(self._input,14,self._ctx)
 
                 self.state = 210
-                self.var()
+                self.expr(0)
                 self.state = 211
                 self.match(privetonParser.T__5)
                 pass
@@ -1861,11 +1861,11 @@ class privetonParser ( Parser ):
             else:
                 return self.getToken(privetonParser.NAME, i)
 
-        def var(self, i:int=None):
+        def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(privetonParser.VarContext)
+                return self.getTypedRuleContexts(privetonParser.ExprContext)
             else:
-                return self.getTypedRuleContext(privetonParser.VarContext,i)
+                return self.getTypedRuleContext(privetonParser.ExprContext,i)
 
 
         def getRuleIndex(self):
@@ -1912,7 +1912,7 @@ class privetonParser ( Parser ):
                 while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                     if _alt==1:
                         self.state = 233
-                        self.var()
+                        self.expr(0)
                         self.state = 234
                         self.match(privetonParser.T__4) 
                     self.state = 240
@@ -1920,7 +1920,7 @@ class privetonParser ( Parser ):
                     _alt = self._interp.adaptivePredict(self._input,16,self._ctx)
 
                 self.state = 241
-                self.var()
+                self.expr(0)
                 self.state = 242
                 self.match(privetonParser.T__5)
                 pass

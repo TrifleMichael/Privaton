@@ -27,12 +27,12 @@ logic_opr : AND_OPR | OR_OPR | '>' | '<' | '>=' | '<=' | '==' | '!=';
 var : outer_name | NAME | INT | FLOAT | STRING | LOGIC | func_call | object_variable_call | object_function_call;
 
 fun_def : 'def' NAME'(' (var',')* var')' ':' code_block | 'def' NAME'():' code_block;
-func_call : NAME'(' (var',')* var')' | NAME'()';
+func_call : NAME'(' (expr',')* expr')' | NAME'()';
 
 class_def : 'class' NAME ':' code_block;
 object_declaration : 'object.' NAME;
 object_variable_call : NAME'.'NAME;
-object_function_call : NAME'.'NAME'(' (var',')* var')' | NAME'.'NAME'()';
+object_function_call : NAME'.'NAME'(' (expr',')* expr')' | NAME'.'NAME'()';
 
 outer_name : 'parent::'NAME;
 return_call : 'return' expr;

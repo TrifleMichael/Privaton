@@ -69,18 +69,20 @@ class privetonVisitorExtended(privetonVisitor):
 
     def visitFunc_call(self, ctx:privetonParser.Func_callContext):
         if not self.contextTree.isCurrentlyBlocked():
+            # Evaluate expressions
+            self.visitChildren(ctx)
             # Find the function
             funcNode = self.contextTree.searchFunctionNode(ctx.NAME().__str__())
             # Check for proper number of arguments
-            if len(ctx.var()) != len(funcNode.funcArgs):
-                print("Expecting "+str(len(funcNode.funcArgs))+" arguments for function "+ctx.NAME().__str__()+" got "+str(len(ctx.var()))+" instead.")
+            if len(ctx.expr()) != len(funcNode.funcArgs):
+                print("Expecting "+str(len(funcNode.funcArgs))+" arguments for function "+ctx.NAME().__str__()+" got "+str(len(ctx.expr()))+" instead.")
                 exit()
             # Set the arguments from call as values in the function argument map
-            for varArg, argName in zip(ctx.var(), funcNode.funcArgs):
+            for exprArg, argName in zip(ctx.expr(), funcNode.funcArgs):
                 try:
-                    funcNode.funcArgs[argName] = self.castVarToProperType(varArg)
+                    funcNode.funcArgs[argName] = self.contextTree.searchExpression(exprArg)
                 except:
-                    print("Argument could not be evaluated in call: "+str(ctx.getText()))
+                    print("Argument could not be evaluated in function call: "+str(ctx.getText()))
                     exit()
 
             # Run the function
@@ -93,20 +95,23 @@ class privetonVisitorExtended(privetonVisitor):
 
     def visitObject_function_call(self, ctx:privetonParser.Object_function_callContext):
         if not self.contextTree.isCurrentlyBlocked():
+            # Evaluate expressions
+            self.visitChildren(ctx)
             # Find node of the object
             objectNode = self.contextTree.findObjectNode(ctx.NAME(0).getText())
             # Find the function within the object
             funcNode = objectNode.functionNodes[ctx.NAME(1).__str__()]
             # Check for proper number of arguments
-            if len(ctx.var()) != len(funcNode.funcArgs):
-                print("Expecting "+str(len(funcNode.funcArgs))+" arguments for function "+ctx.NAME().__str__()+" got "+str(len(ctx.var()))+" instead.")
+            if len(ctx.expr()) != len(funcNode.funcArgs):
+                print("Expecting "+str(len(funcNode.funcArgs))+" arguments for function "+ctx.NAME().__str__()+" got "+str(len(ctx.expr()))+" instead.")
                 exit()
+
             # Set the arguments from call as values in the function argument map
-            for varArg, argName in zip(ctx.var(), funcNode.funcArgs):
+            for exprArg, argName in zip(ctx.expr(), funcNode.funcArgs):
                 try:
-                    funcNode.funcArgs[argName] = self.castVarToProperType(varArg)
+                    funcNode.funcArgs[argName] = self.contextTree.searchExpression(exprArg)
                 except:
-                    print("Argument could not be evaluated in call: "+str(ctx.getText()))
+                    print("Argument", exprArg.getText(), "could not be evaluated in method call: "+str(ctx.getText()))
                     exit()
 
             # Enter the object node
