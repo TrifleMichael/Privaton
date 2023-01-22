@@ -226,8 +226,10 @@ class privetonVisitorExtended(privetonVisitor):
             return ctx.getText()[1:-1]  # Removing the quotations from input
         elif ctx.LOGIC() is not None:
             return ctx.getText() == "True"
-        elif ctx.func_call() is not None or ctx.object_function_call() is not None:
+        elif ctx.func_call() is not None:
             return self.contextTree.findFunctionEvaluation(ctx.func_call())
+        elif ctx.object_function_call() is not None:
+            return self.contextTree.findFunctionEvaluation(ctx.object_function_call())
         elif ctx.object_variable_call() is not None:
             return self.contextTree.findObjectVariable(ctx.object_variable_call())
         else:
