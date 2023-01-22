@@ -197,6 +197,15 @@ class privetonListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by privetonParser#object_variable_call.
+    def enterObject_variable_call(self, ctx:privetonParser.Object_variable_callContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#object_variable_call.
+    def exitObject_variable_call(self, ctx:privetonParser.Object_variable_callContext):
+        pass
+
+
     # Enter a parse tree produced by privetonParser#outer_name.
     def enterOuter_name(self, ctx:privetonParser.Outer_nameContext):
         pass

@@ -17,15 +17,34 @@ class NodeType(Enum):
 class ContextTree:
     def __init__(self):
         self.nodes = [ContextTreeNode(None, None, NodeType.BASE)]
-        self.classNodes = {}
+        self.classContexts = {}
         self.blockedByReturn = False
         self.currentNode = self.nodes[0]
         self.depth = 0  # used for debug
         self.functionCallEvaluations = {}
+        self.letObjectLastName = None
+
+    def findObjectNode(self, objectName):
+        node = self.currentNode
+        while node is not None:
+            if objectName in node.objectNodesMap:
+                return node.objectNodesMap[objectName]
+            node = node.parent
+        print("Cannot find object with name:", objectName)
+        exit()
+
+    def findObjectVariable(self, ctx:privetonParser.Object_variable_callContext):
+        # Find object node
+        objectNode = self.findObjectNode(ctx.NAME(0).getText())
+        # Find the value of the variable
+        variableName = ctx.NAME(1).getText()
+        if variableName in objectNode.variable_names_map:
+            return objectNode.variable_names_map[variableName]
+        print("Variable", variableName, "not found for object with name", ctx.NAME(0).getText())
 
     def findClassContext(self, name):
-        if name in self.classNodes:
-            return self.classNodes[name]
+        if name in self.classContexts:
+            return self.classContexts[name]
         else:
             print("Cannot find class with name:", name)
             exit()
@@ -69,8 +88,10 @@ class ContextTree:
 
     def findFunctionEvaluation(self, ctx:privetonParser.Func_callContext):
         if ctx in self.functionCallEvaluations:
+            # Return evaluation if it exists (function has a 'return')
             return self.functionCallEvaluations[ctx]
         else:
+            # Functions return None by default
             return None
 
     def enterAndAddChildToCurrentNode(self, ctx, type):
@@ -164,7 +185,7 @@ class ContextTreeNode:
 
         self.expressions_value_map = {}
         self.variable_names_map = {}
-        self.object_names_map = {}
+        self.objectNodesMap = {}
 
         self.functionNodes = {}
 

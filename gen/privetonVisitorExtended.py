@@ -10,29 +10,28 @@ class privetonVisitorExtended(privetonVisitor):
 
     def visitLet_object(self, ctx:privetonParser.Let_objectContext):
         if not self.contextTree.isCurrentlyBlocked():
+            # Save the name of currently created object
+            self.contextTree.letObjectLastName = ctx.NAME().getText()
             self.visitChildren(ctx)
             # The actual assignment is performed in object_declaration
 
     def visitObject_declaration(self, ctx:privetonParser.Object_declarationContext):
-        # TODO: Double check this code
         if not self.contextTree.isCurrentlyBlocked():
             # Find class declaration
             classCtx = self.contextTree.findClassContext(ctx.NAME().getText())
             # Enter class declaration, with object initialization context
             self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.OBJECT)
+            # Save object name and reference in local dictionary. Use the name saved in visitLet_object().
+            parent = self.contextTree.currentNode.parent
+            parent.objectNodesMap[self.contextTree.letObjectLastName] = self.contextTree.currentNode
             # Run child nodes in class declaration
             self.visitChildren(classCtx)
-            # Save the node, it will be used in a moment
-            objectNode = self.contextTree.currentNode
             # Exit object initialization context
             self.contextTree.leaveChildNode()
-            # Save object name and reference in local dictionary
-            self.contextTree.currentNode.object_names_map[ctx.NAME().getText()] = objectNode
 
     def visitClass_def(self, ctx:privetonParser.Class_defContext):
-        # Add class node to global class dictionary
-        self.contextTree.classNodes[ctx.NAME().getText()] = ctx # TODO: Rename class nodes to contexts, or change contexts to nodes
-        # print("ADDING", ctx.NAME(), "AS", ctx.getText(), "IN NODE", self.contextTree.currentNode.type)
+        # Add class context to global class dictionary
+        self.contextTree.classContexts[ctx.NAME().getText()] = ctx
 
     def visitReturn_call(self, ctx:privetonParser.Return_callContext):
         if not self.contextTree.isCurrentlyBlocked():
@@ -155,7 +154,7 @@ class privetonVisitorExtended(privetonVisitor):
                 # External variable
                 elif ctx.var().outer_name() is not None:
                     self.contextTree.addExpression(ctx, self.contextTree.searchOuterVariable(ctx.var().outer_name().NAME().getText()))
-                # Actually a constant. The names aren't perfect...
+                # Other types handled in caster below
                 else:
                     self.contextTree.addExpression(ctx, self.castVarToProperType(ctx.var()))
             else:
@@ -175,8 +174,8 @@ class privetonVisitorExtended(privetonVisitor):
             return ctx.getText() == "True"
         elif ctx.func_call() is not None:
             return self.contextTree.findFunctionEvaluation(ctx.func_call())
-            # if ctx.func_call() in self.contextTree.functionCallEvaluations:
-            #     return self.contextTree.functionCallEvaluations[ctx.func_call()]
+        elif ctx.object_variable_call() is not None:
+            return self.contextTree.findObjectVariable(ctx.object_variable_call())
         else:
             print("Internal error: No cast found for "+str(ctx.getText()))
             exit()
