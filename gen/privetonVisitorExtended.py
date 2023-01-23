@@ -73,6 +73,9 @@ class privetonVisitorExtended(privetonVisitor):
             funcNode = self.contextTree.searchFunctionNode(ctx.NAME().__str__())
             # Enter function call node
             self.contextTree.enterAndAddChildToCurrentNode(ctx, NodeType.FUNCTION_CALL)
+            if funcNode is None:
+                print("Function with name", ctx.NAME().__str__(), "not found in this scope.");
+                exit();
             # Check for proper number of arguments
             if len(ctx.expr()) != len(funcNode.funcArgs):
                 print("Expecting "+str(len(funcNode.funcArgs))+" arguments for function "+ctx.NAME().__str__()+" got "+str(len(ctx.expr()))+" instead.")
