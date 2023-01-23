@@ -13,9 +13,9 @@ let    : PRIVATE_TAG? (NAME | outer_name) '=' expr;
 show     : 'print(' expr (',' expr)* ')';
 expr   : '('expr')' | expr priority_opr expr | expr non_priority_opr expr | var | '(' un_opr expr ')';
 
-if_block: 'if' condition ':' code_block (else_block)? ;
+if_block: 'if' condition code_block (else_block)? ;
 else_block: 'else' code_block;
-while_block: 'while' condition ':' code_block;
+while_block: 'while' condition code_block;
 
 priority_opr : MUL_OPR | DIV_OPR;
 non_priority_opr : ADD_OPR | SUB_OPR | logic_opr;
