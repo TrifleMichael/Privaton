@@ -8,8 +8,6 @@ class privetonVisitorExtended(privetonVisitor):
     def __init__(self):
         self.contextTree = ContextTree()
 
-    # TODO: Test if block for return works properly in nested functions
-
     def visitLet_object_variable(self, ctx:privetonParser.Let_object_variableContext):
         if not self.contextTree.isCurrentlyBlocked():
             # Visit the expression to evaluate it
@@ -102,6 +100,17 @@ class privetonVisitorExtended(privetonVisitor):
             objectNode = self.contextTree.findObjectNode(ctx.NAME(0).getText())
             # Find the function within the object
             funcNode = objectNode.functionNodes[ctx.NAME(1).__str__()]
+
+            # If the function is private allow it to run only if operating in the context of the same object
+            if funcNode.private:
+                lastObjectNode = self.contextTree.lastObjectNode()
+                if lastObjectNode is None:
+                    print("Private function", ctx.NAME(1).getText(), "cannot be ran in this context.")
+                    exit()
+                if lastObjectNode.ctx.NAME().getText() != objectNode.ctx.NAME().getText():
+                    print("Private function", ctx.NAME(1).getText(), "cannot be ran in this context.")
+                    exit()
+
             # Enter the object node
             self.contextTree.reenterChildNode(objectNode)
             # Enter function call node

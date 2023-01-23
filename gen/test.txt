@@ -1,12 +1,14 @@
 
 class Z: {
-    private x = 1;
-
-    def f(): {
+    x = 1;
+    private def f(): {
         print(x);
+    };
+
+    def g(): {
+        f();
     };
 };
 
 z = object.Z;
-
-z.f();
+z.g();

@@ -241,10 +241,15 @@ class ContextTreeNode:
 
         self.funcArgs = {}
 
+        self.private = False
+
     def addFunctionNode(self, ctx:privetonParser.Fun_defContext):
         funcName = ctx.NAME().__str__()
         # Saving function in a local map
         self.functionNodes[funcName] = ContextTreeNode(ctx, None, NodeType.FUNCTION)
+        # Marking as private if needed
+        if ctx.PRIVATE_TAG() is not None:
+            self.functionNodes[funcName].private = True
         # Saving function argument names with None values
         for varArg in ctx.var():
             self.functionNodes[funcName].funcArgs[varArg.getText()] = None
