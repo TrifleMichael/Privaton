@@ -26,6 +26,33 @@ class privetonListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by privetonParser#comment.
+    def enterComment(self, ctx:privetonParser.CommentContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#comment.
+    def exitComment(self, ctx:privetonParser.CommentContext):
+        pass
+
+
+    # Enter a parse tree produced by privetonParser#let_object.
+    def enterLet_object(self, ctx:privetonParser.Let_objectContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#let_object.
+    def exitLet_object(self, ctx:privetonParser.Let_objectContext):
+        pass
+
+
+    # Enter a parse tree produced by privetonParser#let_object_variable.
+    def enterLet_object_variable(self, ctx:privetonParser.Let_object_variableContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#let_object_variable.
+    def exitLet_object_variable(self, ctx:privetonParser.Let_object_variableContext):
+        pass
+
+
     # Enter a parse tree produced by privetonParser#let.
     def enterLet(self, ctx:privetonParser.LetContext):
         pass
@@ -44,21 +71,12 @@ class privetonListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by privetonParser#large_expr.
-    def enterLarge_expr(self, ctx:privetonParser.Large_exprContext):
+    # Enter a parse tree produced by privetonParser#expr.
+    def enterExpr(self, ctx:privetonParser.ExprContext):
         pass
 
-    # Exit a parse tree produced by privetonParser#large_expr.
-    def exitLarge_expr(self, ctx:privetonParser.Large_exprContext):
-        pass
-
-
-    # Enter a parse tree produced by privetonParser#small_expr.
-    def enterSmall_expr(self, ctx:privetonParser.Small_exprContext):
-        pass
-
-    # Exit a parse tree produced by privetonParser#small_expr.
-    def exitSmall_expr(self, ctx:privetonParser.Small_exprContext):
+    # Exit a parse tree produced by privetonParser#expr.
+    def exitExpr(self, ctx:privetonParser.ExprContext):
         pass
 
 
@@ -86,6 +104,24 @@ class privetonListener(ParseTreeListener):
 
     # Exit a parse tree produced by privetonParser#while_block.
     def exitWhile_block(self, ctx:privetonParser.While_blockContext):
+        pass
+
+
+    # Enter a parse tree produced by privetonParser#priority_opr.
+    def enterPriority_opr(self, ctx:privetonParser.Priority_oprContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#priority_opr.
+    def exitPriority_opr(self, ctx:privetonParser.Priority_oprContext):
+        pass
+
+
+    # Enter a parse tree produced by privetonParser#non_priority_opr.
+    def enterNon_priority_opr(self, ctx:privetonParser.Non_priority_oprContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#non_priority_opr.
+    def exitNon_priority_opr(self, ctx:privetonParser.Non_priority_oprContext):
         pass
 
 
@@ -125,30 +161,12 @@ class privetonListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by privetonParser#bin_opr.
-    def enterBin_opr(self, ctx:privetonParser.Bin_oprContext):
-        pass
-
-    # Exit a parse tree produced by privetonParser#bin_opr.
-    def exitBin_opr(self, ctx:privetonParser.Bin_oprContext):
-        pass
-
-
     # Enter a parse tree produced by privetonParser#logic_opr.
     def enterLogic_opr(self, ctx:privetonParser.Logic_oprContext):
         pass
 
     # Exit a parse tree produced by privetonParser#logic_opr.
     def exitLogic_opr(self, ctx:privetonParser.Logic_oprContext):
-        pass
-
-
-    # Enter a parse tree produced by privetonParser#arthm_opr.
-    def enterArthm_opr(self, ctx:privetonParser.Arthm_oprContext):
-        pass
-
-    # Exit a parse tree produced by privetonParser#arthm_opr.
-    def exitArthm_opr(self, ctx:privetonParser.Arthm_oprContext):
         pass
 
 
@@ -161,21 +179,75 @@ class privetonListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by privetonParser#array.
-    def enterArray(self, ctx:privetonParser.ArrayContext):
-        pass
-
-    # Exit a parse tree produced by privetonParser#array.
-    def exitArray(self, ctx:privetonParser.ArrayContext):
-        pass
-
-
     # Enter a parse tree produced by privetonParser#fun_def.
     def enterFun_def(self, ctx:privetonParser.Fun_defContext):
         pass
 
     # Exit a parse tree produced by privetonParser#fun_def.
     def exitFun_def(self, ctx:privetonParser.Fun_defContext):
+        pass
+
+
+    # Enter a parse tree produced by privetonParser#func_call.
+    def enterFunc_call(self, ctx:privetonParser.Func_callContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#func_call.
+    def exitFunc_call(self, ctx:privetonParser.Func_callContext):
+        pass
+
+
+    # Enter a parse tree produced by privetonParser#class_def.
+    def enterClass_def(self, ctx:privetonParser.Class_defContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#class_def.
+    def exitClass_def(self, ctx:privetonParser.Class_defContext):
+        pass
+
+
+    # Enter a parse tree produced by privetonParser#object_declaration.
+    def enterObject_declaration(self, ctx:privetonParser.Object_declarationContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#object_declaration.
+    def exitObject_declaration(self, ctx:privetonParser.Object_declarationContext):
+        pass
+
+
+    # Enter a parse tree produced by privetonParser#object_variable_call.
+    def enterObject_variable_call(self, ctx:privetonParser.Object_variable_callContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#object_variable_call.
+    def exitObject_variable_call(self, ctx:privetonParser.Object_variable_callContext):
+        pass
+
+
+    # Enter a parse tree produced by privetonParser#object_function_call.
+    def enterObject_function_call(self, ctx:privetonParser.Object_function_callContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#object_function_call.
+    def exitObject_function_call(self, ctx:privetonParser.Object_function_callContext):
+        pass
+
+
+    # Enter a parse tree produced by privetonParser#outer_name.
+    def enterOuter_name(self, ctx:privetonParser.Outer_nameContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#outer_name.
+    def exitOuter_name(self, ctx:privetonParser.Outer_nameContext):
+        pass
+
+
+    # Enter a parse tree produced by privetonParser#return_call.
+    def enterReturn_call(self, ctx:privetonParser.Return_callContext):
+        pass
+
+    # Exit a parse tree produced by privetonParser#return_call.
+    def exitReturn_call(self, ctx:privetonParser.Return_callContext):
         pass
 
 

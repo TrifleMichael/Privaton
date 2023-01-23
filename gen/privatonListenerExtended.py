@@ -1,105 +1,147 @@
 import privetonParser
+from gen.ContextTree import ContextTree
 from gen.privetonListener import privetonListener
 from gen.privetonParser import privetonParser
+from gen.Environment import Environment
 
-
+# TODO: Add possibility to modify function variables when in deeper contexts
 class PrivetonListenerExtended(privetonListener):
-    variableNamesMap = {}
-    If_block2EvaluationMap = {}
-    blockIgnoreMap = {}
-    exprValMap = {}
-    ignoreBlockDepth = 0  # How many blocks up, including the one analyzed, will be ignored (used by nested ifs)
+    def __init__(self):
+        self.environment = Environment()
+        self.contextTree = ContextTree()
+
+    def reevaluateCondition(self):
+        self.contextTree.currentNode.reevaluating = True
+        for ctx, entering in self.contextTree.currentNode.conditionReevaluationSteps:
+            if entering:
+                ctx.enterRule(self)
+            else:
+                ctx.exitRule(self)
+        self.contextTree.currentNode.reevaluating = False
+
+    def enterWhile_block(self, ctx:privetonParser.While_blockContext):
+        self.contextTree.enterAndAddChildToCurrentNode(ctx, True)
+
+    def exitWhile_block(self, ctx:privetonParser.While_blockContext):
+        # Reevaluate condition, if still True then repeat loop
+        self.contextTree.currentNode.repeating = True
+        self.reevaluateCondition()
+        while not self.contextTree.currentNode.isBlocked():
+            for child in self.contextTree.currentNode.children:
+                entry = child.ctx
+                if child.entering:
+                    entry.enterRule(self)
+                else:
+                    entry.exitRule(self)
+            self.reevaluateCondition()
+
+        self.contextTree.currentNode.repeating = False
+        self.contextTree.leaveChildNode()
+        if not self.contextTree.currentNode.repeating:
+            self.contextTree.addChildToCurrentNode(ctx, False)
+
 
     def exitLet(self, ctx: privetonParser.LetContext):
-        if self.ignoreBlockDepth == 0:
-            self.variableNamesMap[ctx.NAME().__str__()] = self.exprValMap[ctx.large_expr()]
-
-    def exitLarge_expr(self, ctx:privetonParser.Large_exprContext):
-        if self.ignoreBlockDepth == 0:
-            if ctx.large_expr() is not None:
-                self.exprValMap[ctx] = eval(str(self.exprValMap[ctx.small_expr()]) + " " + ctx.bin_opr().getText() + " " + str(self.exprValMap[ctx.large_expr()]))
-            else:
-                self.exprValMap[ctx] = self.exprValMap[ctx.small_expr()]
+        self.contextTree.addChildToCurrentNode(ctx, False)
+        if not self.contextTree.currentNode.isBlocked():
+            self.contextTree.addVariable(ctx.NAME().__str__(), self.contextTree.searchExpression(ctx.expr()))
 
     # Result of small_expr will be saved to tmp
-    def exitSmall_expr(self, ctx: privetonParser.Small_exprContext):
-        if self.ignoreBlockDepth == 0:
-            # SINGLE VALUE
-            if ctx.bin_opr() is None:
+    def exitExpr(self, ctx: privetonParser.ExprContext):
+        if self.contextTree.currentNode.evaluating:
+            self.contextTree.currentNode.conditionReevaluationSteps.append([ctx, False])  # Context - Entering
+        self.contextTree.addChildToCurrentNode(ctx, False)
 
-                if isinstance(ctx.var(), privetonParser.VarContext):
-                    # Single NAME
-                    if ctx.var().NAME() is not None:
-                        tmp = self.variableNamesMap[ctx.var().NAME().__str__()]
+        if not self.contextTree.currentNode.isBlocked():
+            # TWO EXPR
+            if ctx.expr(0) is not None and ctx.expr(1) is not None:
+                string = ""
+                string += str(self.contextTree.searchExpression(ctx.expr(0)))
+                if ctx.priority_opr() is not None:
+                    string += ctx.priority_opr().getText()
+                else:
+                    string += ctx.non_priority_opr().getText()
+                string += str(self.contextTree.searchExpression(ctx.expr(1)))
+                self.contextTree.addExpression(ctx, eval(string))
+            # ONE EXPR
+            elif ctx.expr(0) is not None and ctx.expr(1) is None and ctx.un_opr() is None:
+                self.contextTree.addExpression(ctx, self.contextTree.searchExpression(ctx.expr(0)))
+            # UNARY OPR
+            elif ctx.un_opr() is not None:
+                temp = eval(ctx.un_opr().getText() + str(self.contextTree.searchExpression(ctx.expr(0))))
+                self.contextTree.addExpression(ctx, temp)
+            # ONE VAR
+            elif ctx.var() is not None:
+                if ctx.var().NAME() is not None:
+                    self.contextTree.addExpression(ctx, self.contextTree.searchVariable(ctx.var().getText()))
+                else:
+                    self.contextTree.addExpression(ctx, self.castVarToProperType(ctx.var()))
+            else:
+                print("INCORRECT EXPRESSION:", ctx.getText())
 
-                    # Single Array
-                    elif ctx.var().array() is not None:
-                        tmp = eval(ctx.var().getText())
-
-                    elif ctx.var().STRING() is not None:
-                        tmp = ctx.var().STRING().getText()[1:-1]
-
-                    # Single constant
-                    else:
-                        tmp = ctx.var().getText()
-
-            # Binop
-            if ctx.bin_opr() is not None:
-                if isinstance(ctx.var(), privetonParser.VarContext):
-                    # NAME and binop
-                    if ctx.var().NAME() is not None:
-                        secondTmp = self.variableNamesMap[ctx.var().NAME().__str__()]
-                        tmp = eval(str(secondTmp) + " " + ctx.bin_opr().getText() + " " + str(self.exprValMap[ctx.small_expr()]))
-
-                    # TODO: Add array addition
-
-                    # Constant and binop
-                    else:
-                        tmp = eval(ctx.var().getText() + " " + ctx.bin_opr().getText() + " " + str(self.exprValMap[ctx.small_expr()]))
-
-            self.exprValMap[ctx] = tmp
+            self.environment.evaluations.append(self.contextTree.searchExpression(ctx))
         else:
-            # print("Block ignored")
             pass
+
+    def castVarToProperType(self, ctx):
+        if ctx.INT() is not None:
+            return int(ctx.getText())
+        if ctx.FLOAT() is not None:
+            return float(ctx.getText())
+        if ctx.STRING() is not None:
+            return ctx.getText()[1:-1]  # Removing the quotations from input
+        if ctx.LOGIC() is not None:
+            return ctx.getText() == "True"
+        if ctx.ARRAY() is not None:
+            pass
+
+    def enterCondition(self, ctx:privetonParser.ConditionContext):
+        self.contextTree.startConditionEvaluation()
 
     # After evaluating condition, mark the evaluation of If_block
     def exitCondition(self, ctx: privetonParser.ConditionContext):
-        if isinstance(ctx.parentCtx, privetonParser.If_blockContext):
-            if eval(str(self.exprValMap[ctx.large_expr()])):  # This way for every type of self.tmpL
-                self.If_block2EvaluationMap[ctx.parentCtx] = True
-            else:
-                self.If_block2EvaluationMap[ctx.parentCtx] = False
+        if self.contextTree.currentNode.evaluating:
+            self.contextTree.currentNode.conditionReevaluationSteps.append([ctx, False])  # Context - Entering
+
+        self.contextTree.currentNode.conditionContext = ctx
+        if eval(str(self.contextTree.searchExpression(ctx.expr()))):  # This way for every type of self.tmpL
+            self.contextTree.currentNode.unblockNode()
+        else:
+            self.contextTree.currentNode.blockNode()
+        self.contextTree.endConditionEvaluation()
 
     def exitShow(self, ctx: privetonParser.ShowContext):
-        if self.ignoreBlockDepth == 0:
-            print(self.exprValMap[ctx.large_expr()])
+        self.contextTree.addChildToCurrentNode(ctx, False)
+
+        if not self.contextTree.currentNode.isBlocked():
+            print(self.contextTree.searchExpression(ctx.expr()))
+
+    def enterIf_block(self, ctx:privetonParser.If_blockContext):
+        self.contextTree.enterAndAddChildToCurrentNode(ctx, True)
+
+    def exitIf_block(self, ctx:privetonParser.If_blockContext):
+        self.contextTree.leaveChildNode()
 
     # Set global flag if entering a block that should be ignored
     def enterCode_block(self, ctx: privetonParser.Code_blockContext):
-        if isinstance(ctx.parentCtx, privetonParser.If_blockContext):
-            if self.If_block2EvaluationMap[ctx.parentCtx]:
-                pass
-            else:
-                # Condition tied to this block is False. Ignore this block.
-                self.ignoreBlockDepth += 1
+        self.contextTree.addChildToCurrentNode(ctx, True)
 
     # If leaving block of ignored code then stop ignoring code
     def exitCode_block(self, ctx: privetonParser.Code_blockContext):
-        if isinstance(ctx.parentCtx, privetonParser.If_blockContext):
-            if not self.If_block2EvaluationMap[ctx.parentCtx]:
-                # Ignored block stopped being processed.
-                self.ignoreBlockDepth -= 1
+        self.contextTree.addChildToCurrentNode(ctx, False)
 
-    def enterElse_block(self, ctx:privetonParser.Else_blockContext):
-        if self.If_block2EvaluationMap[ctx.parentCtx]:
+    def enterElse_block(self, ctx: privetonParser.Else_blockContext):
+        self.addToLoopList(ctx, True)
+        if self.environment.condition_evaluation_map[ctx.parentCtx.condition()]:
             # Evaluation of parent 'if' succeeded so the next code block gets ignored
-            self.ignoreBlockDepth += 1
+            self.environment.ignore_block_depth += 1
 
-    def exitElse_block(self, ctx:privetonParser.Else_blockContext):
-        if self.If_block2EvaluationMap[ctx.parentCtx]:
+    def exitElse_block(self, ctx: privetonParser.Else_blockContext):
+        self.addToLoopList(ctx)
+        if self.environment.condition_evaluation_map[ctx.parentCtx.condition()]:
             # Evaluation of parent 'if' succeeded, and code block got processed, so time to restore previous block depth
-            self.ignoreBlockDepth -= 1
+            self.environment.ignore_block_depth -= 1
 
     # Clean expression to value map after leaving statement
-    def exitStatement(self, ctx:privetonParser.StatementContext):
-        self.exprValMap = {}
+    def exitStatement(self, ctx: privetonParser.StatementContext):
+        self.environment.expressions_value_map = {}
