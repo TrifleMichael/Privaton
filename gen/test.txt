@@ -1,14 +1,35 @@
+# Example comment #
 
-class Z: {
-    x = 1;
-    private def f(): {
-        print(x);
-    };
+# Example
+  multiline
+  comment #
 
-    def g(): {
-        f();
+class FibCalc {
+    f0 = 0;
+    f1 = 1;
+
+    def fib(x) {
+        if (x == 0): {
+            return f0;
+        };
+
+        if (x == 1): {
+            return f1;
+        };
+
+        fc1 = object.FibCalc;
+        fc2 = object.FibCalc;
+        return fc1.fib(x-1) + fc2.fib(x-2);
     };
 };
 
-z = object.Z;
-z.g();
+
+def main() {
+    print("x");
+};
+
+fc = object.FibCalc;
+print(fc.fib(7));
+
+
+

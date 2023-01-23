@@ -196,6 +196,7 @@ class privetonVisitorExtended(privetonVisitor):
 
     def visitExpr(self, ctx: privetonParser.ExprContext):
         if not self.contextTree.isCurrentlyBlocked():
+            debug = ctx.getText()
             self.visitChildren(ctx)
             self.contextTree.addChildToCurrentNode(ctx, NodeType.OTHER)
 

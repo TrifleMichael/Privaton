@@ -28,10 +28,10 @@ logic_opr : AND_OPR | OR_OPR | '>' | '<' | '>=' | '<=' | '==' | '!=';
 //arthm_opr : DIV_OPR | MUL_OPR |  ADD_OPR | SUB_OPR;
 var : outer_name | NAME | INT | FLOAT | STRING | LOGIC | func_call | object_variable_call | object_function_call;
 
-fun_def : PRIVATE_TAG? 'def' NAME'(' (var',')* var')' ':' code_block | PRIVATE_TAG? 'def' NAME'():' code_block;
+fun_def : PRIVATE_TAG? 'def' NAME'(' (var',')* var')' code_block | PRIVATE_TAG? 'def' NAME'()' code_block;
 func_call : NAME'(' (expr',')* expr')' | NAME'()';
 
-class_def : 'class' NAME ':' code_block;
+class_def : 'class' NAME code_block;
 object_declaration : 'object.' NAME;
 object_variable_call : NAME'.'NAME;
 object_function_call : NAME'.'NAME'(' (expr',')* expr')' | NAME'.'NAME'()';
