@@ -34,6 +34,7 @@ class ContextTree:
         print("Cannot find object with name:", objectName)
         exit()
 
+    # Object assigned to a variable
     def findObjectVariable(self, ctx:privetonParser.Object_variable_callContext):
         # Find object node
         objectNode = self.findObjectNode(ctx.NAME(0).getText())
@@ -166,6 +167,11 @@ class ContextTree:
         if variableName in self.currentNode.variable_names_map:
             return self.currentNode.variable_names_map[variableName]
 
+        # Search in private variables
+        maybeVariable = self.searchOuterPrivateVariable(variableName)
+        if maybeVariable is not None:
+            return maybeVariable
+
         # Search in external context
         return self.searchOuterVariable(variableName)
 
@@ -177,6 +183,7 @@ class ContextTree:
             if variableName in tempNode.variable_names_map:
                 return tempNode.variable_names_map[variableName]
 
+            # Search in function arguments
             maybeVariable = self.searchVariableInFunctionContext(tempNode, variableName)
             if maybeVariable is not None:
                 return maybeVariable
@@ -184,6 +191,22 @@ class ContextTree:
             tempNode = tempNode.parent
         print("VARIABLE WITH NAME " + str(variableName) + " NOT FOUND IN OUTER SCOPE")
         exit()
+
+    def searchOuterPrivateVariable(self, variableName):
+        # Find last object node
+        lastObject = self.lastObjectNode()
+        if lastObject is not None:
+            # Ascend nodes checking the private maps on the way
+            node = self.currentNode
+            while node is not None and node != lastObject:
+                if variableName in node.private_variable_names_map:
+                    return node.private_variable_names_map[variableName]
+                node = node.parent
+            # Check the object node
+            if node == lastObject:
+                if variableName in node.private_variable_names_map:
+                    return node.private_variable_names_map[variableName]
+
 
     def searchExpression(self, expression):
         tempNode = self.currentNode

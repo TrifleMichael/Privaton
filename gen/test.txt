@@ -1,24 +1,12 @@
-class FibCalc: {
-    f0 = 0;
-    f1 = 1;
-    # test test #
-    def fib(x): {
-        if (x == 0): {
-            return f0;
-        };
 
-        if (x == 1): {
-            return f1;
-        };
+class Z: {
+    private x = 1;
 
-        fc1 = object.FibCalc;
-        fc2 = object.FibCalc;
-        return fc1.fib(x-1) + fc2.fib(x-2);
+    def f(): {
+        print(x);
     };
 };
 
-fc = object.FibCalc;
-print(fc.fib(7));
+z = object.Z;
 
-
-
+z.f();
