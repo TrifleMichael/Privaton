@@ -134,12 +134,31 @@ class ContextTree:
         #     self.nodes = []
 
     def modifyOuterVariable(self, name, value):
+        # Search in regular variable maps
         node = self.currentNode.parent
         while node is not None:
             if name in node.variable_names_map:
                 node.variable_names_map[name] = value
                 return
             node = node.parent
+
+        # Search in private maps if applicable
+        # Find last object node
+        lastObject = self.lastObjectNode()
+        if lastObject is not None:
+            # Ascend nodes checking the private maps on the way
+            node = self.currentNode
+            while node is not None and node != lastObject:
+                if name in node.private_variable_names_map:
+                    node.private_variable_names_map[name] = value
+                    return
+                node = node.parent
+            # Check the object node
+            if node == lastObject:
+                if name in node.private_variable_names_map:
+                    node.private_variable_names_map[name] = value
+                    return
+
         print("No variable "+str(name)+" found in outer scope.")
         exit()
         # self.currentNode.addVariable(name, value)
