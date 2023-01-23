@@ -203,11 +203,11 @@ class privetonVisitorExtended(privetonVisitor):
             # TWO EXPR
             if ctx.expr(0) is not None and ctx.expr(1) is not None:
                 string = ""
-                string += str(self.contextTree.searchExpression(ctx.expr(0)))
+                string += str(self.contextTree.searchExpression(ctx.expr(0))) + " "
                 if ctx.priority_opr() is not None:
-                    string += ctx.priority_opr().getText()
+                    string += ctx.priority_opr().getText() + " "
                 else:
-                    string += ctx.non_priority_opr().getText()
+                    string += ctx.non_priority_opr().getText() + " "
                 string += str(self.contextTree.searchExpression(ctx.expr(1)))
                 self.contextTree.addExpression(ctx, eval(string))
             # ONE EXPR

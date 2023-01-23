@@ -7,14 +7,41 @@ x = 3-1;
 y = 1+1;
 print("Arithmetic: ", x, "+", y, "=", x+y);
 
+
 def f(someText, a, b) {
     print(someText, " ", a/b);
 };
-
 f("Function:", 7, 2);
+
 
 i = 0;
 while (i < 2) {
     print("Loop: ", i);
     i = i + 1;
 };
+
+
+j = False;
+if (j or True) {
+    print("If");
+} else {
+    print("Else");
+};
+
+
+class C {
+    private x = 1;
+    y = "This value will change";
+
+    private def g(text) {
+        print(someText, " ", x, " ", y);
+    };
+
+    def f(someText) {
+        g(someText);
+    };
+};
+
+c = object.C;
+c.y = 10;
+c.f("Object");
