@@ -193,7 +193,6 @@ class privetonVisitorExtended(privetonVisitor):
                     print("Cannot create a outer private variable:", ctx.NAME().__str__())
                     exit()
             elif ctx.NAME() is not None:
-                print("Here")
                 self.contextTree.addVariable(ctx.NAME().__str__(), expressionValue)
             elif ctx.outer_name() is not None:
                 self.contextTree.modifyOuterVariable(ctx.outer_name().NAME().__str__(), expressionValue)

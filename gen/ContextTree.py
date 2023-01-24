@@ -185,14 +185,14 @@ class ContextTree:
         return None
 
     def searchVariable(self, variableName):
+        # Search in local context
+        if variableName in self.currentNode.variable_names_map:
+            return self.currentNode.variable_names_map[variableName]
+
         # Try to find it in current context, if it's a function context
         maybeVariable = self.searchVariableInFunctionContext(self.currentNode, variableName)
         if maybeVariable is not None:
             return maybeVariable
-
-        # Search in local context
-        if variableName in self.currentNode.variable_names_map:
-            return self.currentNode.variable_names_map[variableName]
 
         # Search in private variables
         maybeVariable = self.searchOuterPrivateVariable(variableName)
@@ -214,6 +214,11 @@ class ContextTree:
             maybeVariable = self.searchVariableInFunctionContext(tempNode, variableName)
             if maybeVariable is not None:
                 return maybeVariable
+
+            # # Search in private variables
+            # maybeVariable = self.searchOuterPrivateVariable(variableName)
+            # if maybeVariable is not None:
+            #     return maybeVariable
 
             tempNode = tempNode.parent
         print("VARIABLE WITH NAME " + str(variableName) + " NOT FOUND IN OUTER SCOPE")
